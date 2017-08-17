@@ -1,0 +1,12 @@
+Python basic
+
+System
+
+
+python shell
+  type python on bash
+  exit to exit
+  
+
+Good saurce:
+https://realpython.com/blog/python/python-virtual-environments-a-primer/
