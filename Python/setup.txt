@@ -1,12 +1,70 @@
 Python basic
 
-System
+go to python shell 
+  type python3 (python for version 2)
 
-
-python shell
-  type python on bash
-  exit to exit
+check where sys.prefix point at
+  >>> import sys
+  >>> sys.prefix
   
+  mine is here - '/Library/Frameworks/Python.framework/Versions/3.6'
+  
+site-package point to third party package (pip, easy_install)
+  >>> import site
+  >>> site.getsitepackages()
+  
+  mine is here ['/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages', '/Library/Python/3.6/site-packages']
+  
+Install wrapper using pip3 (for python3)
+
+then go to bash_profile to excute these ( daaa, too me 10 hrs to pass this )
+  $ cat >> ~/.bash_profile
+  export WORKON_HOME=$HOME/.virtualenvs
+  export PROJECT_HOME=$HOME/directory-you-do-development-in
+  source /usr/local/bin/virtualenvwrapper.sh
+  ^D
+ sourse :https://stackoverflow.com/questions/15101559/terminal-where-is-the-shell-start-up-file
+ 
+ however my virtualenvwrapper lives in /Library/Frameworks/Python.framework/Versions/3.6/bin/
+ 
+ 
+ 
+ 
+ 
+ Necessary comand line:
+  pip3 install virtual env //installing aswell as check if it ihas been
+  pip3 install virtualenv
+  virtualenv --system-site-package foo // make a separate virtualenv
+  source foo/bin activate // to start up the virtual env
+  rm -rf * // kill all under this directory
+  pip freeze 
 
 Good saurce:
 https://realpython.com/blog/python/python-virtual-environments-a-primer/
+
+
+On Mac OS X, you can easily find where sys.prefix points to using the Python shell:
+
+>>> import sys
+>>> sys.prefix
+'/System/Library/Frameworks/Python.framework/Versions/3.5'
+
+third party packages (installed using easy_install or pip) are typically placed in one of the directories pointed to by site.getsitepackages:
+
+>>> import site
+>>> site.getsitepackages()
+[
+  '/System/Library/Frameworks/Python.framework/Versions/3.5/Extras/lib/python',
+  '/Library/Python/3.5/site-packages'
+]
+
+Other reference:
+about .bashrc, and others
+http://stefaanlippens.net/bashrc_and_others/
+
+site-package problem ( 2 site-package)
+https://stackoverflow.com/questions/8164875/site-packages-in-python
+
+Python3, Pip3, Virtualenv and Virtualenvwrapper Setup
+https://gist.github.com/IamAdiSri/a379c36b70044725a85a1216e7ee9a46
+
