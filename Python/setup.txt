@@ -26,6 +26,34 @@ then go to bash_profile to excute these ( daaa, too me 10 hrs to pass this )
  sourse :https://stackoverflow.com/questions/15101559/terminal-where-is-the-shell-start-up-file
  
  however my virtualenvwrapper lives in /Library/Frameworks/Python.framework/Versions/3.6/bin/
+ so I need to do 
+ 
+export PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenv
+source /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh
+
+(ref  https://stackoverflow.com/questions/29149853/no-module-named-virtualenvwrapper)
+
+but it does not re-write varibles 
+it must be something to do with this message 
+-bash: /Users/satokoichimura/.bash_profile: line 43: unexpected EOF while looking for matching `''
+-bash: /Users/satokoichimura/.bash_profile: line 81: syntax error: unexpected end of file
+
+I may have to stick with just virtual env
+==========================================================================
+the way to make new virtual env
+  virtualenv --system-site-package foo
+  source foo/bin activate
+  
+  pip freeze --- to see inside
+  
+  or
+  
+  virtualenv venv(or whatever name) (without--system-site-package not sure if works, I havent tried yet)
+  
+  deactivate when you finish
  
  
  
