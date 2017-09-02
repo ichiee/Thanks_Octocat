@@ -1,4 +1,4 @@
-Install Ananconda om MAc osx 10.12.x
+Install Ananconda om MAC osx 10.12.x
 
 with existiog python 3.6
 go to website and dwownload
