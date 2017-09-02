@@ -1,0 +1,26 @@
+Install Ananconda om MAc osx 10.12.x
+
+with existiog python 3.6
+go to website and dwownload
+follow usual install
+
+My destination is Mac -> application (or install for me, I am not sure, I think it was install for me)
+
+My install type is as default
+
+However, bash_profile was not updated as I can still see the comment on
+
+Last login: Sat Sep  2 22:16:47 on ttys000
+-bash: /usr/local/bin/virtualenvwrapper.sh: No such file or directory
+-bash: /usr/local/bin/virtualenvwrapper.sh: No such file or directory
+-bash: /Users/satokoichimura/.bash_profile: line 43: unexpected EOF while looking for matching `''
+-bash: /Users/satokoichimura/.bash_profile: line 86: syntax error: unexpected end of file
+
+when I open terminal
+It was left over from previous mess of setting up vertualenvwrapper daaa.
+
+$ cat >> ~/.bash_profile
+export PATH=~/anaconda3/bin:$PATH
+Did not work
+
+well, let's see
