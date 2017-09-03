@@ -23,4 +23,19 @@ $ cat >> ~/.bash_profile
 export PATH=~/anaconda3/bin:$PATH
 Did not work
 
-well, let's see
+what I needed to do was
+
+export PATH="$HOME/anaconda/bin:$PATH"
+
+YES WORKED!!!!
+
+note my conda env is at
+ /Users/satokoichimura/anaconda/envs/basicichienv:
+ 
+
+# To activate this environment, use:
+# > source activate basicichienv
+#
+# To deactivate this environment, use:
+# > source deactivate basicichienv
+#
