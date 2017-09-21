@@ -1,0 +1,28 @@
+***Basic operation of pandas***
+
+Read file 
+pd.read_csv ('') #default is comma separation where read_table need to set separation
+
+Selecting series (column) from dataFrame can be done by [''] or dotnortation 
+    - dot notation is obviously use for attribute as well so, some case it might not work.
+    - dot notation can not to be used when the column name contents space
+    - dot notation cannot use when you are creating new column
+
+df['newColumnFullName'] = df.columnFirstName1 + df.columnLastName2 
+    #thus is creating new column called 'newColumnFullName' on dataFrame called df
+
+How to filter:
+
+data[data.duration > 200] neans filter the duration > 200
+    # so data shows new dataFrame where value of duration column is more than 200
+    
+mask = data ['columnCountryName'].str.contains('UK')
+stage1 = data [mask] 
+    #this mask select data (dataFrame) of where 'columnCountryName'has value of UK...
+    #then gives you modified dataFrame
+  
+
+some examples: 
+
+atage['columnName'].iloc[0] #takes the 0th row on the 'columnName' which useful for label on plt
+
