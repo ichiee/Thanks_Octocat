@@ -1,7 +1,42 @@
 ***Basic operation of pandas***
 
-Read file 
-pd.read_csv ('') #default is comma separation where read_table need to set separation
+value.counts:
+    movie.genre.value_counts()
+    #count homwny times each value appeard on df
+    movie.genre.value_counts(normalise=True)
+    # makes the count as percentage
+series method:
+    unique # return array ([each enique value])
+    nunique # number of unique value all together return int
+    crosstab
+        pd.crosstab(movie.genre, movie.count_rating) 
+        #how many is on genre and howmany in content_rating
+groupby:
+    drink.beer_servinh.mean()
+    drink.groupby('continent').beer_servinh.mean()
+    # it is like for each
+    drink.groupby('continent').beer_servinh.agg('min', 'mas', 'mean')
+     drink.groupby('continent').mean()
+     
+
+change data type:
+    #astype method
+    df.beer_price.astype(float)
+    pd.read_csv ('whatever', dtype{'beer_price: float})   #while importing file
+    
+
+sort on column:
+    movie.title.sort_values() 
+    # sortin=g order on title column of movie df 
+    # type is series - sort_values is series method
+    # just showing wont change anythinf
+sort on data frame:
+    movie.sort_values ('title')
+    # data frame method so will show all df 
+    #just showing wont change anything
+    
+sort on data frame with 2 columns
+    movie.dort_values (['rating', 'duration']) 
 
 Selecting series (column) from dataFrame can be done by [''] or dotnortation 
     - dot notation is obviously use for attribute as well so, some case it might not work.
@@ -13,16 +48,57 @@ df['newColumnFullName'] = df.columnFirstName1 + df.columnLastName2
 
 How to filter:
 
-data[data.duration > 200] neans filter the duration > 200
-    # so data shows new dataFrame where value of duration column is more than 200
+        data[data.duration > 200] 
+            # means filter the duration > 200 retun list of true and false
+            # so data shows new dataFrame where value of duration column is more than 200
+            # series compration return to list, it knows it is series not one boolean to return
+            # inner part is series boolians in list
+            
+        data[(data.duration > 200) & (df.genre== 'Drama')]  # is better practice
+        
+        filter using multiple or:
+            data[(data.duration > 200) & (df.genre== 'Drama')] 
+   
+        data.genre.isin(['Crime', 'Drama, 'Action']) # pick raws where the conditions are true
+        
+        mask = data ['columnCountryName'].str.contains('UK')
+        stage1 = data [mask] 
+            #this mask select data (dataFrame) of where 'columnCountryName'has value of UK...
+            #then gives you modified dataFrame
+
+show one column when you fulter (another):
+   some examples: data[data.duration > 200].genre (or ['genre']) howevwe loc is better
+   
+
+    stage['columnName'].iloc[0] #takes the 0th row on the 'columnName' which useful for label on plt
+
+rename and replace column name:
     
-mask = data ['columnCountryName'].str.contains('UK')
-stage1 = data [mask] 
-    #this mask select data (dataFrame) of where 'columnCountryName'has value of UK...
-    #then gives you modified dataFrame
-  
-
-some examples: 
-
-atage['columnName'].iloc[0] #takes the 0th row on the 'columnName' which useful for label on plt
-
+    solution 1 using rename function
+        df.colums # to just check
+        #colums attribute return to Index([u'column1', u'column2', u'column3'], dtype='object')
+        
+        ufo.rename (columns = {'column2': 'columnNew'}, inplave = True) 
+        # key is old name, value is new name
+        # need inplace for mutate the df
+     
+     solution2
+     #make pison list
+        df_cols = ['column1', 'columnNew', 'column3']
+        df.colums = df_cols
+        # this will over written all three columns
+        
+     solution3 while reading
+        df = pd.read_csv('ehatever', names=df_cols, header=0)
+   
+      al spaces on column to replace with _
+        df.columns = df.colmuns.str.replace (' ', '_')  
+        
+Remove colums:
+    df.drop ('columsName', axis = 1, inplace = True) # inplace to make it mutable
+    
+Remove rows:
+    df.drop ([0,1], axis = 0, inplace = True) # get rid of row 0 and 1
+    
+Read file:
+    pd.read_csv ('') #default is comma separation where read_table need to set separation   
