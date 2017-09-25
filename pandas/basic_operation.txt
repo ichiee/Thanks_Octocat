@@ -1,6 +1,34 @@
 ***Basic operation of pandas***
 
-value.counts:
+*missing value*
+
+isnull() # nutnull() is exact opposite
+    
+    ufo.isnull().tail()
+    #gives True - NaN, all value will be boolian
+    
+    ufo.isnull().sum(axis = 0)
+        converd 1 as true 0 as false so you will see count of all missing data
+        this pretty much need anytime
+     ufo[ufo.City.isnull()]
+        #gives you all rows of city has missing values, filtering
+
+    ufo.dropna (how='any').shape 
+        #how='any' is default
+        #it will all defalt, there are option for inplace to make it mutable
+    ufo.dropna (how='all').shape 
+        # if all ufo.dropna (how='all')of the value is NaN
+    ufo.dropna (subset=['City', 'Shape Reported'], how='any')).shape
+        #only drop if na at 'City', 'Shape Reported'
+
+    ufo['City'].value_counts(dropna=False)
+        #then it will show NaN value and counts too
+        #otherwise default is excluding NaN value
+
+    ufo['City'].fillna(value='VARIOUS', inplace=True)
+    
+
+value_counts:
     movie.genre.value_counts()
     #count homwny times each value appeard on df
     movie.genre.value_counts(normalise=True)
