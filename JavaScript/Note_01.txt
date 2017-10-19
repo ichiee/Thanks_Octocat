@@ -1,0 +1,25 @@
+IIFE
+  (function () {
+  }());
+  variables inside is protected and not affected
+  behave like module-like
+
+Object
+  whern you access to name of the object with [], you need to add ''
+  Person.name == Person['name']
+  function is a object too
+  
+prototype inheritance
+  every object have one
+  console.log(functionName.__proto__)to show prototype properties
+  
+function costruntors (start with capital letter)
+  the this variable point to a new empty object
+  new is operator in JS, so key worrd new makes new {} then the this point to the object
+  and the object return from the function automativcally
+  
+By reference
+  = to object
+
+By value
+  = to primitive
