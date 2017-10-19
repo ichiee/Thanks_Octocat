@@ -1,0 +1,9 @@
+First Class Function
+  function can be used the same as other variables. 
+  it can be passed as a parameter / argument
+  (see first-class-fn.js for examples)
+  
+
+Module
+  require to receive module.export on module file 
+  (see module_01 folder)
