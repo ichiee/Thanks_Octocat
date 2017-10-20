@@ -19,7 +19,35 @@ require
 	    
       In this case you can create multiple files, organise them with index.js
 
-      
+exports 
+	is short hand of module.export as exports is parameter of the IIFE wrapped the module.  
+	However when you assign exports, you need to mutate the object such as
+	export.greet = function (){}
+	Instead of exports = function…
+	It will dereference from what module.exports points at, will point at just the function 
+	module.exports remain to points at the same object. 
+	This is odd js behaviour 
+
+Native (core) Module 
+	You can require each library which are not global as
+		var util = require ('util');
+	When you don’t need to specify the location, the js will look into the core.
+	
+ES6 examples (V8 supports ES6)
+		export function greet(){ console.log (‘Hello’); }
+	Use export on function it means module.exports
+
+	App.js side, you can import anything that has that export tag on it using import keyword.
+	I	mport * as greetr from ‘greet’;
+		greetr.greet();
+
+Events
+	1: System Events come from C++ Core Libuv
+		Events coming from computer syetem such as finishe reading file, received data etc whch js doesnt have
+	2: Custom Events - Javascript core Event Emitter
+		When events occers in libuv, it generates custom event often. JS side is faking it
+
+
 
   
   
@@ -48,7 +76,7 @@ Using require(‘./whatever_path.js)  && module.exports
 
     
 
-Common Module Patterns 
+Common Module Patterns (see module_patters folder)
 
   1: simple over write
           var greet = function (){
