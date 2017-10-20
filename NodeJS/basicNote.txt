@@ -1,9 +1,92 @@
 First Class Function
-  function can be used the same as other variables. 
-  it can be passed as a parameter / argument
-  (see first-class-fn.js for examples)
-  
+    function can be used the same as other variables. 
+    it can be passed as a parameter / argument
+    (see first-class-fn.js for examples)
 
-Module
-  require to receive module.export on module file 
-  (see module_01 folder)
+module
+      require to receive module.export on module file 
+      (see module_01 folder)
+      when you first get is, it is empty object. 
+      You over writing it by assign function
+  
+require 
+      can recognise different type of files such as js, json and etc 
+      (on module.js  extentions are property name on a object and the values are function to sort things out)
+      
+      When you require file without extension of js, it will look for one with.js (see module.js)
+      If not existing the js file, then it will look for the same name folder, 
+      so let’s say if you have a folder called greet and require (‘./greet’), all the files in the folder will be required.
+	    
+      In this case you can create multiple files, organise them with index.js
+
+      
+
+  
+  
+Using require(‘./whatever_path.js)  && module.exports
+        
+        What is happening under the hood
+
+        whatever-yourmodule.js has module.js underneath
+        module.js  is one of javaScript file that built into Node
+
+        Node wraps codes (module code)  inside function expression
+        So then Node actually invokes the function
+
+                (function (exports, require, module, __filename, __dirname){
+                      // your code here together with module.export =
+                });
+                fn (module.exports, require, module, filename, dirname);
+                return module.exports;  // this is what is really coming back from require.
+
+        require is function, that you pass the path too, 
+        module.exports is what require function returns. object is passed by reference.
+
+        This works because your code is actually wrapped in a function giving these things as function parameter. 
+        Your code is the body of the function
+
+
+    
+
+Common Module Patterns 
+
+  1: simple over write
+          var greet = function (){
+            console.log ('Hello world');
+          };
+          module.exports = greet;
+          &
+          var greet1 = require('./greet1');
+          greet1();  
+  
+  2: moule.export dot object
+          module.exports.greet = function (){
+            console.log ('Hello world!');
+          };
+          &
+          var greet2 = require('./greet2').greet;
+          greet2();
+  
+  3: Constructor with new on export (by reference)
+            module.exports = new Greetr
+            &
+            var greet3 = require('./greet3');
+            greet3.greet();
+            greet3.greeting = 'changed hello world';
+  
+  4: Basic Constructer 
+            module.exports = Greetr
+            &
+            var Greet4 = require('./greet4'); 
+            var grtr = new Greet4(); 
+            grtr.greet()
+  
+  5: revealing module pattern 
+            module.export = {
+                greet:greet
+            }
+            &
+            var greet5 = require ('./greet5').greet;
+            greet5();
+  
+  
