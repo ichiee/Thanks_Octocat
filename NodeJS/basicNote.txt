@@ -32,14 +32,7 @@ Native (core) Module
 	You can require each library which are not global as
 		var util = require ('util');
 	When you don’t need to specify the location, the js will look into the core.
-	
-ES6 examples (V8 supports ES6)
-		export function greet(){ console.log (‘Hello’); }
-	Use export on function it means module.exports
 
-	App.js side, you can import anything that has that export tag on it using import keyword.
-	I	mport * as greetr from ‘greet’;
-		greetr.greet();
 
 Events
 	1: System Events come from C++ Core Libuv
@@ -47,9 +40,95 @@ Events
 	2: Custom Events - Javascript core Event Emitter
 		When events occers in libuv, it generates custom event often. JS side is faking it
 
+Inheriting from EventEmitter
+	Method inherits ->it makes superCtor’s prototype set as ctor(your constructor)
+	So you can access to superCtor’s prototype.
+	It almost like making a plug in(points at) called prototype object in between the objects, 
+	so your object can access to target object's properties 
+	(i.e. util.inherits (Greeter, EventEmitter) )
+	// Greeter constructor inherits all EventEmitter prortotype,it stays on prototype chaine below Greeter.prototype
 
+EventEmitter
+	you can pass the data add it on as argument
 
-  
+call & apply methods
+	obj.greet();
+	obj.greet.call(); // when you add parameter, that is become the object 'this' would point at 
+		obj.greet.call({name: ‘Jane Doe}, param, param);
+		obj.greet.apply({name: ‘Jane Doe}, [param, param]); 
+	
+	Function Greetr (){
+		EventEmitter.call(this);
+		//'this' will be point at empty object created with new key word
+		// will allow new object to take all properties and methods that attached directly to the constructor 
+		//not only ones attached to proto type when you use inherits method
+		this.greeting = ‘Hello world’;
+	}
+	
+None-blocking Asynchronous code
+	Wile V8 is synchronously working, libuv within node architecture send requests to OS syste. 
+	Inside libuv, there a queue of any events has completed. Libuv comstantly check the queue.
+	call-back will be called when each events completed.
+	JS is Synchronous
+	Node js is Asynchronous
+
+Buffer 	
+	global. no need to use require ('');
+	var buf = new Buffer (‘Hello’, ‘utf8’) 	// uft8 is default
+	// it means encode Hello in binary
+	buf.toString();     			//to get it back to string
+	buf.toJSON();
+	//give you back {type; ‘Buffer’, data: [72, 102, 108, 108, 111]}
+	buf.write
+	stream runs then data will be in buffer then the set of data in buffere will be proceed.
+
+	
+
+ES6 examples (V8 supports ES6)
+	export function greet(){ console.log (‘Hello’); }
+	//Use export on function it means module.exports
+	//App.js side, you can import anything that has that export tag on it using import keyword.
+	Import * as greetr from ‘greet’;
+	greetr.greet();
+	
+	Template literal (back tick - it telling js that it will be template literal)
+		Var greet2 = `Hello ${name}`;
+	
+	ES6 Class is different to other language class
+	You need to know prototype chain 
+	'use strict'
+	Class Person {
+		constructor (firstname, lastname){
+		this.firstname = firstname;
+		this.lastname = lastname;
+		}
+		// it will be directly attached to Person
+		greet (){
+			Console.log (‘Hello’  + this.firstname + ‘ ‘ this.lastname);
+		}
+		// this will be put under prototype
+	}
+
+	ES6 typed array
+		var buffer = new ArrayBuffer (8); 	// 8bytes (64 bits)
+		var view = new Int32Array (buffer); 	// giviing buffer to deal with
+		view [0] = 5;
+		view [1] = 15;
+		console.log (view]; 
+		//Int32Array {‘0’:5, ‘1’:15}
+		// this holds only 2 numbers
+	ArrayBuffer is new feature in JS nothing to do with Node
+	When I read from array, I am actually reading from buffer
+	If I change the array (int32Array) I will actually changing buffer. 
+
+	
+	
+When you use ES6 on VS code
+	add jsconfig.json file with (check it might have changed)
+	{
+	    "CompilerOptions :{
+	    "target" : "ES6"
+	    }
   
 Using require(‘./whatever_path.js)  && module.exports
         
