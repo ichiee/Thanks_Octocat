@@ -1,11 +1,11 @@
 First Class Function
     function can be used the same as other variables. 
     it can be passed as a parameter / argument
-    (see first-class-fn.js for examples)
+    (see --- first-class-fn.js ---)
 
 module
       require to receive module.export on module file 
-      (see module_01 folder)
+      (see --- module_01 folder ---)
       when you first get, it is an empty object. 
       You will be overwriting it by assign function
   
@@ -13,7 +13,7 @@ require
       can recognise different type of files such as js, json and etc 
       (on module.js  extentions are property name on a object and the values are function to sort things out)
       
-      When you require file without extension of js, it will look for one with.js (see module.js)
+      When you require file without extension of js, it will look for one with.js (see --- module.js ---)
       If not existing the js file, then it will look for the same name folder, 
       so let’s say if you have a folder called greet and require (‘./greet’), all the files in the folder will be required.
 	    
@@ -66,7 +66,7 @@ call & apply methods
 	}
 	
 None-blocking Asynchronous code
-	Wile V8 is synchronously working, libuv within node architecture send requests to OS syste. 
+	While V8 is synchronously working, libuv within node architecture send requests to OS syste. 
 	Inside libuv, there a queue of any events has completed. Libuv comstantly check the queue.
 	call-back will be called when each events completed.
 	JS is Synchronous
@@ -81,6 +81,21 @@ Buffer
 	//give you back {type; ‘Buffer’, data: [72, 102, 108, 108, 111]}
 	buf.write
 	stream runs then data will be in buffer then the set of data in buffere will be proceed.
+	buffer sits on the heap in V8
+
+fs is file system
+	We are dealing with files on our operationg system, 
+	so we are dealing with, normally binary data.
+	fs.readFile is asynchronously run. So the function may excute after the line below
+	(see --- fs folder ---)
+
+error first call back
+	callbacks take an error object as their first parameter.
+	if no error, you are given null then goes to secound param
+		var greet2 readFile (__dirname + './greet.txt', function (err, data){
+			//this is an event loop called error first call back
+			console.log (data); // you get buffer with binary data of the txt
+		});
 
 	
 
