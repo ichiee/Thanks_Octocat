@@ -6,8 +6,8 @@ First Class Function
 module
       require to receive module.export on module file 
       (see module_01 folder)
-      when you first get is, it is empty object. 
-      You over writing it by assign function
+      when you first get, it is an empty object. 
+      You will be overwriting it by assign function
   
 require 
       can recognise different type of files such as js, json and etc 
@@ -55,10 +55,10 @@ Using require(‘./whatever_path.js)  && module.exports
         
         What is happening under the hood
 
-        whatever-yourmodule.js has module.js underneath
-        module.js  is one of javaScript file that built into Node
+        whatever_yourmodule.js has module.js underneath
+        module.js is one of javaScript files that built into Node
 
-        Node wraps codes (module code)  inside function expression
+        Node wraps codes (module code) inside a function expression
         So then Node actually invokes the function
 
                 (function (exports, require, module, __filename, __dirname){
