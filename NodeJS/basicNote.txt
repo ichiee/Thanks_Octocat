@@ -50,7 +50,7 @@ Inheriting from EventEmitter
 
 EventEmitter
 	you can pass the data add it on as argument. 
-	.on works as it can assign listener. .emit will invock all ilsters alredy stored in array
+	.on works as it can assign listener. .emit will invoke all ilsters already stored in array
 
 call & apply methods
 	obj.greet();
@@ -191,6 +191,7 @@ Using require(‘./whatever_path.js)  && module.exports
         This works because your code is actually wrapped in a function giving these things as function parameter. 
         Your code is the body of the function
 
+number after ip addres + : is socket address / port, so node can listened to specific port to receive
 
     
 
