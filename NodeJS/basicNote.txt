@@ -49,7 +49,8 @@ Inheriting from EventEmitter
 	// Greeter constructor inherits all EventEmitter prortotype,it stays on prototype chaine below Greeter.prototype
 
 EventEmitter
-	you can pass the data add it on as argument
+	you can pass the data add it on as argument. 
+	.on works as it can assign listener. .emit will invock all ilsters alredy stored in array
 
 call & apply methods
 	obj.greet();
@@ -82,6 +83,13 @@ Buffer
 	buf.write
 	stream runs then data will be in buffer then the set of data in buffere will be proceed.
 	buffer sits on the heap in V8
+	
+Buffer on readable
+	once data was read anf filled up buffer, listener was envocked, 
+	it will be carried on untill all the data was read. 
+	readable.on ('data', function (chunk){
+		condole.log (chunk);
+	}
 
 fs is file system
 	We are dealing with files on our operationg system, 
@@ -97,7 +105,14 @@ error first call back
 			console.log (data); // you get buffer with binary data of the txt
 		});
 
-	
+ReadStream
+	CreateReadStream (takes full path as param) is return to new ReadStream (constructer ) it's inherit from Readable, 
+	Readable inherit from Stream. Stream inherit from EventEmitter (in events). 
+	So when you assine CreatReadStream to var, the variable can use all method of EventEmitter.
+	opetion can be adderd on as second param ( i.e. {encoding: 'utf8', highWaterMark (bytes): 1024})
+
+writable
+	add writeble.write(chunk) on listner function on readable after creaWriteStream
 
 ES6 examples (V8 supports ES6)
 	export function greet(){ console.log (‘Hello’); }
@@ -211,4 +226,9 @@ Common Module Patterns (see module_patters folder)
             var greet5 = require ('./greet5').greet;
             greet5();
   
+  
+  ******* some operation tip *******
+  
+  .on ('data', listener(callback))
+  var readable = fs.createReadStream (_dirname + 'mytext.txt', {encoding:'utf8'} ) // you can use .on .emit etc on readable
   
