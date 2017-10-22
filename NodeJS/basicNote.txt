@@ -112,7 +112,16 @@ ReadStream
 	opetion can be adderd on as second param ( i.e. {encoding: 'utf8', highWaterMark (bytes): 1024})
 
 writable
-	add writeble.write(chunk) on listner function on readable after creaWriteStream
+	add writeble.write(chunk) on listner function on readable after createWriteStream
+	
+pipe
+	is prototype method on Readable (dest, option) simply as you do manually using .on together with debug 
+	(_stream_readable.js) return destination after all piped (so you can chaining)
+
+zlib
+	createGzip - both readable and writable (see ***** gzip folder ******)
+	
+	
 
 ES6 examples (V8 supports ES6)
 	export function greet(){ console.log (‘Hello’); }
