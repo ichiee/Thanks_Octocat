@@ -121,6 +121,25 @@ pipe
 zlib
 	createGzip - both readable and writable (see ***** gzip folder ******)
 	
+Semantic Version
+	Major. Minor. Patch
+	
+	Patches - bug fix
+	Minor - new features still code works fimne
+	Major - need to update possibly, check documentations
+	check semver.org for further info
+	
+NPM 
+	should come wuth NodeJS
+	see npmjs.com
+	
+	command line
+	npm init // will ask you name of app
+	(name:) nodejas-test-app // example - then ask you descrition of the app 
+	(entry point:) app.js // ask you entry point, default is (app.js) and you can leave it as it is
+	...etc
+	So init will make pacage.json for you - you can create it by yourself
+	
 	
 
 ES6 examples (V8 supports ES6)
