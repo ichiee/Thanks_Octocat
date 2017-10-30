@@ -1,0 +1,85 @@
+
+NPM
+Package manage
+Software automates installing and updating managing
+
+
+
+Basic usage of NPM
+
+  1: create JSON (package.json)
+          
+        npm init  //can do manually, too
+                  //then it will ask for the name of the app (name: nodejs) so type i.e.
+        nodejs-test-app 
+                  //it starts with version 1 like below
+	      nodejs-test-app
+	      version: (1.0.0)
+                  //you can write anything on description like
+        NodeJS Test App
+                  //then you can type entry point or leave as default
+                  
+                  
+  2: on JSON file
+
+        “scripts” section is useful
+        {
+          “scripts”: {
+            “test”: “echo \ “Error: no test specified\” && exit1”
+          }       
+        }
+        
+              //“echo \ “Error: no test specified\” is the command line and giving a name called "test",  
+              //so on command line, you can 
+        npm test
+              //Then you will get the “Error: no test specified”
+              // now the first package.json was created
+              
+        “moment”: “^2.10.6”  // means auto update apart from major change
+        “moment”: “~2.10.6”  // means auto update apart from major and minor change ( so only on the third one)
+
+
+ 3: update package.json at installing a package
+      
+        npm install moment --save
+              // will save reference in the package json to this dependency
+
+              Once you hit enter, it will download the package, node_module folder will be created
+              In the folder, moment is : downloaded. So some people use NPM even they are not using node.
+              It will also update dependancy.
+        npm install jasmine-node --save-dev
+              // for need it during development period but not need to have fot run my app
+              //Jasmine is automate test
+              //You will aso see “devDepandancy” name on package.json
+        
+
+  4: GitHub
+  
+  So if you make repo on github, you don’t need to put the moment package on github. 
+  You just make sure upload the package.json
+  Go on to your project folder on bash then type npm install on command line,
+  All necessary files will be downloaded regarding to the JSON file
+
+  
+  5: use require on entry file
+    
+          var moment = require (‘moment’);
+                // first look for node core, if not existing then looking for other places 
+                //One of the place is the node_modules folder in your app. 
+
+
+
+  6: How to use 
+
+
+
+
+
+
+
+
+
+
+
+
+
