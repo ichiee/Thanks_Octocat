@@ -97,7 +97,8 @@ Basic usage of NPM (see npm_packagejson folfer)
 
 
   
-Express basics
+Express basics (see express_http folder)
+
 	var port = process.env.PORT || 3000;
 		// process is global variable which env's PORT 
 		//(var PORT you would sent on server)
@@ -110,7 +111,13 @@ Express basics
 		// get is a GET verb
 		//when you see'/' (homepage), the function fires
 
-
+	on route of page, you can use : for variable such as
+		app.get ('/person/:id', function(req, res){
+		    res.send('<html><head></head><body><h1>
+		    Person: ' + req.params.id + '</h1></body></html>');
+		});
+		//:id can be anything 
+		//it is variable which can be used in your code as above
 
 
 
