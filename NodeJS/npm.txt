@@ -27,9 +27,21 @@ cli
 enviroment variables 
 	grobal variables specific to the enviroments (server) our code lives in
 	
-	
-	
+middleware with express
+	app.use('/assets', express.static(__dirname + '/public'));
 
+	app.get('/', function (req, res){
+    		res.send('<html><head><link href=assets/style.css type = text/css rel = stylesheet />
+		</head><body><h1>Hello world!</h1></body></html>');
+	});
+	
+	app.use ('/', function (req, res, next){
+     		console.log('request url: ' + req.url);
+     		next(); 
+ 	});
+	// this function next (3rd paramenter) is run the middleware of express
+     	// get is also middle ware
+     	// this is works on all pages
 
 Basic usage of NPM (see npm_packagejson folfer)
 
