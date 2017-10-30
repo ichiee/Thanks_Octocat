@@ -1,4 +1,3 @@
-
 var express = require ('express');
 var app = express();
 
@@ -14,9 +13,11 @@ app.get('/api', function (req, res){
     res.json ({firstname: 'John', lastname :'Doe'});
 });
 
-// so it is like if statement
-// get is a GET verb
-//when you see'/' (homepage), the function fire
+app.get ('/person/:id', function(req, res){
+    res.send('<html><head></head><body><h1>Person: ' + req.params.id + '</h1></body></html>');
+});
+
+//:id can be anything it is variable which can be used in your code as above
 
 app.listen (port);
 
