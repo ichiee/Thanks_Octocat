@@ -5,7 +5,33 @@ Software automates installing and updating managing
 
 
 
-Basic usage of NPM
+nodemon 
+	instal globally as it will monitor node runing, so you use iton every project
+	npm install -g nodemon
+		//will make node_module folder globally (each packet also have node_module foolde)
+	nodemon app.js
+		//to start
+		
+		
+version upload
+	nmp upload
+	
+	
+cli 
+	commandline interface, 
+	You sometimes have utility and that same name with -cli
+	Which means that you have utility probably that you are going to use in code. 
+	Another one of the utility is for just typing into the command line
+
+
+enviroment variables 
+	grobal variables specific to the enviroments (server) our code lives in
+	
+	
+	
+
+
+Basic usage of NPM (see npm_packagejson folfer)
 
   1: create JSON (package.json)
           
@@ -47,6 +73,7 @@ Basic usage of NPM
               Once you hit enter, it will download the package, node_module folder will be created
               In the folder, moment is : downloaded. So some people use NPM even they are not using node.
               It will also update dependancy.
+	      
         npm install jasmine-node --save-dev
               // for need it during development period but not need to have fot run my app
               //Jasmine is automate test
@@ -69,10 +96,19 @@ Basic usage of NPM
 
 
 
-  6: How to use 
-
-
-
+  
+Express basics
+	var port = process.env.PORT || 3000;
+		// process is global variable which env's PORT 
+		//(var PORT you would sent on server)
+	
+	app.get('/', function (req, res){
+    		res.send('<html><head></head><body><h1>Hello 
+		world!</h1></body></html>');
+	});
+		// so it is like if statement
+		// get is a GET verb
+		//when you see'/' (homepage), the function fires
 
 
 
