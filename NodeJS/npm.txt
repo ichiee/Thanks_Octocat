@@ -132,8 +132,125 @@ Express basics (see express_http folder)
 		//it is variable which can be used in your code as above
 
 
+Template
+
+	Express come with ability to plug in a whole variety of template engines.
+
+	View engines: developer like to use their own favourite template.
+	So express gave an ability to plug in to build your own
+	Template engines, that would then output on the response stream, back down to http response.
+
+	
+    How to set template
+
+	1; you set view engine by
+		app.set (‘view engine’, ‘jade’);
+			//2nd param is the file extension
+			//By default the express framework looking for file called views
+			//It will hooked by this set, so no need for require function
+
+	2: then build a template ( often look like html) some are not like jade
+		Make views folder
+		Make index file with link to stylesheet and all others
 
 
+	3: on app.js, instead of using res.send to manually send all the text, 
+		use res.render to render the file name in the param. 
+		It will look for the file on the render parameter with the extension which give on where view was set.
+
+	
+	
+	Ejs 
+		Inspired by asp.net web forum
+		Using <% %>	for java script code, if you need use html tag the close it first.
+		This html on this file is run by browser. Not node. Once put delimiters then 
+		Ejs would be running that inside node. 
+
+	
+		Out putting on ejs file
+			Using = 
+			i.e. <h1> Person: <%= ID %>
+				//This means that variable ID should be somewhere on js file
+				//You could do also a thing like ID.length
+
+			app.get (‘/’, function (req, res){
+				res.render (‘person’, {ID: req.param.id}); 
+				//2nd param is data
+			});
+
+			make sure that href start with ‘/’ if you wanna start it from the root
+
+
+
+	How to GET
+
+		1: second param on render method on res on app.js
+			Qstr: req.query.qstr
+
+				// it means that variable Qstr set in object as a data on the method, 
+				// so you can use it on the file on the first param
+
+			<h2>Querystring Value: <%= Qstr %></h2>
+				//On person.ejs 
+				//it will publish on here if the variable existing. 
+
+		2: go to url and type ?qstr=whatever
+			This will be assigned as on req.query.qstr
+
+
+
+
+	How to POST
+	
+		Need to parse it on body
+		So go to expressjs.com check middleware, check body-parser
+
+		Body parser
+
+		1: you need to require - unlike view engine, it wont hook automatically
+				Then make 
+			var urlencodedParser = bodyParser.urlencoded ({extended: false});
+				To use it on app.post
+
+
+		2: make form on html and make sure 
+			method = ‘POST” action=’/person’
+				Post this (encode xml url encoded post with the sequence of strings and values 
+				in the body of HTTP request) to person
+
+		3: HTTP POST that then handle by app.post on app.js, 
+				because it matched this url ‘/person’, 
+				then body parser is taking the body of HTTP request and giving you each vaue
+			
+			app.post('/person', urlencodedParser, function(req, res) {
+    				res.send ('thank you!');
+    				console.log (req.body.firstname);
+    				console.log (req.body.lastname);
+			});
+
+	JSON parser 
+
+		1: it is a part of body-parser so if you havent required do the first
+				Then 
+			var jsonParser = bodyParser.json();
+				To use it on app.post
+
+		2. On index.ejs write on script tag such as 
+		       <script>
+			   $.ajax({
+			       type: 'POST',
+			       url: '/personjson',
+			       data: JSON.stringify({
+				   firstname: 'Ichi',
+				   lastname: "LaMuchy"
+			       }),
+			       dataType: 'json',
+			       contentType: 'application/json'
+			   });
+		       </script>
+		(put JQuery on src =)
+
+		Node will get this http request then pot onto jsonParser
 
 
 
