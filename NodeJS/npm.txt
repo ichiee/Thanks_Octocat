@@ -42,6 +42,62 @@ middleware with express
 	// this function next (3rd paramenter) is run the middleware of express
      	// get is also middle ware
      	// this is works on all pages
+	
+Structuring app
+
+	How to separate routes:
+	
+		app.use(‘/’, routes);
+		app.use (‘/users’, users);
+			// on app.js
+			//Using middlewares and attached to a path. (as seen many places)
+			//But middlewares they usings are in this case are 2 modules that are local.
+
+		var routes = require (‘./routes/index’);
+		var users = require (‘./routes/users’);
+			// on app.js
+			// They are in routes directory
+
+		var router = express.Router();
+			//It is a router middleware
+			// on users.ejx 
+			//So instead of get and post directly on the app, we put it together in the exact same way
+
+		Router.get (‘/’, Function (req, res, next){	
+		}
+			//Then export router. 
+
+		Module.exports = router;
+
+			// /users/(whatever) is matched to (get(‘/Whatever’)
+			//what it says on router. (get(‘/Whatever’)
+
+
+	using controllers separation
+		Controllers - between data and view
+
+			You can Stores such as 
+
+				htmlControllers.js
+				apiControllers.js
+
+			So for example, you can take all app.get / post / delete of json api ones (on app.js) and move to 
+			Inside function below.
+
+				Module.exports = function (app){
+				}
+
+			Then you add a line of 
+				Var apiController = require (‘./controllers/apiController’)
+			Then 
+
+				apiController (app);
+
+
+			for htmlControllers
+			You can require ‘body-parser’ 
+
+	
 
 Basic usage of NPM (see npm_packagejson folfer)
 
