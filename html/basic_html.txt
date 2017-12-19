@@ -1,0 +1,79 @@
+Some catch up
+
+
+inline tag
+    <a> - link
+      title - add extra element, display as tool tip if you hoover on
+      <a href = "http://google.com" title="click to go google" >Google</a>
+    <strong> and <b> - BOLD
+    <input /> - input
+    <span> -soan tag
+
+
+Single ton tag
+    trailing slash is only need for xhtml, you can leave it off on html and html5
+  
+<imag> tag
+  <img src = "http://whereItIs alt="not there" />
+  src and alt are required. alt is for displaying when there is nothing on src (the link is not working)
+
+div or span 
+  div is block span is inline
+  
+style
+  style = "slecter:calue;"  you can have as many value as you like
+
+<table> tag
+  using for Design and layout is bad practice (old style)
+  <tr> rav
+  <td> table data (column)
+
+Form ===========================================================
+    <form> tag
+      wrap around enitre form
+      common attribute :  action - specific page
+                          method - get / post etc
+                          type - text/ password / submit button etc
+                          names - name for the elements
+                          size - specify width in charactors
+                          max - max charactors
+    <textarea> tag
+      common attribute: names- name for the elements just like input
+                        rows - visible number of lines
+                        cols - visible width
+                        maxlength - max number of charactor like max iin input tag
+
+    <select> tag
+    drop down
+    common attribute: name - name of the element
+                      multiple - how many values you can select
+                      size - max numbe of visible option
+
+    <label> tag
+      inline, title of the input 
+      for - specifies that which form element the label is bound to
+      you can add css on label to line-up input box
+        label {
+          display: inline-block;
+          width: 150px;
+        }
+
+    <fieldset> tag
+      group together certain field - you can make border around
+          common attribute: name
+          form 
+          disabled
+
+    <form action = "process.php" method = "post">
+      <label for=name"> Full Name: </label>
+      <input type = "text" name="name">
+    </form>
+    
+    
+
+
+
+  
+
+  
+  
