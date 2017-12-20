@@ -1,0 +1,48 @@
+<link> it with rel, href, type
+
+
+wild card * with the marginset to make t=it iat the canter
+      * {
+      margin: 0 auto 0 auto;
+      text-align : left;
+      }
+
+make the container width fix to max
+#container{
+  width: 960px;
+}
+
+
+inline trick 
+    float 
+        if you use float attribute, it will stick to (let's say left) 
+        and the next elements comes righ after (right side of the elements) if there is enough space
+
+        clear:both; - to cancel out both side float if there are both so you can start new row/line
+        
+
+    nav bar example
+        on <ul> set display:inline; to all flow against each other
+        on <a> (which is in each ul) set float:left;
+
+
+Trickes
+
+visited: 
+  if you code in {}, the link won't change after visited
+  the same as hover
+      #menu a, #menu a:visited{
+
+      }
+      
+ border-bottom: 1px dashed #fff - pin under-line  
+ 
+ text-decolation:nane: - get rid of underline on <a> tag
+ 
+ list-style: none; - get rid of bullet point of ul
+      
+ border-radius : 10px; - 
+ 
+ line-height: 10px - space between line
+      
+      
