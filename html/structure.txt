@@ -1,0 +1,5 @@
+web page structure
+
+
+
+create each page such as about.html then linke using href attribute on <a> tag
