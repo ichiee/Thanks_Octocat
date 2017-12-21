@@ -1,0 +1,84 @@
+
+Stick shiv in (how to give the condition???)
+    <!--[if lt IE 9]>
+	        <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+
+
+New feartures ===============================================================
+
+        new set of tag <header> <section> - earier to see html page
+        <canvas> 2d drawing
+        Local storage
+        calender, data, time
+        new media
+        Geolocation
+ 
+ 
+Use new sementic tag instead of div - better organising ======================
+    https://www.w3schools.com/html/html5_new_elements.asp 
+        
+        <nav>  
+        <header>
+        <aside>
+        <article> - An article should make sense on its own
+        <section> - "A section is a thematic grouping of content, typically with a heading."
+        <footer>
+
+forms ================================================================
+
+    new input types 
+        type will check if the input is correct format
+        color, range, date, search, datatime, tel, datetime-local, time. email, uri, month, week, number
+        
+        <input type="email" name = "email">
+            check if it is really e-mail 
+        <input type="color" name="favcolor">
+            allow you to select a color from color picker box
+        <input type="date" name="bday">
+            the user to select date with pop up calender
+        <input type="range" name="point" min="1" max="10>    
+            Gives us control for entire number whose exact value is not important (like slide control) (????)
+        <input type="tel" name="usrtel">
+            Used to define a field for elephone number
+            if the field is not valid telephone number, pop up alart you
+        <input type="time" name="usr_time">
+            finld for entering time
+        <input type="url" name="homepage">
+            field for define entering link / url
+            
+        <datalist>
+            provide "autocomplete" features on text input,
+            user will see drop down list of predefined uption as they input data
+            use <input> element's "list" attribute to buind it together with <datalist> element.
+                <input list="brpwsers">
+                < datalist id = "browsers">
+                  <option value="Internet Explorer">
+                  <option value="Firefox">
+                  <option value="Chrome">
+                  <option value="Opera">
+                  <option value="Safari">
+                </ datalist>
+         
+         <keygen>
+            <keygen> tag specifies a key-pair generator field in a form.
+            when form is submitted, two key (public and private) are generated.
+            private - store locally
+            public- sent to server, used for client certificate to aothenticate the user in the future
+               <form action="demo.php" method="get">            
+               user:    <input type="text" name="user_name">
+               Encription:  <keygen name = 'security>          
+               <input type="submit">
+               </form>
+            
+         <output>
+            Perform Culcuration and show the result in an <output> element:
+                <form oninput="x.value=parseInt(a.value)+paesrInt(b.valye)">0
+                <input type="range" id="a" value"50>100 +
+                <input type="number" id="b" value="50">=
+                <output name="x" for="a b"></output>
+                </form>
+                
+            
+            
