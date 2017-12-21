@@ -13,7 +13,7 @@ make the container width fix to max
 }
 
 
-inline trick 
+inline trick ----------------------------------------------------------------------------------------
     float 
         if you use float attribute, it will stick to (let's say left) 
         and the next elements comes righ after (right side of the elements) if there is enough space
@@ -26,7 +26,7 @@ inline trick
         on <a> (which is in each ul) set float:left;
 
 
-Trickes
+Tricks
 
 visited: 
   if you code in {}, the link won't change after visited
@@ -41,8 +41,10 @@ visited:
  
  list-style: none; - get rid of bullet point of ul
       
- border-radius : 10px; - 
+ border-radius : 10px; 
  
  line-height: 10px - space between line
+ 
+ font-size:110%; - if you wanna make the size big
       
-      
+ table, td, tr - all set to margin :0 first to clear any dependacies, so easier to manage    
