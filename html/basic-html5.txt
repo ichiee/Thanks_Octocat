@@ -34,18 +34,33 @@ forms ================================================================
         
         <input type="email" name = "email">
             check if it is really e-mail 
+	    
         <input type="color" name="favcolor">
             allow you to select a color from color picker box
+	    
         <input type="date" name="bday">
             the user to select date with pop up calender
+	    
         <input type="range" name="point" min="1" max="10>    
             Gives us control for entire number whose exact value is not important (like slide control) (????)
-        <input type="tel" name="usrtel">
+	    add this for show number - you could add it on rigjt above with script tab
+			function updateTextInput(val) {
+				document.getElementById('textInput').value=val; 
+			}
+
+			<label for="budget"> Budget: </label>
+			<input id="budget" type="range" name ="range" min="500" max ="10000" onchange="updateTextInput(this.value);">				<input type = "text" id="textInput">
+	    onchange is eventhandler
+	    you need extra input type of text then id wich you use for the bit of JS
+	    
+	<input type="tel" name="usrtel">
             Used to define a field for elephone number
             if the field is not valid telephone number, pop up alart you
-        <input type="time" name="usr_time">
-            finld for entering time
-        <input type="url" name="homepage">
+        
+	<input type="time" name="usr_time">
+            field for entering time
+        Hope1217
+	<input type="url" name="homepage">
             field for define entering link / url
             
         <datalist>
@@ -79,6 +94,14 @@ forms ================================================================
                 <input type="number" id="b" value="50">=
                 <output name="x" for="a b"></output>
                 </form>
-                
-            
+          
+	  <fieldset> 
+		used to group related elements in a form.
+		draws a box around the related elements.
+		The <legend> tag defines a caption for the <fieldset> element.
+		
+		defaultValue = (rangeElem.max < rangeElem.min) ? rangeElem.min
+               			: rangeElem.min + (rangeElem.max - rangeElem.min)/2;
+		<input type="range" min="-10" max="10">
+		
             
