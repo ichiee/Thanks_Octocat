@@ -27,6 +27,8 @@ Use new sementic tag instead of div - better organising ======================
         <footer>
 
 forms ================================================================
+make template html of all this - 
+https://www.udemy.com/learn-html5-programming-from-scratch/learn/v4/t/lecture/236256?start=495
 
     new input types 
         type will check if the input is correct format
