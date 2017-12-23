@@ -4,6 +4,31 @@ Stick shiv in (how to give the condition???)
 	        <script src="js/html5shiv.js"></script>
     <![endif]-->
 
+Some notes  =================================================================
+
+rel attribute 
+	can be use (not only html5 in this case) i.e.
+	rel="stylesheet" on <link> tag
+
+	you can use rel on <a> tag to show the releations (and above)
+	The rel attribute specifies the relationship between the current document and the linked document
+	https://www.w3schools.com/tags/att_a_rel.asp
+	some values were removed on html5
+	
+<code> tag		
+	<p>The function <code>selectAll()</code> highlights all the text in the
+	input field so the user can, for example, copy or delete the text.</p>
+
+	output:
+	The function selectAll() highlights all the text in the input field so the user can, 
+	for example, copy or delete the text.
+	
+	inline or block 
+		Use <code> for inline code that can wrap and 
+		<pre><code> for block code that must not wrap. 
+		<samp> is for sample output.
+		https://stackoverflow.com/questions/4611591/code-vs-pre-vs-samp-for-inline-and-block-code-snippets
+		
 
 
 New feartures ===============================================================
