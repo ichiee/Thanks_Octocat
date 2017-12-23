@@ -7,10 +7,10 @@ inline tag
       <a href = "http://google.com" title="click to go google" >Google</a>
     <strong> and <b> - BOLD
     <input /> - input
-    <span> -soan tag
+    <span> - span tag, it has no effct on output. usually css to change the font and etc
 
 
-Single ton tag
+Singleton tag
     trailing slash is only need for xhtml, you can leave it off on html and html5
   
 <imag> tag
@@ -21,12 +21,15 @@ div or span
   div is block span is inline
   
 style
-  style = "slecter:calue;"  you can have as many value as you like
+  style = "selecter:value;"  you can have as many value as you like
 
 <table> tag
   using for Design and layout is bad practice (old style)
   <tr> rav
   <td> table data (column)
+  
+<pre>
+    show final out put. white space and change line will be counted. similler to ''' ''' on python
 
 Form ===========================================================
     <form> tag
