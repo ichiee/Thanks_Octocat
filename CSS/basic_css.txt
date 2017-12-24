@@ -28,12 +28,26 @@ inline trick -------------------------------------------------------------------
 
 Tricks
 
-visited: 
-  if you code in {}, the link won't change after visited
-  the same as hover
-      #menu a, #menu a:visited{
+<a> link color
+     visited: 
+       if you code in {}, the link won't change after visited
+       the same as hover
+           #menu a, #menu a:visited{
 
-      }
+           }
+       
+       other than visited you can have hover, active, link all those 4 use : before them
+       i.e.
+          
+          a:link {clor: blue:}
+          a:active {color: red:}
+          a:visited {color: purple;}
+          a:hover {color: red;}
+          a.nav {text-decolation:none}       - turn off underlining
+          a.nav:hover, a.nav:active
+               {background-color: yellow; color: red}
+          a.nav:link, a.nav:visited {color: green;}
+       
       
  border-bottom: 1px dashed #fff - pin under-line  
  
