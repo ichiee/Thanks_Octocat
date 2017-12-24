@@ -30,6 +30,15 @@ style
   
 <pre>
     show final out put. white space and change line will be counted. similler to ''' ''' on python
+    
+<address>
+    block, sweet on footer where your contact and copy right and etc
+    
+entity
+    &lt     <
+    &gt     >
+    &amp    &
+    
 
 Form ===========================================================
     <form> tag
@@ -47,8 +56,8 @@ Form ===========================================================
                         maxlength - max number of charactor like max iin input tag
 
     <select> tag
-    drop down
-    common attribute: name - name of the element
+      drop down
+      common attribute: name - name of the element
                       multiple - how many values you can select
                       size - max numbe of visible option
 
