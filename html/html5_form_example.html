@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+
+<html>
+<head>
+    <title>New featurs on form in HTML5</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Ichi">
+    <meta name="description" content="Showing example code for new featurs on form in HTML5">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>New featurs on form in HTML5</h1>
+    </header>
+    <section>
+        <h3>HTML 5 Form Eample</h3>
+        <p>please see the new features</p>
+        <form method="post" action="somescript.php">
+			<!-- you can write <input> inside <label>
+				otherwise normally use for (label) & id attribute (<input>)
+				not in this examples but still working
+			-->
+            <p>
+                <label for="name">Name</label>
+                <input type="text" name="name">
+            </p>
+            <p>
+                <label for="email">E-mail Address</label>
+				<input type="email" name="email">
+				<!-- type="email" to check if it is email address-->
+            </p>
+            <p>
+                <label for="phone">Phone Number</label>
+				<input type="tel" name="phone">
+				<!-- type="tel" to check if it is telephone number-->
+            </p>
+            <p>
+                <label for="call">Best Time To Call: </label>
+                <input type="radio" name="time" value="morning" checked>Morning
+                <input type="radio" name="time" value="noon">Noon
+                <input type="radio" name="time" value="evening">Evening
+			</p>
+			<p>
+				<label for="location">Location: </label>
+					<input name ="location" list="location">
+					<datalist id="location">
+					<option value="New York">
+					<option value="Boston">
+					<option value="Chicago">
+					<option value="Los Angelas">
+					<option value="Miami">
+					</datalist>
+			</p>
+            <fieldset name="about">
+            <legend>About Your Project</legend>
+				<script type="text/javascript">
+                    function updateTextInput(val) {
+                    document.getElementById('textInput').value=val; 
+                    }
+					// this need to be on the separate file or here  
+                </script>
+				<p>
+					<label for="budget">Budget: </label>
+					<input type="range" name="rangeInput" min="0" max="10000" onchange="updateTextInput(this.value);">                                                       
+					<input type="text" id="textInput" value="">
+					<!-- This is the way to work on range, 
+					value on type="text" is normally intial calue which would display when doc loaded
+					See JS above, too
+					-->
+				</p>
+				<p>
+					<label for="call">Services Needed: (Check all that apply) </label>
+					<table>
+						<tr>
+							<td><input type="checkbox" name="services" value="html">html</td>
+							<td><input type="checkbox" name="services" value="php">PHP</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services" value="asp">ASP</td>
+							<td><input type="checkbox" name="services" value="java">Java</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="services" value="c">C++</td>
+							<td><input type="checkbox" name="services" value="design">Design</td>
+						</tr>
+					</table>
+				</p>
+
+				<p>
+					<label for="website">Current Website: </label>
+					<input type="url" name="website">
+				</p>
+				<p>
+					<label for="start">Start Date: </label>
+					<input type="date" name="start">
+				</p>
+				<p>
+					<label for="pages">Number of Pages: </label>
+					<input type="number" name="pages">
+				</p>
+				<p>
+					<label for="color">Main Color Of Site: </label>
+					<input type="color" name="color">
+				</p>
+				
+				</fieldset>
+				<p>
+					<input type="submit" value="Submit Inquiry">
+				</p>
+			
+    </form> 
+    </section>
+
+    <footer>
+    </footer>
+
+</body>
+
+</html>
