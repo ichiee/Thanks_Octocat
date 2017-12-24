@@ -50,6 +50,9 @@ Use new sementic tag instead of div - better organising ======================
         <article> - An article should make sense on its own
         <section> - "A section is a thematic grouping of content, typically with a heading."
         <footer>
+	
+	<hr /> - holizontal line as on html, sementic meaning added on html5 - topic change 
+		use width="70%" size="2" attribute to change the kine thickness and width
 
 forms ================================================================
 make template html of all this - 
