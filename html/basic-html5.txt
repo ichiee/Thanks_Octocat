@@ -55,8 +55,10 @@ Use new sementic tag instead of div - better organising ======================
 		use width="70%" size="2" attribute to change the kine thickness and width
 
 forms ================================================================
-make template html of all this - 
+eample html is - html5_form_example.html on this folder
 https://www.udemy.com/learn-html5-programming-from-scratch/learn/v4/t/lecture/236256?start=495
+
+name attribut is needed for puprpose in php file(s)
 
     new input types 
         type will check if the input is correct format
@@ -89,7 +91,7 @@ https://www.udemy.com/learn-html5-programming-from-scratch/learn/v4/t/lecture/23
         
 	<input type="time" name="usr_time">
             field for entering time
-        Hope1217
+        
 	<input type="url" name="homepage">
             field for define entering link / url
             
