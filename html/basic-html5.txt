@@ -58,7 +58,7 @@ forms ================================================================
 eample html is - html5_form_example.html on this folder
 https://www.udemy.com/learn-html5-programming-from-scratch/learn/v4/t/lecture/236256?start=495
 
-name attribut is needed for puprpose in php file(s)
+name attribute is needed for puprpose in php file(s)
 
     new input types 
         type will check if the input is correct format
@@ -135,5 +135,64 @@ name attribut is needed for puprpose in php file(s)
 		defaultValue = (rangeElem.max < rangeElem.min) ? rangeElem.min
                			: rangeElem.min + (rangeElem.max - rangeElem.min)/2;
 		<input type="range" min="-10" max="10">
-		
+
+
+<canvas> ================================================================================
+	
+	Rectangle ----------------------------------------
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+
+		ctx.fillStyle = 'blue';
+		ctx.fillRect(10, 10, 100, 100);
+
+	
+	circle --------------------------------------------
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+
+		ctx.beginPath();
+		ctx.arc(75, 75, 50, 0, 2 * Math.PI);
+		ctx.stroke();
             
+maltimddia===============================================================================
+
+	video tag --------------------------------------------
+		<section>
+			 <video id="ad" width="500" height="350" controls>
+			 <source src="video/ad.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+			</video>
+
+
+			<div style="width:400px;"> 
+			  <button onclick="playPause()">Play/Pause</button> 
+			  <button onclick="makeBig()">Big</button>
+			  <button onclick="makeSmall()">Small</button>
+			  <button onclick="makeNormal()">Normal</button>
+			</div> 
+
+			<script> 
+			var myVideo=document.getElementById("ad"); 
+
+			function playPause(){ 
+			if (myVideo.paused) 
+			  myVideo.play(); 
+			else 
+			  myVideo.pause(); 
+			} 
+
+			function makeBig(){ 
+			myVideo.width=560; 
+			} 
+
+			function makeSmall(){ 
+			myVideo.width=320; 
+			} 
+
+			function makeNormal(){ 
+			myVideo.width=420; 
+			} 
+			</script> 
+
+		</section>
