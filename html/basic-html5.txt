@@ -258,5 +258,24 @@ Giolocation ====================================================
 
 HTML5 API that allows us to get the location of web user - need approval
 
-
-
+check the giolocation support --------
+	if (navigater.giolocation){
+	// do something
+	}
+	you can use modernizr too
+	
+getCurrentPosition-----------------------------------------------
+	navigator.geolocation.getCurrentPosition(success[, error[, options]])
+	https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+	
+	success
+		A callback function that takes a Position object as its sole input parameter.
+	error-Optional
+		An optional callback function error handler
+	options-Optional
+		An optional PositionOptions object.
+	possible retun values - coord with property of 
+		latitude, longutitude, accuracy (accuracy of the position), altitude, altitudeCccuracy, heading, speed.
+		and timestamp
+		
+	replensation - giodetic(59.3, 18.6) and civic (stockholm) etc
