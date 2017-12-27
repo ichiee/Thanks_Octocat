@@ -196,3 +196,67 @@ maltimddia======================================================================
 			</script> 
 
 		</section>
+		
+SVG================================================================
+
+<svg> tag vector
+
+SVG is a language for describing 2D graphics in XML. 
+Canvas draws 2D graphics, on the fly (with a JavaScript). 
+SVG is XML based, which means that every element is available within the SVG DOM. 
+You can attach JavaScript event handlers for an element.
+
+Details for xmlns and version attribute ------------ 
+
+	The xmlns="http://www.w3.org/2000/svg" attribute is:
+
+		Required for image/svg+xml files. 1
+		Optional for inlined <svg>. 2
+		(If you embed your SVG inline in a HTML page and serve that page 
+		as text/html then xmlns attributes are not required)
+	
+	The xmlns:xlink="http://www.w3.org/1999/xlink" attribute is:
+
+		Required for image/svg+xml files with xlink: attributes. 1
+		Optional for inlined <svg> with xlink: attributes. 2
+	
+	The version="1.1" attribute is:
+
+		Recommended to comply with image/svg+xml files standards. 3
+		Apparently ignored by every user agent. 4
+	
+	1 Internationalized Resource Identifiers (RFC3987)
+	2 Since HTML5
+	3 Extensible Markup Language (XML) 1.0
+	4 Probably until the release of further major versions.
+
+
+examples ---------------------------------------------------
+
+so between <svg> tag is pure xml.
+
+	<svg  xmlns="http://www.w3.org/2000/svg"
+	      xmlns:xlink="http://www.w3.org/1999/xlink">
+	    <rect x="10" y="10" height="100" width="100"
+		  style="stroke:#ff0000; fill: #0000ff"/>  // stroke is border
+	</svg>
+
+	<svg height="100" xmlns="http://www.w3.org/2000/svg">
+  	    <circle id = "circle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+	</svg>
+	
+	<svg height="210" width="500">
+	  <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
+	</svg>vg
+
+animation with svg -------------------------------------------
+	https://css-tricks.com/guide-svg-animations-smil/
+	https://www.udemy.com/learn-html5-programming-from-scratch/learn/v4/t/lecture/236371?start=0
+	
+	
+Giolocation ====================================================
+
+HTML5 API that allows us to get the location of web user - need approval
+
+
+
