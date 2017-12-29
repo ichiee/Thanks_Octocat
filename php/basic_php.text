@@ -1,0 +1,97 @@
+=================================================
+David J Malan  (extremely good)
+https://www.youtube.com/watch?v=h2Nq0qv0K8M
+=================================================
+
+PHP
+
+TCP and etc protocol for many hand shakes on backend.
+
+Apache is
+    Popular web server software
+    Httpd
+    D - damon
+    Apache has ability to Run on a server, lesten on 1, or multiple ip address.
+    It is not uncommon for one server to have multuple network cards 
+    or one network cards wwith multiple network address often for redandancy purpose.
+
+    Let's say:
+        You have 2 servers listening to one exactly the same,
+        When the event of disaster, you make sure that give the back-up server that prime server's ip address, 
+        so the back-up server now listening on both prime and client servers. 
+        Relevantly, web server is actually configured to be listening on multiple ips
+
+    80 denote       http
+    25 denotes      mail / smtp
+    21              FTP
+    8000, 8080 -    people often use
+    0-1024 is       reserved so should not use.
+    1025-65000 -    free to  use
+    
+    Port number will be used recognise what service you want specifically.
+    The envelop - request also contents port
+
+    You need configure DNS - webname and ip adress
+ 
+
+
+=================================================================
+https://www.youtube.com/watch?v=NnC0N7LJ9PI
+(old video but good explanation)
+=================================================================
+
+
+$_GET[]; -------------------------------------------------------
+// means that what ever in the input field from browser
+
+    $name = $_GET[‘name’];
+            So it means that on the browser there would be 
+            localhost/filename/fileName.php?name=Tom
+
+            ? indicate Get method and in there name=Tom
+            
+    You can make html form and input as
+            <form action=”fileName.php” method=”get”>
+            <b> Enter Your Name </b>
+            <input type = “text” name=”name”>  
+            <input type = “submit”>
+            </form>
+            
+     +++ php looks at the name attribute which corresponding to the variable inside $_GET[‘name’];
+     +++ So if the name attribute was ="use" you need to set as $_GET[“user”]
+
+
+$_POST[] ------------------------------------------------------------------------
+// pretty the same to get method 
+
+        $username = $_POST['userName'];
+        $password = $_POST['password'];
+        
+        <form>
+        action attribute = the php file you wrote
+        method attribute "POST"
+        
+        <input> make sure name attribute is exactly the same as inside of $_POST[];
+        
+        
+function ---------------------------------------------------------------------------
+        the same as JS
+            function fn ($name)
+            {
+                echo "welcome".$name;
+            }
+            
+Date & Time ----------------------------------------------------------------------
+
+        http://php.net/manual/en/function.date.php
+        
+        // bool date_default_timezone_set ( string $timezone_identifier )
+        // date_default_timezone_set() sets the default timezone used by all date/time functions.
+            date_default_timezone_set('UTC');
+        
+        // Prints something like: Monday
+            echo date("l");
+        
+        // Prints something like: Monday
+            echo date("l");
+        
