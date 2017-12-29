@@ -28,8 +28,8 @@ Apache is
     0-1024 is       reserved so should not use.
     1025-65000 -    free to  use
     
-    Port number will be used recognise what service you want specifically.
-    The envelop - request also contents port
+    Port number will be used to recognise what service you want specifically.
+    The envelop - the request also contents port
 
     You need configure DNS - webname and ip adress
  
@@ -95,3 +95,55 @@ Date & Time --------------------------------------------------------------------
         // Prints something like: Monday
             echo date("l");
         
+Explode -------------------------------------------------------------------------------
+
+bit like split o JS
+
+        Example #1:
+            array explode ( string $delimiter , string $string [, int $limit = PHP_INT_MAX ] )
+            $data = "foo:*:1023:1000::/home/foo:/bin/sh";
+
+        Example #2:
+            list($user, $pass, $uid, $gid, $gecos, $home, $shell) = explode(":", $data);
+            echo $user; // foo
+            echo $pass; // *
+
+        Example #3 limit parameter examples
+
+            <?php
+                $str = 'one|two|three|four';
+
+                // positive limit
+                print_r(explode('|', $str, 2));
+
+                // negative limit (since PHP 5.1)
+                print_r(explode('|', $str, -1));
+            ?>
+                Out put is -------------------    
+                Array
+                (
+                    [0] => one
+                    [1] => two|three|four
+                )
+                Array
+                (
+                    [0] => one
+                    [1] => two
+                    [2] => three
+                )
+                --------------------------------
+
+ 
+ strpos  ---------------------------------
+ similler to  indexOf (JS) but on string
+                     = assign
+                     == if equal to
+                     === check type as well as value
+                     
+        &search = strpos ($hay, $needle)
+        it returns that position of $needle in $hay
+        if not return FALSE
+      
+
+
+
