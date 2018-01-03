@@ -145,5 +145,85 @@ bit like split o JS
         if not return FALSE
       
 
+================================================================
+learn php 
+lynda.com
+================================================================
+
+php request to server
+server sends the page to the Zend engine that powers php processing
+befor sending the response to the browser
+if database involved, Zend engine is sending the request of the data base
+then processing the result
+
+php often mixed or enbedded in HTML mark up with <?php ?> tag
+
+
+basics --------------------------------------------------------------
+
+variable:
+        always begin with $ then conbination of letters, numbers ans the underscore
+        (but no numbers straight after $) 
+        Case sensitive
+        use camel case or _ between word
+        reserved names (http://www.php.net/manual/en/reserved.variables.php)
+        dot for decimal number
+        
+; always need where need to execute
+
+print for single value, echo for multiple with ,
+        echo $number, " ", $name;
+        
+comment // or #, /* */ for multiple lines
+
+string:
+        (the same as JS)
+        you can use both '' and  ""
+        use \for escape
+        "" for incorporate a value in a string
+            also process escape sequences like \n,\r, \t, \\, \$
+        '' simply process $ as '$' not variable
+            only process escape sequence of \'
+        over all less \ is better
+        
+        concatination - '.' (dot)
+            you can use like .= just like +=
+            
+        when you are displaying single string (within html), you can use
+        <?= $name ?>
+        instead of <? php echo $name ?>
+        
+        <<< EOT (you can use whatever variable here - good practice to be all uppercase)
+            this block will be closes with EOT;
+            with in it, you can just type a string. you can use '' "" and variales,
+            all interpreted correctly by php.
+            Useful query on SQL
+                $heredoc = <<< EOT
+                In "$title" by $author, $android the "paranoid android" complains that he's got "a brain $brain_size."
+                EOT;
+                echo $heredoc;
+                // makesure nothing after EOT & ; 
+        
+
+array; 
+        $charactors = array ('a', 'b', 'c'); // traditinal way
+        you cannot echo, instead
+        print_r ($charactors);
+        // output as  Array ([0]=>a [1]=>b [2]=>c)
+      
+        $charactors = ['a', 'b', 'c']; // php5.4 or later 
+        // output will be the same
+        $charactors [] = 'd'; 
+        $charactors [] = 'e';
+        // will be assigned to next available array
+        // output as  Array ([0]=>a [1]=>b [2]=>c [3]=>d [4]=>d)
+        echo $charactors[1]
+        // out put b
+
+associative array;
+        key value pair
+        
+
+
 
 
