@@ -11,7 +11,7 @@ Apache is
     Popular web server software
     Httpd
     D - damon
-    Apache has ability to Run on a server, lesten on 1, or multiple ip address.
+    Apache has ability to run on a server, listen on 1, or multiple ip address.
     It is not uncommon for one server to have multuple network cards 
     or one network cards wwith multiple network address often for redandancy purpose.
 
@@ -147,7 +147,7 @@ bit like split o JS
 
 ================================================================
 learn php 
-lynda.com
+lynda.com - general basic of php
 ================================================================
 
 php request to server
@@ -299,3 +299,20 @@ associative array;
 
 -------------------------------------------------------------------------------------------------
 
+Conditions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Boolians 
+    implicit boolian values
+    php regards the folloing as implicity false
+        zero as a number or string(0, 0.0, '0')
+        An empty string (' ', " ')
+        An empty array
+        NULL (incl. unset variables)
+        A simpleXML object created from empty tag
+        
+    Everything else true
+    
+    
+        
+        
+        
