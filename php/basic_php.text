@@ -313,6 +313,66 @@ Boolians
     Everything else true
     
     
+condition 
+     if (first condition){
+     }elseif (second condition){
+     }else{
+     }
+     
+compare
+     == equal, === identical (the same type), != not wual, !== not identical
+     
+logical operation
+    && and, || or ! not
+     
+on the condition you can use : instead of {}, then use endif; at the end
+    
+    if ($name == 'Arthur') :
+        echo 'I could never get that.';
+    elseif ($name == 'Marvin') :
+        echo "I've got this terrible pain.";
+    else :
+        echo 'well...';
+    endif;
+    
+switch ---------
+
+    switch($var){
+        case value1:
+    }
+    *** if you don't use break it will execute all the cases 
+    switch ($name) {
+    case 'Arthur':
+        echo 'I could never get that';
+        break;
+    case 'Marvin':
+    case 'Paranoid Android':
+    case 'robot':
+        echo "I've got this terrible pain.";
+        break;
+    default:
+        echo 'well...';
+    
+Ternary operator 
+    (?:)
+    $var = (condition)? value if true: value if false;
+    
+    $unit_cost = 0;
+    $wholesale_price = $unit_cost ?: 25;  
+    // if $unit_cost is true assign the value to $wholesale_price
+    // this is falise so 25 will be assigned
+    echo $wholesale_price;
         
+    ?? null-coalease operator  (php 7)
+        $wholesale_price = $unit_cost ?? 25; 
+        // you don't get error message when you assign nothing on $unit_cost
+        // it only cocerns no value
+        // $unit_cost = 0; is actual value in this case
+        $wholesale_price = $unit_cost ?? $non_value ?? 25; 
+        // you can chain it, takes first true value
         
-        
+     useful tip
+     <?php if ($member) : ?>
+        // some html here
+        // if $member is true it displays
+     <?php endif; ?>
