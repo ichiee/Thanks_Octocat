@@ -301,7 +301,8 @@ associative array;
 
 Conditions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Boolians 
+Boolians ---------------------------------------
+    
     implicit boolian values
     php regards the folloing as implicity false
         zero as a number or string(0, 0.0, '0')
@@ -313,17 +314,12 @@ Boolians
     Everything else true
     
     
-condition 
+condition ---------------------------------------
+     
      if (first condition){
      }elseif (second condition){
      }else{
      }
-     
-compare
-     == equal, === identical (the same type), != not wual, !== not identical
-     
-logical operation
-    && and, || or ! not
      
 on the condition you can use : instead of {}, then use endif; at the end
     
@@ -335,7 +331,7 @@ on the condition you can use : instead of {}, then use endif; at the end
         echo 'well...';
     endif;
     
-switch ---------
+switch ------------------
 
     switch($var){
         case value1:
@@ -353,7 +349,7 @@ switch ---------
     default:
         echo 'well...';
     
-Ternary operator 
+Ternary operator ------------*****
     (?:)
     $var = (condition)? value if true: value if false;
     
@@ -366,7 +362,7 @@ Ternary operator
     ?? null-coalease operator  (php 7)
         $wholesale_price = $unit_cost ?? 25; 
         // you don't get error message when you assign nothing on $unit_cost
-        // it only cocerns no value
+        // it only cocerns no value assigned NOTHING ELSE
         // $unit_cost = 0; is actual value in this case
         $wholesale_price = $unit_cost ?? $non_value ?? 25; 
         // you can chain it, takes first true value
@@ -376,3 +372,38 @@ Ternary operator
         // some html here
         // if $member is true it displays
      <?php endif; ?>
+
+
+compare
+     == equal, === identical (the same type), != not wual, !== not identical
+     
+logical operation
+    && and, || or ! not
+    
+Arithmetic Operators 
+    (the same as JS)
+    - Negation and Substruction
+    + Addition
+    * Multiplication
+    ** Sxponention (php5.6 or later -  or pow ($a, $b))
+    / Division
+    % Modules 
+        if you use % on float. floart will be convert to int first (cut off decimal num)
+    
+Combined arithmetic / Increment and Decrement operaters are the same as JS
+    such as 
+    $total = 1;             // 1
+    $total +=2;             // 3
+    $total++;               // 4
+    $result = $total++ * 2  // 8 as ++ will be added after culcuration
+    echo $total ;           // 5 as ++ will be done after assined to $result
+    
+intdiv($totalNumber, $NumDevidedBy) function
+    only for php7.0
+
+Loop --------------------------------------------------
+
+    while(condition){}
+ 
+    
+    
