@@ -42,23 +42,23 @@ https://www.youtube.com/watch?v=NnC0N7LJ9PI
 
 
 $_GET[]; -------------------------------------------------------
-// means that what ever in the input field from browser
+// means that whatever in the input field from browser
 
-    $name = $_GET[‘name’];
-            So it means that on the browser there would be 
-            localhost/filename/fileName.php?name=Tom
+        $name = $_GET[‘name’];
+                So it means that on the browser there would be 
+                localhost/filename/fileName.php?name=Tom
 
-            ? indicate Get method and in there name=Tom
-            
-    You can make html form and input as
-            <form action=”fileName.php” method=”get”>
-            <b> Enter Your Name </b>
-            <input type = “text” name=”name”>  
-            <input type = “submit”>
-            </form>
-            
-     +++ php looks at the name attribute which corresponding to the variable inside $_GET[‘name’];
-     +++ So if the name attribute was ="use" you need to set as $_GET[“user”]
+                ? indicate Get method and in there name=Tom
+
+        You can make html form and input as
+                <form action=”fileName.php” method=”get”>
+                <b> Enter Your Name </b>
+                <input type = “text” name=”name”>  
+                <input type = “submit”>
+                </form>
+
+         +++ php looks at the name attribute which corresponding to the variable inside $_GET[‘name’];
+         +++ So if the name attribute was ="use" you need to set as $_GET[“user”]
 
 
 $_POST[] ------------------------------------------------------------------------
@@ -66,11 +66,11 @@ $_POST[] -----------------------------------------------------------------------
 
         $username = $_POST['userName'];
         $password = $_POST['password'];
-        
+
         <form>
         action attribute = the php file you wrote
         method attribute "POST"
-        
+
         <input> make sure name attribute is exactly the same as inside of $_POST[];
         
         
@@ -80,24 +80,23 @@ function -----------------------------------------------------------------------
             {
                 echo "welcome".$name;
             }
-            
+
 Date & Time ----------------------------------------------------------------------
 
         http://php.net/manual/en/function.date.php
-        
+
         // bool date_default_timezone_set ( string $timezone_identifier )
         // date_default_timezone_set() sets the default timezone used by all date/time functions.
             date_default_timezone_set('UTC');
-        
-        // Prints something like: Monday
-            echo date("l");
-        
-        // Prints something like: Monday
-            echo date("l");
-        
-Explode -------------------------------------------------------------------------------
 
-bit like split o JS
+        // Prints something like: Monday
+            echo date("l");
+
+        // Prints something like: Monday
+            echo date("l");
+        
+Explode() -------------------------------------------------------------------------------
+// bit like split o JS
 
         Example #1:
             array explode ( string $delimiter , string $string [, int $limit = PHP_INT_MAX ] )
@@ -134,8 +133,8 @@ bit like split o JS
                 --------------------------------
 
  
- strpos  ---------------------------------
- similler to  indexOf (JS) but on string
+ strpos() ---------------------------------
+ //similler to  indexOf (JS) but on string
                      = assign
                      == if equal to
                      === check type as well as value
@@ -160,21 +159,20 @@ php often mixed or enbedded in HTML mark up with <?php ?> tag
 
 
 basics ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-variable:
-        always begin with $ then conbination of letters, numbers ans the underscore
-        (but no numbers straight after $) 
-        Case sensitive
-        use camel case or _ between word
-        reserved names (http://www.php.net/manual/en/reserved.variables.php)
-        dot for decimal number
         
 ; always need where need to execute
 if you have only one command in php block, it is perfectly legal
 
 comment // or #, /* */ for multiple lines
 
-        
+variable ------------------------------------------------------------------
+
+    always begin with $ then conbination of letters, numbers ans the underscore
+    (but no numbers straight after $) 
+    Case sensitive
+    use camel case or _ between word
+    reserved names (http://www.php.net/manual/en/reserved.variables.php)
+    dot for decimal number        
         
 string:
         (the same as JS)
@@ -219,6 +217,7 @@ array;
         // output as  Array ([0]=>a [1]=>b [2]=>c [3]=>d [4]=>d)
         echo $charactors[1]
         // out put b
+
 
 associative array;
         key value pair
@@ -296,110 +295,112 @@ associative array;
         relying on this for production code may make it easier to introduce security vulnerabilities due to the need to use eval(). 
         It would be better to use a format like JSON instead to store and read back values. 
         The speed will be comparable.
-
--------------------------------------------------------------------------------------------------
+        
+        
 
 Conditions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Boolians ---------------------------------------
     
-    implicit boolian values
-    php regards the folloing as implicity false
-        zero as a number or string(0, 0.0, '0')
-        An empty string (' ', " ')
-        An empty array
-        NULL (incl. unset variables)
-        A simpleXML object created from empty tag
-        
-    Everything else true
+        implicit boolian values
+        php regards the folloing as implicity false
+            zero as a number or string(0, 0.0, '0')
+            An empty string (' ', " ')
+            An empty array
+            NULL (incl. unset variables)
+            A simpleXML object created from empty tag
+
+        Everything else true
     
     
 condition ---------------------------------------
      
-     if (first condition){
-     }elseif (second condition){
-     }else{
-     }
-     
-on the condition you can use : instead of {}, then use endif; at the end
-    
-    if ($name == 'Arthur') :
-        echo 'I could never get that.';
-    elseif ($name == 'Marvin') :
-        echo "I've got this terrible pain.";
-    else :
-        echo 'well...';
-    endif;
-    
-switch ------------------
+        if (first condition){
+        }elseif (second condition){
+        }else{
+        }
 
-    switch($var){
-        case value1:
-    }
-    *** if you don't use break it will execute all the cases 
-    switch ($name) {
-    case 'Arthur':
-        echo 'I could never get that';
-        break;
-    case 'Marvin':
-    case 'Paranoid Android':
-    case 'robot':
-        echo "I've got this terrible pain.";
-        break;
-    default:
-        echo 'well...';
+        +++ on the condition you can use : instead of {}, then use endif; at the end
+
+            if ($name == 'Arthur') :
+                echo 'I could never get that.';
+            elseif ($name == 'Marvin') :
+                echo "I've got this terrible pain.";
+            else :
+                echo 'well...';
+            endif;
     
-Ternary operator ------------*****
-    (?:)
-    $var = (condition)? value if true: value if false;
+switch -------------------------------------------
+
+        switch($var){
+            case value1:
+        }
+        *** if you don't use break it will execute all the cases 
+        switch ($name) {
+        case 'Arthur':
+            echo 'I could never get that';
+            break;
+        case 'Marvin':
+        case 'Paranoid Android':
+        case 'robot':
+            echo "I've got this terrible pain.";
+            break;
+        default:
+            echo 'well...';
     
-    $unit_cost = 0;
-    $wholesale_price = $unit_cost ?: 25;  
-    // if $unit_cost is true assign the value to $wholesale_price
-    // this is falise so 25 will be assigned
-    echo $wholesale_price;
-        
-    ?? null-coalease operator  (php 7)
-        $wholesale_price = $unit_cost ?? 25; 
-        // you don't get error message when you assign nothing on $unit_cost
-        // it only cocerns no value assigned NOTHING ELSE
-        // $unit_cost = 0; is actual value in this case
-        $wholesale_price = $unit_cost ?? $non_value ?? 25; 
-        // you can chain it, takes first true value
-        
-     useful tip
-     <?php if ($member) : ?>
-        // some html here
-        // if $member is true it displays
-     <?php endif; ?>
+Ternary operator -----------------------------------*****
+(?:)
+        $var = (condition)? value if true: value if false;
+
+        $unit_cost = 0;
+        $wholesale_price = $unit_cost ?: 25;  
+        // if $unit_cost is true assign the value to $wholesale_price
+        // this is falise so 25 will be assigned
+        echo $wholesale_price;
+
+        ?? null-coalease operator  (php 7)*********************
+            $wholesale_price = $unit_cost ?? 25; 
+            // you don't get error message when you assign nothing on $unit_cost
+            // it only cocerns no value assigned NOTHING ELSE
+            // $unit_cost = 0; is actual value in this case
+            $wholesale_price = $unit_cost ?? $non_value ?? 25; 
+            // you can chain it, takes first true value
+
+         useful tip
+         <?php if ($member) : ?>
+            // some html here
+            // if $member is true it displays
+         <?php endif; ?>
 
 
-compare
-     == equal, === identical (the same type), != not wual, !== not identical
-     
-logical operation
-    && and, || or ! not
-    
-Arithmetic Operators 
-    (the same as JS)
-    - Negation and Substruction
-    + Addition
-    * Multiplication
-    ** Sxponention (php5.6 or later -  or pow ($a, $b))
-    / Division
-    % Modules 
-        if you use % on float. floart will be convert to int first (cut off decimal num)
-    
-Combined arithmetic / Increment and Decrement operaters are the same as JS
-    such as 
-    $total = 1;             // 1
-    $total +=2;             // 3
-    $total++;               // 4
-    $result = $total++ * 2  // 8 as ++ will be added after culcuration
-    echo $total ;           // 5 as ++ will be done after assined to $result
-    
-intdiv($totalNumber, $NumDevidedBy) function
-    only for php7.0
+Operaters ----------------------------------------------------
+
+        compare:
+             == equal, === identical (the same type), != not wual, !== not identical
+
+        logical operation:
+            && and, || or ! not
+
+        Arithmetic Operators:
+            (the same as JS)
+            - Negation and Substruction
+            + Addition
+            * Multiplication
+            ** Sxponention (php5.6 or later -  or pow ($a, $b))
+            / Division
+            % Modules 
+                if you use % on float. floart will be convert to int first (cut off decimal num)
+
+        Combined arithmetic / Increment and Decrement operaters are the same as JS
+            such as 
+            $total = 1;             // 1
+            $total +=2;             // 3
+            $total++;               // 4
+            $result = $total++ * 2  // 8 as ++ will be added after culcuration
+            echo $total ;           // 5 as ++ will be done after assined to $result
+
+        intdiv($totalNumber, $NumDevidedBy) function
+            only for php7.0
 
 Loop --------------------------------------------------
 
