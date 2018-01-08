@@ -1,3 +1,17 @@
+===============================================================
+note for set up php
+===============================================================
+
+OS X come with pre-packed php
+need to set path in .bash_profile if you are not using default one
+If you need to reset which php.ini being used on CLI
+    export PHPRC = to/your/desired/php.ini on .bash_profile
+    or set specific ini on command (i.e. C:\php\cli\php.exe -c C:\php\php.ini myscript.php)
+    
+    http://php.net/configuration.file
+    https://stackoverflow.com/questions/10844641/how-to-change-the-path-to-php-ini-in-php-cli-version
+    https://stackoverflow.com/questions/3057110/where-can-i-find-the-php-ini-for-php-cli?noredirect=1&lq=1
+
 =================================================
 David J Malan  (extremely good)
 https://www.youtube.com/watch?v=h2Nq0qv0K8M
