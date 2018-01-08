@@ -417,8 +417,96 @@ Operaters ----------------------------------------------------
             only for php7.0
 
 Loop --------------------------------------------------
+    while (){}
+    do{}while();
+    for(){}  
+    
+            $ = 0;
+            while($ < 10){ 
+                $i++;
+                if ($i % 2){
+                    continue;           //it goes up on loop if it is odd number
+                 }
+                 echo $i.'<br>';
+             }
+             // output will be 2,4,6,8,10
 
-    while(condition){}
- 
+            continue - useful when using reading file line by line
+            let it skip blank lines
     
+    foreach($arr as $element){}
+            just linke JS 
+                arr.forEach(function(element){});
     
+            for associative array 
+                    foreach($arr as $key => $value){}  
+    
+   *** Alternative synta
+        while (): endwhile;
+        do{}while();
+        for(): endfor;    
+        foreach(): endforeach;    
+        
+        
+Functions +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        
+    manual http://php.net/manual/en/
+    http://php.net/manual/en/funcref.php
+        
+    PHP buildin Function ---------------------------------
+    
+        echo phpversion();
+            // php versuon runing
+        strtolower($name); 
+            // the value of $name unchanged
+        $name = ucfirst(strtolower($name);
+            // $name has first letter capital
+        strip_tags($input, '<br>'); 
+            // 1st arg to strip off all html tag // 2nd arg leave the tag
+        sort($characters); 
+            // sort the array,  return boolian if sorted - passing an argument by reference
+        rsort($characters); 
+            // sort in reverse order
+        function_exists('intdiv')
+            // return boolian - arg - function name in string 
+         intdiv($seconds, 60) 
+            // the same as / (division) in C, don't go on fraction
+         abs($sec);
+            // abs value
+            
+    Documentation -------------------------------------------
+        
+        string function
+        http://php.net/manual/en/book.strings.php
+        array function
+        http://php.net/manual/en/book.array.php
+        
+        bool sort ( array &$array [, int $sort_flags = SORT_REGULAR ] )
+            //check & if it presets it will change original value of it.
+            // so sort will change the actual cvalue of argument
+            // SORT_REGULAR is difault value 
+            // $sort_flags is const, if you wanna conbine 2 consts, use | (or or bitwise)
+                    sort($fruits, SORT_NATURAL | SORT_FLAG_CASE);
+             
+        
+    custon functions -------------------------------------------
+    
+        function fn(){
+        }
+    
+    passing argument by value and reference to a function
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+           
