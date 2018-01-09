@@ -493,20 +493,102 @@ Functions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function fn(){
         }
     
-    passing argument by value and reference to a function
     
+    passing argument by value and reference to a function -------
+        
+        passing by value:
+                insude function is nothing to do is out side scope therefore the value of $num unchanged
+    
+                $num = 2;
+                function doubleIt($num){
+                    return $num *=2;
+                }
+                $doubled = doubleIt($num);
+                echo '$doubled is ' . $doubled . '<br>';    //4
+                echo '$num is ' . $num . '<br>';            //2
+
+        pass by reference:
+                & is need on definition of the function
+                you dont need it when you call the function
+                don't need to return 
+                because we are passing a reference to the actual value
+                
+                $num = 2;
+                function doubleIt(&$num){
+                    $num *=2;
+                }
+                $doubled = doubleIt($num);
+                echo '$doubled is ' . $doubled . '<br>';    // (nothing)
+                echo '$num is ' . $num . '<br>';            // 4
+                var_dunp($doubled)//                        // NULL
+
+        some more functions ------------------------------------------
+        call back is the same as JS
+        
+        implode(); // to make strings from array
+        Example #1 implode() example
+
+                $array = array('lastname', 'email', 'phone');
+                $comma_separated = implode(",", $array);
+                echo $comma_separated; // lastname,email,phone
 
 
+        explode();
+        Example #1 explode() examples
+        http://php.net/manual/en/function.explode.php
 
+                $pizza  = "piece1 piece2 piece3 piece4 piece5 piece6";
+                $pieces = explode(" ", $pizza);
+                echo $pieces[0]; // piece1
+                echo $pieces[1]; // piece2
 
+                // Example 2
+                $data = "foo:*:1023:1000::/home/foo:/bin/sh";
+                list($user, $pass, $uid, $gid, $gecos, $home, $shell) = explode(":", $data);
+                echo $user; // foo
+                echo $pass; // *
 
+        usort();
+        bool usort ( array &$array , callable $value_compare_func )
+                        $value_compare_func is  
+                        int callback ( mixed $a, mixed $b )
 
-
-
-
-
-
-
-
-            
+                   exxample
+                   // $friends  is 2 d array, 2nd array is associative array
+                   // i.e. $friends [['first'=> 'Tim', 'last'=> 'Gauwn'], ['first'=>'', 'last'=> 'Gauwn']];
+                   usort($friends, function($a, $b){
+                        return $a ['last'] <=> $b ['last]; 
+                        // <=> spaceship operator compare on ['last']
+                   });
+                   you could do (php7 and later)
+                    return [$a['last'],$a['first']] <=> [$b['last], $b['first']]; 
+                    
            
+Objects and Classes ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++         
+    class---------------------
+    using key word new
+    
+    object -------------------
+    instanciating object
+        $car1 = new Car('red');
+        echo car1->color; //red
+    
+    function & method difference  -----------------
+    
+    Date time function
+    string date ( string $format [, int $timestamp = time() ] )
+    http://php.net/manual/en/function.date.php
+            $today = date("F j, Y, g:i a");                 //i.e. March 10, 2001, 5:16 pm
+            
+    
+    dateTime class
+    http://php.net/manual/en/class.datetime.php
+    
+        it contents methods
+        $date1 = new DateTime();
+        $date2 = new DateTime();
+        
+        $west_coast = new DateTimeZone ('America/Los_Angels
+        $date2->setTimezone(west_coast);
+        
+        echo $date1->format('g:ia, l, F J, Y'). '<br>';
