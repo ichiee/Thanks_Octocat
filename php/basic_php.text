@@ -565,6 +565,7 @@ Functions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     
            
 Objects and Classes ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++         
+    
     class---------------------
     using key word new
     
@@ -592,3 +593,48 @@ Objects and Classes ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         $date2->setTimezone(west_coast);
         
         echo $date1->format('g:ia, l, F J, Y'). '<br>';
+
+
+Including External files +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    <?php include './includes/para.html'; ?>        // ./ meands that path bigins with current folder
+    <?php include_once './includes/para.html'; ?>   // if you put this it shows only the first one
+    you can include / require function then eco fn(); but you must use function after require the file ( as it is external file )
+    watch out with link on external file. src of link should be after it has been included, not from the external file
+
+    4 include commands ----------------
+        you can put () after the command but it is optional
+        
+            include / include_once
+                Attempt yo continue processing even if files are missing
+
+            requir / require_once
+                stop processing if external file isn't available
+
+            once - comand end with once prevent the file from being included more than once.
+                this is essential to file contains function or class definition
+                because attempt to redefine function or class triggers fatal arror
+        
+        *****    
+        HTML should be valid after all files are merged.
+        The includes files should contain HTML fragments when finally piece together to build complete web page
+        the page shouldn't have multiple head and body elements
+        Start with static page, then cutt and paste the HTML fragments to your include files
+        ******
+        
+        File name extention
+            include files can use any extentions
+            some people use .inc to indicate the file is server side include
+            But Most severs treat .inc as plain text (it can be accessed from browser, not great for sensitive contents)
+            Use .inc.php (called double extention) or .php for improved security 
+            Include files can be stored outside the server root for greater securite
+                as long as paret in the root folder, php can access hat are stored elsewhere.
+            
+    
+    
+    
+    
+    
+    
+    
+    
