@@ -630,11 +630,40 @@ Including External files +++++++++++++++++++++++++++++++++++++++++++++++++++++++
             Include files can be stored outside the server root for greater securite
                 as long as paret in the root folder, php can access hat are stored elsewhere.
             
+        link from external file           
+            use variable (i.e.) $siteRoot
+                use it as href="<?= $siteRoot; ?>/linked.php
+            on the file the include the external file write below on the top of the file
+                <? php $siteRoot = '/projectFolder/include; ?>
+            so the external file which libes in /projectFolder/include/linked.php will work
     
     
+        useful method 
+            get_include_path();on any other file
+            
+                <?php echo get_include_path();
+                        shows include path of the server
+                        .:/php/includes:/usr/local/lib/php
+                        it start with . which means search from current directory
+                        : is path separater.
+                        so if you store includes files in either locations, 
+                        php will serch each of these inter, try to find includefiles
+                        you can also change value of include file in the main_conficuraton_file_php.ini
+
+                        you can also change at run time using function cakked
+                        set_include_path()
+              
+              
+              set_include_path() on top of main php file - runtime
+              <? php set_include_path = (get_include_path() . PATH_SEPARATOR 
+              . '/Liburary/WebServer/Documents/myProject/includes');
+              require'include.php'; ?>
+                        
+                        overwrite existing path 
+                        require no longer need the whole path
+                        the same for any other one
+                    thouh this is efficient way, recommended specify document-relative path to
+                    include files rether than rely on the server's include path and more efficient ( les stime for serch)
     
-    
-    
-    
-    
-    
+                    if you use better to do it onn main_configuration_file.php
+                    
