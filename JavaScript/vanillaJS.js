@@ -84,7 +84,7 @@ var someId = document.getElementById('someId')
         });
     
     // innerHTML    
-        const booklist= documen.querySelector('book.textContent = 'test');
+        const booklist= documen.querySelector('book.textContent = "test");
 
         console.log(booklist.innerHTML);
             // all the elements inside book list
@@ -154,7 +154,7 @@ var someId = document.getElementById('someId')
 // Events ------------------------------------------------------------------------
     //https://www.w3schools.com/jsref/dom_obj_event.asp
 
-    var h2 = document.querySelector("#book-list h2');
+    var h2 = document.querySelector("#book-list h2");
     
     h2.addEventlistener ('click', function(e){   });
     // function is what is going to be fired once the event happens
