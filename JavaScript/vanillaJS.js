@@ -151,7 +151,7 @@ var someId = document.getElementById('someId')
     // query selecter select element from within the header tag then append
 
 
-// Events ----------------------------------------------------------------------------
+// Events ------------------------------------------------------------------------
     //https://www.w3schools.com/jsref/dom_obj_event.asp
 
     var h2 = document.querySelector("#book-list h2');
@@ -210,7 +210,7 @@ var someId = document.getElementById('someId')
     })  
 
 
-// Interacting with forms ----------------------------------------------------------------------------
+// Interacting with forms -------------------------------------------------------------
 
     document.forms 
     // it will return html collection (array like [])of form elements 
@@ -237,7 +237,8 @@ var someId = document.getElementById('someId')
         bookName.textContent = value;
         
         // add classes
-        bookName.classList.add('name');     // eficient way to add and remove class instead of over write all
+        bookName.classList.add('name');     
+        // eficient way to add and remove class instead of over write all
         deleteBtn.classList.add('delete');
         // append to document
         li.appendChild(bookName);
@@ -251,7 +252,7 @@ var someId = document.getElementById('someId')
 // attribute ----------------------------------------------------------------------------------
     
     // work with CSS attribute
-        li.style.color = "red";   // li is element here
+        li.style.color = "red";     // li is element here
         li.className = "book"       // you bvcan add addional style on .book on separate css file, it works
     
 
@@ -271,47 +272,77 @@ var someId = document.getElementById('someId')
 
 
     
-// change even
+// change event
 // check box / radio 
 
-// html bit
-<input type = "checkbox" id = "hide"/>
-<label for =  "hide"> Hide all books </label>
+    // html bit
+    <input type = "checkbox" id = "hide"/>
+    <label for =  "hide"> Hide all books </label>
 
-// when click the cjeck box hide all the list
+    // when click the check box hide all the list
+    // grab ref of checkbox
 
-// grab ref of checkbox
-
-const hideBox = document.wueySelector ('#hide');
-hideBox.addEventListener ('change', function (e){
-    if (hideBox.checked) {
-        // check checked attribute
-        list.style.display = "none";        // "none" not to be displayed
-    }else{
-        list.style.display = "initial";     // "initial" is default value
+    const hideBox = document.wueySelector ('#hide');
+    hideBox.addEventListener ('change', function (e){
+        if (hideBox.checked) {
+            // check checked attribute
+            list.style.display = "none";        // "none" not to be displayed
+        }else{
+            list.style.display = "initial";     // "initial" is default value
+        }
     }
-}
      
                           
                           
                           
- // Custom serch filter - serch box
-      //attach even listener on text input
+// Custom serch filter - serch box ------------------------------------
+    //attach even listener on text input
                           
-     // filter books
-      const searchBar = document.forms['search-books'].querySelector('input');
-        searchBar.addEventListener('keyup', function(e){
-            const term = e.target.toLowerCase();
-            const books = list.getElementsByTagName('li');
-            Array.from(books).forEach(function (book){
-                const title = book.firstElementChild.textContent;
-                if (title.toLowerCase().indexOf(term) != -1){
-                    book.style.display = 'block';
-                }else{
-                    book.style.display = 'none';
-                }               
-            }    
-                          
+    // filter books
+    const searchBar = document.forms['search-books'].querySelector('input');
+    searchBar.addEventListener('keyup', function(e){
+        const term = e.target.toLowerCase();
+        const books = list.getElementsByTagName('li');
+        Array.from(books).forEach(function (book){
+            const title = book.firstElementChild.textContent;
+            if (title.toLowerCase().indexOf(term) != -1){
+                book.style.display = 'block';
+            }else{
+                book.style.display = 'none';
+            }               
+        }    
+     
+  // using dataset tab ----------------------------------------                                    
+     
+     // tab content
+     const tabs = documnt.querySelector('.tabs');           
+     // this is ul child nodes of this is li which are tubs
+     const panels = document.querySelectorAll ('.panel');
+     // each panel has all the written contents associate to a tab
+            
+     tabs,addEventListener('click', function (e){
+         if (e.target.tagName == "LI"){
+         //capital LI - it will check through if there is li tag 
+             const tagetPane; = document.querySelector(e,target.dataset.target);
+             // e.target is the li elements, 
+             // dataset meand it will look for attribute has"data" string
+             // target as the attribute is data-target, 
+             // the value of it is corresponding with id name of panel
+            if (panel == targetPanel){
+                panel.classList.add('active');
+                
+            }else{
+                panel.classList.remove('active);
+         
+            }
+     });
+                
+   // DOM content loaded ----------------------------------------------
+           //wrap with
+           document.addEventListner('DOMCuntentLoaded', function (){})
+                //if in case the js script has been linked at the top of the document
+                // the same as jWuery.ready ($.ready, or just as $())
+                
                           
                           
                           
