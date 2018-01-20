@@ -84,7 +84,7 @@ var someId = document.getElementById('someId')
         });
     
     // innerHTML    
-        const booklist= documen.querySelector('book.textContent = "test");
+        const booklist= documen.querySelector('book.textContent = 'test'");
 
         console.log(booklist.innerHTML);
             // all the elements inside book list
