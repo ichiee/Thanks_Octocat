@@ -332,7 +332,7 @@ var someId = document.getElementById('someId')
                 panel.classList.add('active');
                 
             }else{
-                panel.classList.remove('active);
+                panel.classList.remove('active');
          
             }
      });
