@@ -323,7 +323,7 @@ var someId = document.getElementById('someId')
      tabs,addEventListener('click', function (e){
          if (e.target.tagName == "LI"){
          //capital LI - it will check through if there is li tag 
-             const tagetPane; = document.querySelector(e,target.dataset.target);
+             const tagetPane; = document.querySelector(e.target.dataset.target);
              // e.target is the li elements, 
              // dataset meand it will look for attribute has"data" string
              // target as the attribute is data-target, 
