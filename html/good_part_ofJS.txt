@@ -1,0 +1,79 @@
+// there is an another copy of this note
+// work in progress
+
+1596 Metamorphosis of Ajax about toilet
+
+DOM ---------------------------------
+    h1, h2 p tag on on the same revel
+
+        #document       -document
+            HTML        - document.documentElement
+                Head
+                Body    - document.body
+                    H1
+                    P
+                    H2
+                    P
+     
+     HTML - document.documentElement
+        // as W3 was gonna kill HTML element
+     Body - document.body // this is a short cut
+     it's all ponters
+     You canot edit the DOM tree, it is read only from your perspective
+     YOu need to use DOM API to edit it
+     You don't really need all the pointers if you think of how recursion works
+     All you need is binary tree (2 pointers)
+     childNode ais like array
+ 
+ Retrieving Node ------------------------------
+ 
+ document.setElementById etc
+ then node.propertyName = "whatever" to reassign new 
+ stick with common propery not unique ones on separate browser
+ 
+ node.className // should really called .class 
+ 
+ node.style.styleName
+ 
+ CSS and DOM has totally non-comnpatable way of naming
+ you need to know where you are in CSS or in DOM?
+ 
+    CSS                 DOM
+    background-coor     backgroundColor
+    border-radius       boarderRadius
+    font-size           fontSize
+    list-style-type     listStyleType
+    word-spacing        wordSpacing 
+    z-index             zIndex
+    float               cssFloat
+    
+    
+    createElement()
+    createTextNode()
+    cloneNode()     // doesnt come with things such as attached event handler
+    cloneNode(true) // including children
+    
+    you need to connect to dom to be visible
+    
+    node.appendChild()
+    node.insertBefore()
+    node.replaceChild(new, old)
+    old.paretsNode.replaceChild(new, old) // another java style :O
+    node.removeChild(old)
+    
+    IE:
+    if attach event handler to node, the node won't get gabage collected 
+    you must remove all the event handler from node before you remove the node from tree
+    migt get fixed in IE9
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
