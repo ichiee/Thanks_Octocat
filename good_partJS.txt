@@ -204,14 +204,123 @@ Syntax ------------------
     
     bit wise 
     
+Statement ------------------------------
+
+     for statement 
+        not really used just use forEach
+    
+    for in statement
+        unfortunally also go through inheritated methods etc, quite messy 
+        use Object,keys unstead takes object return arrays, which is just rinnumable.
+    
     swich value does not need to be number in JS
+        
+    throw statement   
+        throe new Error (reason);
+
+        throw{
+            name: exceptionName,
+            message: reason
+        }
+
+    try statement
+        try{  }catch(){ }
+        you can have many exceptions 
+ 
+ functions -----------------------------------------------
+ 
+    this is JS good version
+    function 
+    first class
+    function.prototype
     
-    throe new Error (reason);
+    var statement :
+        2 steps.
+        1 decoration part : (hoisted) all read - undefined
+        2 intialization part : assined
+        
     
-    throw{
-        name: exceptionName,
-        message: reason
-    }
+    funstion statement (function decoration) exactly look like function expression
+        in this case of function statement
+            needs
+            mandatory name
+
+        function statement is a shorthand of a var statement with function value
+            
+            function foo() = function foo(){};
+            var foo = function foo(){};
+            
+           // expands to 
+           var foo = undefined;
+           foo = function foo() {};
+           The assignment of the functionis also hoisted!!!!
+           
+       than is why you cannot declare a function inside if
+       because it will read assigment of function outside if statement
+       it actually works but (he somehow not recommend as it is out of standared)
+           
+    dealare all the var on the top of function
+    
+    Don't make function in a loop,
+        it will make function every time in the loop - too expensive
+        
+    Examples below, for loop capture current time of div id which will be the last one
+    as the div_id is out side function
+        // wrong
+        for (var i '''){
+            div_id = divs[i].id;
+            divs[i].onclick = function (){
+                alert (div_id);
+            };
+       // right     
+       divs.forEach(function (div){
+        div.onclick= function(){
+            alert(div.id);
+        }
+            
+    Invocation:
+   
+        If too many params, etras ignored
+        If too few param, the rest will be undefined
+        
+        No check for type, so if youn care you need to add the codes
+        
+    Two pseudo params
+        arguments
+        this
+
+        neither s recommended
+
+        arguments - arguments array 
+
+        this - contains a reference to the object of invocation
+        this allows a method to know what object it is connected with
+        this allows a sigle function object to service many objects
+        this is key to prototypal inheritance
+
+    4 ways to call a function
+        
+        Function form       - functionObject(arg)
+            this is set to global object
+            ES5 made it boud to undefine
+            either way pretty horrible
+            var that = this // when you use it inner function
+            
+        Method form         - thisObject.methodName(arg) 
+                            - thisObject[methodName](arg)
+            this gets bound to thisObject
+        
+        Constructor form    - new functionObject(arg)
+            when a function is called with the new, a new object is created and assined to this 
+            new is operator
+        Apply form          - functionObject.apply(thisObject, [arg])
+        
+        
+    
+   
+            
+            
+        
     
     
     
