@@ -1,0 +1,221 @@
+ 
+ =================================================================================
+    The Good Patrs of JavaScript and the Web
+    by Douglas Crockford
+    https://www.lynda.com/course-tutorials/Good-Parts-JavaScript-Web/604268-2.html
+ =================================================================================
+    
+    
+    
+    No space between function name & ()
+    One space between all other names & ()
+
+    IEFE
+    (function(){
+    })();               // quite confusing look for other programmer probably
+    (function(){
+    }());               // better style as it makes sense
+    
+    Don't ever use with statement.
+        there is no behaivior confirmed, it depends on param and far comfusing
+        
+    Always use ===
+        0 ==""          // True
+        0 == '0'        // True
+        '' == '0'       // False
+        false == '0'    // True
+
+    Don't use ES5 string literals
+    
+    Always use let
+    
+    Global variable is evil, avoid, use all CAPITAL
+    
+    Do not use new prefix
+    
+    Always use {} in if statement
+        if(a) b(); c();     // meands if (s){b();} c()
+        
+    var a=b= 0;  
+        means 
+        b = 0;
+        var a = b;
+    
+    
+JSLint style 
+
+Bad style of JS
+
+    ++ for Pointer arithmetic 
+          we dont do it any more only C++
+          Cox always security issue
+      use x +=1 
+          also potential to mistake with x++ & ++x
+  
+  
+  for JS an object is a dynamic collection of properties
+  Every property has a key string tha is unique within object
+  
+Object -------------------
+  
+    Everything in javascript is an object
+    apart from null and undefined - sometimes called bottom value
+
+    [key] must be string
+
+    Delegation - differential inheritance
+    using prototype instead of class, using other 
+
+ making new object ++++++++
+    Object.create(prototype)
+        protopal inheritance
+        
+        var mother {
+        a:1
+        b:2
+        }
+        
+        var daughter = Object.create(mother); point at mother object
+        daughter.b +=2;  // check mothers object and put it onto daughter boject b:4
+            it write on top most where it called, read can go deeper to chain where it inherid from
+        Object.creat(null)  // you van make it without prototype, useful if it is just a container of stuff
+        
+Numbers -----------------------------------------
+
+    there is only one number type - kinda wrong one
+    64-bit binary floating point
+    IEEE-754 aka double
+    binary doesn't give you accuracy
+
+    first class object means 
+        stored in variable
+        passed as parameter
+        can be returned from function
+        stored in object
+
+        number can have method, too
+
+    JS made the same mistake as Java made. making a separate math object (abs, log, max, min etc)
+    NaN not a number
+    NaN = type of number 
+    NaN === NaN     // false
+    isNaN(NaN)      // true
+
+
+String ------------------------------------------------
+
+    immurable
+    16bit unicode caharactors
+        UCS2 not quite UTF-16
+    No char just string
+    String literal ban be use in single or double quotes
+    with \
+    *** Use " for external strings      // makes sense for outside world, url, template, notes to user etc
+    *** Use ' for internal strings and characters // character constant, name of property
+
+    Convert a number to a string
+        these works in the same way.
+        str = num.toString();
+        str = String (num);         // use this one
+
+    Convers string to a number
+        Use the number function
+        Use the + prefix operator
+        Use the parseInt function       // no
+            num = Number (str);
+            num = +str;
+
+        parseInt() stops at the first non digit charactor
+            parseInt("12em")=== 12
+        The radix(10) should always be used.
+            parseInt("08") === 0
+            parseInt ("08", 10) === 8
+
+        
+Array ------------------------------
+
+    array data type inherits from object (so array and object are made from the same thing!) 
+    Indexes are converted to strings and used as names for retriving value
+    Arrays are very efficient for sparse array but JS use pretty much dense array
+    
+    No need to provide a length or type when creating array
+    You don't have to worry about out of bounds errors because it's not really an array. 
+    It's a hashtail, so every value is in-bounds. 
+    
+    Arrays, unlike objects, have a special length property.
+    
+    sort method will be done as each element treat as string
+    so 14 comes before 4
+    
+    delete() make the element undefind use splice to close up the gap
+    
+    Associative array is object!!
+    Use object when names are arbitary strings
+    Use arrays when sames are sequential integers
+
+Date ----------------------------------------
+
+    The date function is based on Jave's Date Class
+
+Regular expression --------------------------
+
+    https://jex.im/regulex/#!flags=&re=
+
+
+Type ---------------------------------------
+
+undefined defalt value for variable and parameters
+null is also bottom varue but stick is undefined is probably good idea as that is what JS use
+
+type of
+object -    'object'
+function -  'function'
+array -     'object;  ******** not helping
+number -    'number'
+boolean -   'boolean'
+null -      'object' ********** wrong it is not object
+undefined - 'undefined'
+
+
+JS is boolish language - all are falty or truthy
+    Falsey value:
+        false
+        null
+        undefined
+        ""
+        NaN
+    All others are truthy including "0" "false"
+    
+Objust are passed by reference
+
+Syntax ------------------
+    
+    comment:
+    use only // coz less confusing
+    
+    number to string:
+        Unary operator
+            +"42" = 42
+        Number ("42") = 42
+        parseInt("42", 10) = 42
+        +"3" (+"4") = 7
+    
+    !! makes boolish value to boolean
+    
+    bit wise 
+    
+    swich value does not need to be number in JS
+    
+    throe new Error (reason);
+    
+    throw{
+        name: exceptionName,
+        message: reason
+    }
+    
+    
+    
+    
+    
+    
+    
