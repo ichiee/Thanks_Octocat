@@ -291,40 +291,86 @@ Statement ------------------------------
 
         neither s recommended
 
-        arguments - arguments array 
+        arguments - arguments array - though as it's written it is array like object
 
         this - contains a reference to the object of invocation
         this allows a method to know what object it is connected with
         this allows a sigle function object to service many objects
         this is key to prototypal inheritance
 
-    4 ways to call a function
+           to understand this, on 4 ways to call a function
+
+               Function form       - functionObject(arg)
+                   this is set to global object (or undefined)
+                   ES5 strict mode made it boud to undefine
+                   either way pretty horrible
+                   var that = this // when you use it inner function, so inner function can see this as that
+
+               Method form         - thisObject.methodName(arg) 
+                                   - thisObject[methodName](arg)
+                   this gets bound to thisObject
+
+               Constructor form    - new functionObject(arg)
+                   this is bound to the new object
+                   when a function is called with the new, a new object is created and assined to this 
+                   new is operator
+               
+               Apply form          - functionObject.apply(thisObject, [arg])
+                    this bonds to argument
+                    functionObject.apply(thisObject, arhument)
+                    functionObject.call(thisObject, argument...)
+                    
+                    a function's apply or call method allows for calling function, sxplicity specifying thisObject
+                    It can also take an array of param or a seq of param
         
-        Function form       - functionObject(arg)
-            this is set to global object
-            ES5 made it boud to undefine
-            either way pretty horrible
-            var that = this // when you use it inner function
-            
-        Method form         - thisObject.methodName(arg) 
-                            - thisObject[methodName](arg)
-            this gets bound to thisObject
-        
-        Constructor form    - new functionObject(arg)
-            when a function is called with the new, a new object is created and assined to this 
-            new is operator
-        Apply form          - functionObject.apply(thisObject, [arg])
-        
-        
-    
+                +++ still not recomment to use it but need to know how people use "this" +++
+                
+               HIghly recommended !!!!!!!!!!!!!!!!!!
+               The Littele Schemer - read for recurrsion
+               https://crockford.com/javascript/little.html
    
-            
-            
+                Princeple of Programming Language by R.C. Tennent
+                --- one odf principal is principal correspondant
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
+   
+   Closure -------------------------------------------------------------------------
+   
+   Lexical scoping
+   Static scoping
+   
+   don't use all on stack, use on heap, get gabage collecter to sort stuff out
+   
+   function object contain a pointer to the codes so it knows what to excute when function is invoked.
+   and function object will contain a reference to the activation of the function that created it
+   
+    
+  Pseudoclassical Inheritance ****** Get out from misery --------------------------------
+  
+  This is how JS programmeer codes (AWFUL)!!
+             
+        function Gizmo (id){
+            this.id = id;
+        }
+        Gizmo.prototype.toString = function (){
+            return "gizmo" + this.id;
+        };
         
+        function Hoozit (id){
+            this.id = id;
+        }
+        Hoozit.prototype = new Gizmo();
+        Hoozit.prototype.test = function (id){
+            return this.id === id;
+        };
     
     
-    
-    
-    
-    
-    
+        using Gismo constructor and making test methon on prototype and tec, 
+        quite mess what points where
+        
+        people know there is something lacking 
+        
+        
+        Sugar coating Sudoclassical System in order to amke it better
+        
+        you can make little function (check under new_constructor Crockford's)
