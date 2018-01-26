@@ -374,3 +374,68 @@ Statement ------------------------------
         Sugar coating Sudoclassical System in order to amke it better
         
         you can make little function (check under new_constructor Crockford's)
+        
+        we can do better than that --- module pattern
+        
+ Module patter ----------------------------------------------------------------------       
+        
+      
+        
+        It is difficult to make private stuff on JS 
+        except when you doing things like below (function module)
+        
+        var whatever = (function (){
+        var privateVar;
+        function privateFn(x){
+            ...privateVar
+        }
+            return {
+                firstFn: function (a, b){ ...privateVar},
+                secondFn: function (c){ ... privateVar...}
+                }
+            };
+        }());
+        
+        so in this example what you store is return value as IIFE
+        
+        
+        ++++++ Module patter is easily transform into a powerful constructor pattern +++++++
+        
+        1. Make an Object
+            Object literal
+            new
+            Object.create
+            call anothe power constructor
+            
+        2. Define some variables and functions.
+            these become private members
+            
+        3. Argument the object with privilaged methods 
+        // privilage method is publicly available method which closes over the private stuff
+        4. return the object
+        
+        
+        Example 
+        
+        function constoructor (spec){
+            var that = other maker(spec),
+            method = function (){
+                // spec, member, method
+            };
+            that.method = method;  
+            return that;
+          
+        }
+            // specification object
+            this form of constructor does not care about the new prefix. 
+            If you call this function with a new prefix, 
+            it'll run a little bit slower, but it will still do exactly the right thing. 
+            So this way, we don't have to worry about people forgetting the new prefix, 
+            'cause nothing can go wrong.
+
+            
+            
+        
+        
+        
+        
