@@ -44,7 +44,7 @@
     
 JSLint style 
 
-Bad style of JS
+Bad style of JS --------------------
 
     ++ for Pointer arithmetic 
           we dont do it any more only C++
@@ -56,7 +56,7 @@ Bad style of JS
   for JS an object is a dynamic collection of properties
   Every property has a key string tha is unique within object
   
-Object -------------------
+Object -----------------------------------
   
     Everything in javascript is an object
     apart from null and undefined - sometimes called bottom value
@@ -66,14 +66,14 @@ Object -------------------
     Delegation - differential inheritance
     using prototype instead of class, using other 
 
- making new object ++++++++
-    Object.create(prototype)
-        protopal inheritance
-        
-        var mother {
-        a:1
-        b:2
-        }
+    ++++++making new object ++++++++
+        Object.create(prototype)
+            protopal inheritance
+
+            var mother {
+            a:1
+            b:2
+            }
         
         var daughter = Object.create(mother); point at mother object
         daughter.b +=2;  // check mothers object and put it onto daughter boject b:4
@@ -164,29 +164,29 @@ Regular expression --------------------------
 
 Type ---------------------------------------
 
-undefined defalt value for variable and parameters
-null is also bottom varue but stick is undefined is probably good idea as that is what JS use
+    undefined defalt value for variable and parameters
+    null is also bottom varue but stick is undefined is probably good idea as that is what JS use
 
-type of
-object -    'object'
-function -  'function'
-array -     'object;  ******** not helping
-number -    'number'
-boolean -   'boolean'
-null -      'object' ********** wrong it is not object
-undefined - 'undefined'
+    type of
+    object -    'object'
+    function -  'function'
+    array -     'object;  ******** not helping
+    number -    'number'
+    boolean -   'boolean'
+    null -      'object' ********** wrong it is not object
+    undefined - 'undefined'
 
 
-JS is boolish language - all are falty or truthy
-    Falsey value:
-        false
-        null
-        undefined
-        ""
-        NaN
-    All others are truthy including "0" "false"
-    
-Objust are passed by reference
+    JS is boolish language - all are falty or truthy
+        Falsey value:
+            false
+            null
+            undefined
+            ""
+            NaN
+        All others are truthy including "0" "false"
+
+    Objust are passed by reference
 
 Syntax ------------------
     
@@ -227,7 +227,7 @@ Statement ------------------------------
         try{  }catch(){ }
         you can have many exceptions 
  
- functions -----------------------------------------------
+ functions ===============================================
  
     this is JS good version
     function 
@@ -285,11 +285,11 @@ Statement ------------------------------
         
         No check for type, so if youn care you need to add the codes
         
-    Two pseudo params
+    Two pseudo params ----------------------
         arguments
         this
 
-        neither s recommended
+        neither is recommended
 
         arguments - arguments array - though as it's written it is array like object
 
@@ -334,20 +334,20 @@ Statement ------------------------------
                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 
    
-   Closure -------------------------------------------------------------------------
+    Closure -------------------------------------------------------------------------
    
-   Lexical scoping
-   Static scoping
-   
-   don't use all on stack, use on heap, get gabage collecter to sort stuff out
-   
-   function object contain a pointer to the codes so it knows what to excute when function is invoked.
-   and function object will contain a reference to the activation of the function that created it
+       Lexical scoping
+       Static scoping
+
+       don't use all on stack, use on heap, get gabage collecter to sort stuff out
+
+       function object contain a pointer to the codes so it knows what to excute when function is invoked.
+       and function object will contain a reference to the activation of the function that created it
    
     
-  Pseudoclassical Inheritance ****** Get out from misery --------------------------------
+    Pseudoclassical Inheritance ****** Get out from misery --------------------------------
   
-  This is how JS programmeer codes (AWFUL)!!
+    This is how JS programmeer codes (AWFUL)!!
              
         function Gizmo (id){
             this.id = id;
@@ -355,7 +355,7 @@ Statement ------------------------------
         Gizmo.prototype.toString = function (){
             return "gizmo" + this.id;
         };
-        
+
         function Hoozit (id){
             this.id = id;
         }
@@ -377,10 +377,9 @@ Statement ------------------------------
         
         we can do better than that --- module pattern
         
- Module patter ----------------------------------------------------------------------       
         
-      
-        
+    Module patter ----------------------------------------------------------------------       
+               
         It is difficult to make private stuff on JS 
         except when you doing things like below (function module)
         
@@ -433,9 +432,104 @@ Statement ------------------------------
             So this way, we don't have to worry about people forgetting the new prefix, 
             'cause nothing can go wrong.
 
+HTML ====================================================================
+    1596 Metamorphosis of Ajax about toilet
+
+    DOM ---------------------------------
+        h1, h2 p tag on on the same revel
+
+            #document       -document
+                HTML        - document.documentElement
+                    Head
+                    Body    - document.body
+                        H1
+                        P
+                        H2
+                        P
+
+         HTML - document.documentElement
+            // as W3 was gonna kill HTML element
+         Body - document.body // this is a short cut
+         it's all ponters
+         You canot edit the DOM tree, it is read only from your perspective
+         YOu need to use DOM API to edit it
+         You don't really need all the pointers if you think of how recursion works
+         All you need is binary tree (2 pointers)
+         childNode ais like array
+
+     Retrieving Node ------------------------------
+
+         document.setElementById etc
+         then node.propertyName = "whatever" to reassign new 
+         stick with common propery not unique ones on separate browser
+
+         node.className // should really called .class 
+
+         node.style.styleName
+
+         CSS and DOM has totally non-comnpatable way of naming
+         you need to know where you are in CSS or in DOM?
+
+            CSS                 DOM
+            background-coor     backgroundColor
+            border-radius       boarderRadius
+            font-size           fontSize
+            list-style-type     listStyleType
+            word-spacing        wordSpacing 
+            z-index             zIndex
+            float               cssFloat
+    
+        createElement()
+        createTextNode()
+        cloneNode()     // doesnt come with things such as attached event handler
+        cloneNode(true) // including children
+
+        you need to connect to dom to be visible
+
+        node.appendChild()
+        node.insertBefore()
+        node.replaceChild(new, old)
+        old.paretsNode.replaceChild(new, old) // another java style :O
+        node.removeChild(old)
+
+        IE:
+        if attach event handler to node, the node won't get gabage collected 
+        you must remove all the event handler from node before you remove the node from tree
+        migt get fixed in IE9
+            
+    Event ---------------------------------------------
+        
+        
+        All level of events are mixed up. 
+        Some are widget level things (mousedown mousemove), some are application level
+        
+        mouse event
+        input event (keydown submit blur change focus reset)
+        
+        Event handlers - 3 ways
+        
+        Nescape 
+            node["on" + type] = f;
+            // node.onclick
+        Microsoft
+            node.attachEvent ("on" + type, f);
+        W3C
+            node.addEventListner(type, f, false);
+        
+        trickling model, that was done at Netscape, 
+            // avoid it
+            event capturing patter whichi provides compatabiltty
+            top till bottom on DOM
+        bubbling model, that was done at Microsoft.
+            bottom till top on DOM
+            // use it
+        
+        W3C standards - use both, fiest tricling model then bubbling
+        There for you need false on addEventHandler param as we need bubbling model
+        
+        You need cancel bubbling some point.
+        
+        
+         
             
             
-        
-        
-        
-        
