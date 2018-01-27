@@ -530,6 +530,33 @@ HTML ====================================================================
         You need cancel bubbling some point.
         
         
-         
-            
-            
+  DOM Performance ------------
+    good tool for performance check
+        Speed Tracer [Chrome]
+        Performance Dashboard [IE]
+            opeimization without good performance    
+    
+    DOM API is awful thing you need to use library
+    = portability, correction, model, widgets
+    
+    How do you choose
+    there are so many a lots are not compatable to each other but buch better than
+    DOM API so you can pick.
+    One way is ask JSLint, put the library code through it and see how good it's written.
+    
+    
+    ES5
+    don't use default
+    use strice
+    
+    getter and setter
+    get, set
+    
+    Infinity, NaN, undefined
+    There are now read only (constant).
+    used to be global object so you could chenge the 
+    
+    
+    
+    
+    
