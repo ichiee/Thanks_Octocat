@@ -1,0 +1,69 @@
+==========================================
+Learning Network Trouble shooting
+lynda.com
+==========================================
+
+
+telnet FTP are on layer 7 (application level)
+                    Layer 6 Presentation - encryption, ASCII, EBCDIC, TIFF, GIF, PICT, JPEG, MPEG, MIDI.
+                    Layer 5 Session - NFS, NetBios names, RPC, SQL.
+                    Layer 4 Transport - SPX, TCP, UDP.
+                    Layer 3 Network -  AppleTalk DDP, IP, IPX.
+                    Layer 2 Data Link - PPP, FDDI, ATM, IEEE 802.5/ 802.2, IEEE 802.3/802.2, HDLC, Frame Relay. 
+                    Layer 1 Physical - Ethernet, FDDI, B8ZS, V.35, V.24, RJ45.
+
+
+NIC card net work interface card 
+- allows you to go on www
+
+
+Wireshark 
+
+i.e. I want to Telnet from that box to a particular source 
+      that I'm monitoring with Wireshark on port 80.
+      
+      commandlinwe:
+      telnet 192.168.26.10 80
+      
+      wire shark can monitor things such as standard input
+      you can change things like column change so you can monitor only on port 80
+      You can check out other videos if you like
+      
+Microsoft network trafic 
+    good tool
+    you can monitor traffic
+    you can download then capture traffic
+    
+    find something go wrong
+
+sysinternals
+    TCP view - checking the 3 way hand shake
+    
+    
+Trouble shooting DNS
+    on comand prompt:
+    ping whatever.com
+    if says ping reuest could not find host whatever.com 
+    then try the ip add
+    ping 74.125.224.142
+    if it worked, then chceck
+    ipconfig/all
+    check to see 
+        name resolution 
+        DNS Servers
+    
+ Troubleshooting for a use who cannot connect to the internet
+ 
+    try to duplicate all the issue
+    command prompt:
+    ipconfig/all
+    DHCP enabled section --- NO
+    so check
+    ping 12.345.23.12 (as where you wanted to go) 
+    if it says destination host unreachable
+    then there my be prolem with reaching out 
+    -- set your default gateaway to whaever you set *check your documentation / diagramme )
+    
+    
+
+    
