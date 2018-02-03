@@ -667,3 +667,24 @@ Including External files +++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
                     if you use better to do it onn main_configuration_file.php
                     
+php error handler +++++++++++++++++++++++++++++++++++
+
+    turn on display error on php confugulation
+        otherwise it will show nothing at all.
+        
+        if you are using appache as testing server 
+        you can make .htacsess file to write
+            php_flag display_error on 
+        on the top of the php file 
+            <?php ini_set('display_errors', '1'); ?>
+            on the all releted files
+            if it's still blank. , it means there is an syntax error
+            you can switch to local then you can see the error message
+        it should be off as security mesuments, but during development, need to turn on
+        
+        When error says such as line 20, it means that there is a problem on right before that
+        Parse error: unexpected end of file - normaly } is missing
+    
+        
+
+                    
