@@ -685,6 +685,31 @@ php error handler +++++++++++++++++++++++++++++++++++
         When error says such as line 20, it means that there is a problem on right before that
         Parse error: unexpected end of file - normaly } is missing
     
+    undefined index and offset
         
-
+        undefined index - key for associateve array
+        offset - array index
+        undefined constant - check the error code what it assume such as string instead of var
+        undefined variable - check variable of the line indicated
+                           - sometimes var assinged in condistional statement and it may skip
+                             good practivce to assign var outside condition
+        
+POST and GET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     
+    good practice to specify method on opening form tag
+    self processing 
+    
+        add the processing script in a conditional statement above the doc type 
+        and execute the code only when the form is being submitted. 
+        but html5 action attribute need to have a value always
+   
+   action = "<?= $_SERVER['PHP_SELF']; ?>"
+    
+        this will automatically include the path to the current file in the action attribute. 
+        SERVER is one of PHP's super global arrays, which are always available in any script.
+        You never worry about changing the fille
+        
+  variable variable
+    $key = 'name';
+    $$key = 'David';
+    $name = 'David';
