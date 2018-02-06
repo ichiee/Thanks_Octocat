@@ -694,6 +694,38 @@ php error handler +++++++++++++++++++++++++++++++++++
                            - sometimes var assinged in condistional statement and it may skip
                              good practivce to assign var outside condition
         
+   
+        T_ENCAPSED_AND_WHITESPACE ---------------
+            crazy look but normally means
+            you embedded an associative array element in double quote on html
+            so put them in {} i.e. 
+                <?php echo"it is $descriptions['earth']"; ?>
+                change to  <?php echo"it is {$descriptions['earth']}"; ?>
+                just make sure no white space before and after like { $descriptions['earth']}
+                you get the same error
+            
+            php normally only one error at the time so it is good to test while building it
+           
+        What to do with "failed to open stream"----------
+        
+            basically means external file
+            so check the indicated line where mentioned external file
+            alternatively the file corrupted
+            
+       What does "headers already sent" mean? -----------
+       
+            check the line indicated and error message 
+            if the file include has space or new lines AFTER php closing tag ?>
+            if anything after closing tag, php regards as output
+            once output ha sbeen sent to the browser, php can't send the header to redirect page.
+            
+            So any out put from redirect to browser, preventing the header function from working
+            solution 1 delete all white space after closing tag
+            solution 2 omit the closing php tag (recommend from php manual)
+            
+            you can set untput buffering (normally being set) 
+            so some accidental white space output won't prevent header writing
+    
 POST and GET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     
     good practice to specify method on opening form tag
@@ -718,3 +750,4 @@ POST and GET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     in this case, the value of $key is 'name'. 
     So $$key creates a variable called $name. 
     So if $key is 'email', it will create a new variable called $email, and so on
+    
