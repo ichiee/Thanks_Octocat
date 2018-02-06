@@ -1,0 +1,47 @@
+@charset "UTF-8";
+body {
+	background-color: #fff;
+	color: #111;
+	font-family: "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+	font-size: 85%;
+}
+h1 {
+	color: #0E618C;
+	margin-left: 15px;
+}
+form, p.warning {
+	margin-left: 45px;
+}
+label {
+	display: block;
+}
+input {
+	width: 20em;
+}
+textarea {
+	width: 30em;
+	height: 10em;
+}
+input[type=submit] {
+	margin-left: 10.5em;
+	width: auto;
+	background-color: #1499DC;
+	color: #fff;
+	font-size: 0.8em;
+	padding: 0.4em 0.6em;
+}
+.warning {
+	font-weight: bold;
+	color: #ff0000;
+}
+fieldset {
+    border: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+input[type=radio], input[type=checkbox] {
+    width: auto;
+}
+label[for^=gender], label[for=terms], label[for^=extras] {
+    display: inline-block;
+}
