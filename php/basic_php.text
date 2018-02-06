@@ -713,3 +713,8 @@ POST and GET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     $key = 'name';
     $$key = 'David';
     $name = 'David';
+
+    This creates a new variable that derives its name from the value of the original variable, 
+    in this case, the value of $key is 'name'. 
+    So $$key creates a variable called $name. 
+    So if $key is 'email', it will create a new variable called $email, and so on
