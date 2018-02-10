@@ -1,0 +1,68 @@
+================================================
+cURL example
+    https://curl.haxx.se/docs/manual.html
+    
+    https://www.youtube.com/watch?v=WxUVU0b95Oc
+    https://www.youtube.com/watch?v=7XUibDYw4mc
+================================================
+
+
+curl is used in command lines or scripts to transfer data.
+
+https://jsonplaceholder.typicode.com/
+good place to check api request with curl
+
+Open the folder where you may wants to add some files when need to be rather than print 
+
+    curl https://jsonplaceholder.typicode.com/posts
+        print all the JSON
+    
+    curl http://www.weirdserver.com:8000/
+        Get a web page from a server using port 8000:
+    
+    curl https://localhost:5000/methods
+        methods route
+        tells you that you sent GET requestas he set
+        
+    curl -d "first=ichi&last=lamuchy" https://localhost:5000/methods
+        tells you you sent POST requestas he set
+        and data you sent
+    
+    curl X -PUT -d "first=ichi&last=lamuchy" https://localhost:5000/methods
+        tells you you sent PUT requestas he set
+        and data you sent
+
+    curl -X DELETE https://localhost:5000/methods
+        tells you you sent DELETE request as he set
+        and data you sent
+        
+    curl -i https://jsonplaceholder.typicode.com/posts
+        print all together with header
+        -i is --include 
+
+    curl -I https://jsonplaceholder.typicode.com/posts
+    curl -- head https://jsonplaceholder.typicode.com/posts
+        print only header
+
+    curl -d "title=hello&body=hello world" https://jsonplaceholder.typicode.com/posts
+        responce    "title" : "hello"
+                    "body" : "hello world"
+                    "id" : 101
+        id is autoincliment and there are 100 before that
+        -d is --data
+
+    curl -o www.whatever.oo.jpg
+        you get new wiered name file png in your folder
+        -o is --output
+        
+    curl -o --limit-rate 1000B www.whatever.00.jpg
+        download with specific limit
+        with -o add file name so you can name the file downloaded
+    
+        
+    curl -u usernema:password http.www.whatever
+        authentication check
+        
+    
+        
+     
