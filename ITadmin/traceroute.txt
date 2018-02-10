@@ -1,0 +1,19 @@
+=================
+trace route
+=================
+
+Traceroute is a command which can show you the path a packet of information takes from your computer to one you specify. 
+It will list all the routers it passes through until it reaches its destination, 
+or fails to and is discarded. In addition to this, 
+it will tell you how long each 'hop' from router to router takes.
+
+Liux:
+The traceroute command utilizes the IP protocol "time to live" field 
+and attempts to elicit an ICMP TIME_EXCEEDED response from each gateway along the path to some host.
+
+
+on command prompt 
+
+tracert www.google.com
+
+shows how long it takes on each 
