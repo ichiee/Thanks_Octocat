@@ -1,8 +1,12 @@
-=================
+====================================================================
 trace route
-=================
+https://www.pluralsight.com/blog/it-ops/troubleshoot-ping-traceroute
+====================================================================
 
-Traceroute is a command which can show you the path a packet of information takes from your computer to one you specify. 
+command which can show you the path a packet of information takes from your computer to one you specify. 
+
+
+
 It will list all the routers it passes through until it reaches its destination, 
 or fails to and is discarded. In addition to this, 
 it will tell you how long each 'hop' from router to router takes.
@@ -12,8 +16,24 @@ The traceroute command utilizes the IP protocol "time to live" field
 and attempts to elicit an ICMP TIME_EXCEEDED response from each gateway along the path to some host.
 
 
-on command prompt 
+        on command prompt 
 
-tracert www.google.com
+        traceroute www.google.com
 
-shows how long it takes on each 
+        shows how long it takes on each hop
+        
+
+Do NOT rely on traceroute to give you the exact route path of your packets. 
+Keep in mind that ICMP operates on top of IP. 
+Also, remember that IP is unreliable, 
+meaning that not every packet towards the same destination always takes the same path. 
+Moreover, received messages may follow different paths each time.
+
+
+
+added:
+Time-to-live (TTL) is a value in an Internet Protocol (IP) packet 
+that tells a network router whether or not the packet has been in the network too long and should be discarded.
+
+
+
