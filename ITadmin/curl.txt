@@ -73,4 +73,4 @@ Open the folder where you may wants to add some files when need to be rather tha
             http response and the headers/http status code
      
         curl -I -s -L <http://yoururl.com> | grep "HTTP/1.1"
-            curl -I -s -L <http://yoururl.com> | grep "HTTP/1.1"
+            pull the headers from a web server and display the HTTP/1.1 response status code(s).
