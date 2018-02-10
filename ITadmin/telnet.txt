@@ -1,0 +1,42 @@
+========================================================
+basic telnet
+
+https://technet.microsoft.com/en-gb/library/bb491013.aspx
+
+=========================================================
+
+connect to host server with telnet on comand (or whatever) prompt then it will tells you if connected
+SSH is better though but telnet may work within the local network 
+
+
+
+Telnet is a protocol that allows you to connect to remote computers (called hosts) 
+over a TCP/IP network (such as the Internet). 
+
+Telnet client software allows a computer to connect to a remote computer. 
+Telnet server software allows telnet clients to connect to a server, log in to that server, and run applications.
+
+Using telnet client software on your computer, 
+you can make a connection to a telnet server (i.e., the remote host). 
+Once your telnet client establishes a connection to the remote host, 
+your client becomes a virtual terminal, 
+allowing you to communicate with the remote host from your computer. In most cases, 
+you'll need to log into the remote host, which requires that you have an account on that system. 
+Occasionally, you can log in as guest or public without having an account.
+
+Telnet clients are available for all major operating systems.
+
+There are variety of ways to use telnet
+    example 1:
+        PuTTY is often use for telnet client software (can be used for many others)
+        just put host ip address and pott (normally 23)
+        then you can use PuTTY prompt
+
+        Using thing like wireshark to see the all session of telnet 
+        pretty risky as you can see everything so you can set SSH instead of telnet on server side (such as freeSSHd)
+        to make it encrypted (run on 22)
+
+    example2 
+        telnet whateveripserver 23 
+            on command prompt (on windows, linux, mac)
+            The last digit is port nember
