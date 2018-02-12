@@ -1,0 +1,77 @@
+===========================================
+Network troubleshoot
+
+at command line
+https://www.youtube.com/watch?v=-55X-koiBFg
+===========================================
+
+Basic comsept is go up from layer 1 physical layer
+
+1. Visual check
+    Cable, wire text etc
+    
+2. gather information tools
+
+    ipconfig 
+        to see your ip address
+                    default gataway
+                    DNS server    and etc
+                    
+    arp -a 
+        to get list of mac address with associate ip address in your arp cache
+        so if you don't see the ip address on the list, just ping it so it will go onto the cache 
+        then when you arp -a again, it will be added onto the list
+        this way you can get the mac address of the ip address
+        
+        
+        
+ 3. ping <hostname> (ICMP)
+    to check the host is alive and you can get icmp responce back.
+    
+    if not, 
+    you could ping gataway to see if you are able to go outside your local net work.
+    
+ 
+ 4. traceroute <hostname>
+        (apparently you can apply on both layer 2 and 3??)
+        utelize ip protocall TTL - check time from each gataway.
+        defalt is ICMP you can "UDP traceroute", too
+        Check the time of HOP
+ 
+ 
+ 5. nslookup <hostname> (in windows) (TCP/IP)
+        
+        tells you info about the DNS server,
+        CName, A (address), Alies and stc
+        
+        
+        nslookup -A <ip address>
+            lookup names
+
+        nslookup -a <names> // if you don't know the ip address
+            it gives the same info as above also gives ip address
+            
+      
+ 
+ 6. dig (TCP/IP)
+        similler to nslookup
+        slight more info such as how long it took to cache
+        
+        
+ 
+ 
+ 
+ 
+ 
+ 
+ ------------------------------------------
+ 
+ packet - segment of data another name of datagram
+ 
+ good tool:
+ 
+ https://www.keycdn.com/support/cdn-troubleshooting-guide/#assets-loading-from-keycdn
+    free guide with tool 
+ https://tools.pingdom.com/#!/bXCkpL/https://tools.pingdom.com/
+    ping from different place and etc
+ 
