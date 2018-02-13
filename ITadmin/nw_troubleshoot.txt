@@ -5,7 +5,7 @@ at command line
 https://www.youtube.com/watch?v=-55X-koiBFg
 ===========================================
 
-Basic comsept is go up from layer 1 physical layer
+Basic concept is go up from layer 1 physical layer
 
 1. Visual check
     Cable, wire text etc
@@ -14,7 +14,7 @@ Basic comsept is go up from layer 1 physical layer
 
     ipconfig 
         to see your ip address
-                    default gataway
+                    default gateway
                     DNS server    and etc
                     
     arp -a 
@@ -26,23 +26,23 @@ Basic comsept is go up from layer 1 physical layer
         
         
  3. ping <hostname> (ICMP)
-    to check the host is alive and you can get icmp responce back.
+    to check the host is alive and you can get icmp response back.
     
     if not, 
-    you could ping gataway to see if you are able to go outside your local net work.
+    you could ping gateway to see if you are able to go outside your local network.
     
  
  4. traceroute <hostname>
         (apparently you can apply on both layer 2 and 3??)
-        utelize ip protocall TTL - check time from each gataway.
-        defalt is ICMP you can "UDP traceroute", too
+        utilize ip protocol TTL - check time from each getaway.
+        default is ICMP you can "UDP traceroute", too
         Check the time of HOP
  
  
  5. nslookup <hostname> (in windows) (TCP/IP)
         
         tells you info about the DNS server,
-        CName, A (address), Alies and stc
+        CName, A (address), Allies and stc
         
         
         nslookup -A <ip address>
@@ -54,7 +54,7 @@ Basic comsept is go up from layer 1 physical layer
       
  
  6. dig (TCP/IP)
-        similler to nslookup
+        similar to nslookup
         slight more info such as how long it took to cache
         
         
@@ -75,3 +75,5 @@ Basic comsept is go up from layer 1 physical layer
  https://tools.pingdom.com/#!/bXCkpL/https://tools.pingdom.com/
     ping from different place and etc
  
+
+
