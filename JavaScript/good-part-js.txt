@@ -1,0 +1,562 @@
+ 
+ =================================================================================
+    The Good Patrs of JavaScript and the Web
+    by Douglas Crockford
+    https://www.lynda.com/course-tutorials/Good-Parts-JavaScript-Web/604268-2.html
+ =================================================================================
+    
+    
+    
+    No space between function name & ()
+    One space between all other names & ()
+
+    IIFE
+    (function(){
+    })();               // quite confusing look for other programmer probably
+    (function(){
+    }());               // better style as it makes sense
+    
+    Don't ever use with statement.
+        there is no behaivior confirmed, it depends on param and far comfusing
+        
+    Always use ===
+        0 ==""          // True
+        0 == '0'        // True
+        '' == '0'       // False
+        false == '0'    // True
+
+    Don't use ES5 string literals
+    
+    Always use let
+    
+    Global variable is evil, avoid, use all CAPITAL
+    
+    Do not use new prefix
+    
+    Always use {} in if statement
+        if(a) b(); c();     // meands if (s){b();} c()
+        
+    var a=b= 0;  
+        means 
+        b = 0;
+        var a = b;
+    
+    
+JSLint style 
+
+Bad style of JS --------------------
+
+    ++ for Pointer arithmetic 
+          we dont do it any more only C++
+          Cox always security issue
+      use x +=1 
+          also potential to mistake with x++ & ++x
+  
+  
+  for JS an object is a dynamic collection of properties
+  Every property has a key string tha is unique within object
+  
+Object -----------------------------------
+  
+    Everything in javascript is an object
+    apart from null and undefined - sometimes called bottom value
+
+    [key] must be string
+
+    Delegation - differential inheritance
+    using prototype instead of class, using other 
+
+    ++++++making new object ++++++++
+        Object.create(prototype)
+            protopal inheritance
+
+            var mother {
+            a:1
+            b:2
+            }
+        
+        var daughter = Object.create(mother); point at mother object
+        daughter.b +=2;  // check mothers object and put it onto daughter boject b:4
+            it write on top most where it called, read can go deeper to chain where it inherid from
+        Object.creat(null)  // you van make it without prototype, useful if it is just a container of stuff
+        
+Numbers -----------------------------------------
+
+    there is only one number type - kinda wrong one
+    64-bit binary floating point
+    IEEE-754 aka double
+    binary doesn't give you accuracy
+
+    first class object means 
+        stored in variable
+        passed as parameter
+        can be returned from function
+        stored in object
+
+        number can have method, too
+
+    JS made the same mistake as Java made. making a separate math object (abs, log, max, min etc)
+    NaN not a number
+    NaN = type of number 
+    NaN === NaN     // false
+    isNaN(NaN)      // true
+
+
+String ------------------------------------------------
+
+    immurable
+    16bit unicode caharactors
+        UCS2 not quite UTF-16
+    No char just string
+    String literal ban be use in single or double quotes
+    with \
+    *** Use " for external strings      // makes sense for outside world, url, template, notes to user etc
+    *** Use ' for internal strings and characters // character constant, name of property
+
+    Convert a number to a string
+        these works in the same way.
+        str = num.toString();
+        str = String (num);         // use this one
+
+    Convers string to a number
+        Use the number function
+        Use the + prefix operator
+        Use the parseInt function       // no
+            num = Number (str);
+            num = +str;
+
+        parseInt() stops at the first non digit charactor
+            parseInt("12em")=== 12
+        The radix(10) should always be used.
+            parseInt("08") === 0
+            parseInt ("08", 10) === 8
+
+        
+Array ------------------------------
+
+    array data type inherits from object (so array and object are made from the same thing!) 
+    Indexes are converted to strings and used as names for retriving value
+    Arrays are very efficient for sparse array but JS use pretty much dense array
+    
+    No need to provide a length or type when creating array
+    You don't have to worry about out of bounds errors because it's not really an array. 
+    It's a hashtail, so every value is in-bounds. 
+    
+    Arrays, unlike objects, have a special length property.
+    
+    sort method will be done as each element treat as string
+    so 14 comes before 4
+    
+    delete() make the element undefind use splice to close up the gap
+    
+    Associative array is object!!
+    Use object when names are arbitary strings
+    Use arrays when sames are sequential integers
+
+Date ----------------------------------------
+
+    The date function is based on Jave's Date Class
+
+Regular expression --------------------------
+
+    https://jex.im/regulex/#!flags=&re=
+
+
+Type ---------------------------------------
+
+    undefined defalt value for variable and parameters
+    null is also bottom varue but stick is undefined is probably good idea as that is what JS use
+
+    type of
+    object -    'object'
+    function -  'function'
+    array -     'object;  ******** not helping
+    number -    'number'
+    boolean -   'boolean'
+    null -      'object' ********** wrong it is not object
+    undefined - 'undefined'
+
+
+    JS is boolish language - all are falty or truthy
+        Falsey value:
+            false
+            null
+            undefined
+            ""
+            NaN
+        All others are truthy including "0" "false"
+
+    Objust are passed by reference
+
+Syntax ------------------
+    
+    comment:
+    use only // coz less confusing
+    
+    number to string:
+        Unary operator
+            +"42" = 42
+        Number ("42") = 42
+        parseInt("42", 10) = 42
+        +"3" (+"4") = 7
+    
+    !! makes boolish value to boolean
+    
+    bit wise 
+    
+Statement ------------------------------
+
+     for statement 
+        not really used just use forEach
+    
+    for in statement
+        unfortunally also go through inheritated methods etc, quite messy 
+        use Object,keys unstead takes object return arrays, which is just rinnumable.
+    
+    swich value does not need to be number in JS
+        
+    throw statement   
+        throe new Error (reason);
+
+        throw{
+            name: exceptionName,
+            message: reason
+        }
+
+    try statement
+        try{  }catch(){ }
+        you can have many exceptions 
+ 
+ functions ===============================================
+ 
+    this is JS good version
+    function 
+    first class
+    function.prototype
+    
+    var statement :
+        2 steps.
+        1 decoration part : (hoisted) all read - undefined
+        2 intialization part : assined
+        
+    
+    funstion statement (function decoration) exactly look like function expression
+        in this case of function statement
+            needs
+            mandatory name
+
+        function statement is a shorthand of a var statement with function value
+            
+            function foo() = function foo(){};
+            var foo = function foo(){};
+            
+           // expands to 
+           var foo = undefined;
+           foo = function foo() {};
+           The assignment of the functionis also hoisted!!!!
+           
+       than is why you cannot declare a function inside if
+       because it will read assigment of function outside if statement
+       it actually works but (he somehow not recommend as it is out of standared)
+           
+    dealare all the var on the top of function
+    
+    Don't make function in a loop,
+        it will make function every time in the loop - too expensive
+        
+    Examples below, for loop capture current time of div id which will be the last one
+    as the div_id is out side function
+        // wrong
+        for (var i '''){
+            div_id = divs[i].id;
+            divs[i].onclick = function (){
+                alert (div_id);
+            };
+       // right     
+       divs.forEach(function (div){
+        div.onclick= function(){
+            alert(div.id);
+        }
+            
+    Invocation:
+   
+        If too many params, etras ignored
+        If too few param, the rest will be undefined
+        
+        No check for type, so if youn care you need to add the codes
+        
+    Two pseudo params ----------------------
+        arguments
+        this
+
+        neither is recommended
+
+        arguments - arguments array - though as it's written it is array like object
+
+        this - contains a reference to the object of invocation
+        this allows a method to know what object it is connected with
+        this allows a sigle function object to service many objects
+        this is key to prototypal inheritance
+
+           to understand this, on 4 ways to call a function
+
+               Function form       - functionObject(arg)
+                   this is set to global object (or undefined)
+                   ES5 strict mode made it boud to undefine
+                   either way pretty horrible
+                   var that = this // when you use it inner function, so inner function can see this as that
+
+               Method form         - thisObject.methodName(arg) 
+                                   - thisObject[methodName](arg)
+                   this gets bound to thisObject
+
+               Constructor form    - new functionObject(arg)
+                   this is bound to the new object
+                   when a function is called with the new, a new object is created and assined to this 
+                   new is operator
+               
+               Apply form          - functionObject.apply(thisObject, [arg])
+                    this bonds to argument
+                    functionObject.apply(thisObject, arhument)
+                    functionObject.call(thisObject, argument...)
+                    
+                    a function's apply or call method allows for calling function, sxplicity specifying thisObject
+                    It can also take an array of param or a seq of param
+        
+                +++ still not recomment to use it but need to know how people use "this" +++
+                
+               HIghly recommended !!!!!!!!!!!!!!!!!!
+               The Littele Schemer - read for recurrsion
+               https://crockford.com/javascript/little.html
+   
+                Princeple of Programming Language by R.C. Tennent
+                --- one odf principal is principal correspondant
+                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
+   
+    Closure -------------------------------------------------------------------------
+   
+       Lexical scoping
+       Static scoping
+
+       don't use all on stack, use on heap, get gabage collecter to sort stuff out
+
+       function object contain a pointer to the codes so it knows what to excute when function is invoked.
+       and function object will contain a reference to the activation of the function that created it
+   
+    
+    Pseudoclassical Inheritance ****** Get out from misery --------------------------------
+  
+    This is how JS programmeer codes (AWFUL)!!
+             
+        function Gizmo (id){
+            this.id = id;
+        }
+        Gizmo.prototype.toString = function (){
+            return "gizmo" + this.id;
+        };
+
+        function Hoozit (id){
+            this.id = id;
+        }
+        Hoozit.prototype = new Gizmo();
+        Hoozit.prototype.test = function (id){
+            return this.id === id;
+        };
+    
+    
+        using Gismo constructor and making test methon on prototype and tec, 
+        quite mess what points where
+        
+        people know there is something lacking 
+        
+        
+        Sugar coating Sudoclassical System in order to amke it better
+        
+        you can make little function (check under new_constructor Crockford's)
+        
+        we can do better than that --- module pattern
+        
+        
+    Module patter ----------------------------------------------------------------------       
+               
+        It is difficult to make private stuff on JS 
+        except when you doing things like below (function module)
+        
+        var whatever = (function (){
+        var privateVar;
+        function privateFn(x){
+            ...privateVar
+        }
+            return {
+                firstFn: function (a, b){ ...privateVar},
+                secondFn: function (c){ ... privateVar...}
+                }
+            };
+        }());
+        
+        so in this example what you store is return value as IIFE
+        
+        
+        ++++++ Module patter is easily transform into a powerful constructor pattern +++++++
+        
+        1. Make an Object
+            Object literal
+            new
+            Object.create
+            call anothe power constructor
+            
+        2. Define some variables and functions.
+            these become private members
+            
+        3. Argument the object with privilaged methods 
+        // privilage method is publicly available method which closes over the private stuff
+        4. return the object
+        
+        
+        Example 
+        
+        function constoructor (spec){
+            var that = other maker(spec),
+            method = function (){
+                // spec, member, method
+            };
+            that.method = method;  
+            return that;
+          
+        }
+            // specification object
+            this form of constructor does not care about the new prefix. 
+            If you call this function with a new prefix, 
+            it'll run a little bit slower, but it will still do exactly the right thing. 
+            So this way, we don't have to worry about people forgetting the new prefix, 
+            'cause nothing can go wrong.
+
+HTML ====================================================================
+    1596 Metamorphosis of Ajax about toilet
+
+    DOM ---------------------------------
+        h1, h2 p tag on on the same revel
+
+            #document       -document
+                HTML        - document.documentElement
+                    Head
+                    Body    - document.body
+                        H1
+                        P
+                        H2
+                        P
+
+         HTML - document.documentElement
+            // as W3 was gonna kill HTML element
+         Body - document.body // this is a short cut
+         it's all ponters
+         You canot edit the DOM tree, it is read only from your perspective
+         YOu need to use DOM API to edit it
+         You don't really need all the pointers if you think of how recursion works
+         All you need is binary tree (2 pointers)
+         childNode ais like array
+
+     Retrieving Node ------------------------------
+
+         document.setElementById etc
+         then node.propertyName = "whatever" to reassign new 
+         stick with common propery not unique ones on separate browser
+
+         node.className // should really called .class 
+
+         node.style.styleName
+
+         CSS and DOM has totally non-comnpatable way of naming
+         you need to know where you are in CSS or in DOM?
+
+            CSS                 DOM
+            background-coor     backgroundColor
+            border-radius       boarderRadius
+            font-size           fontSize
+            list-style-type     listStyleType
+            word-spacing        wordSpacing 
+            z-index             zIndex
+            float               cssFloat
+    
+        createElement()
+        createTextNode()
+        cloneNode()     // doesnt come with things such as attached event handler
+        cloneNode(true) // including children
+
+        you need to connect to dom to be visible
+
+        node.appendChild()
+        node.insertBefore()
+        node.replaceChild(new, old)
+        old.paretsNode.replaceChild(new, old) // another java style :O
+        node.removeChild(old)
+
+        IE:
+        if attach event handler to node, the node won't get gabage collected 
+        you must remove all the event handler from node before you remove the node from tree
+        migt get fixed in IE9
+            
+    Event ---------------------------------------------
+        
+        
+        All level of events are mixed up. 
+        Some are widget level things (mousedown mousemove), some are application level
+        
+        mouse event
+        input event (keydown submit blur change focus reset)
+        
+        Event handlers - 3 ways
+        
+        Nescape 
+            node["on" + type] = f;
+            // node.onclick
+        Microsoft
+            node.attachEvent ("on" + type, f);
+        W3C
+            node.addEventListner(type, f, false);
+        
+        trickling model, that was done at Netscape, 
+            // avoid it
+            event capturing patter whichi provides compatabiltty
+            top till bottom on DOM
+        bubbling model, that was done at Microsoft.
+            bottom till top on DOM
+            // use it
+        
+        W3C standards - use both, fiest tricling model then bubbling
+        There for you need false on addEventHandler param as we need bubbling model
+        
+        You need cancel bubbling some point.
+        
+        
+  DOM Performance ------------
+    good tool for performance check
+        Speed Tracer [Chrome]
+        Performance Dashboard [IE]
+            opeimization without good performance    
+    
+    DOM API is awful thing you need to use library
+    = portability, correction, model, widgets
+    
+    How do you choose
+    there are so many a lots are not compatable to each other but buch better than
+    DOM API so you can pick.
+    One way is ask JSLint, put the library code through it and see how good it's written.
+    
+    
+    ES5
+    don't use default
+    use strict
+    
+    getter and setter
+    get, set
+    
+    Infinity, NaN, undefined
+    There are now read only (constant).
+    used to be global object so you could chenge the 
+    
+    
+    
+    
+    
