@@ -751,3 +751,27 @@ POST and GET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     So $$key creates a variable called $name. 
     So if $key is 'email', it will create a new variable called $email, and so on
     
+form ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Display errorr message conditionally on contact us 
+
+    set at the top of html 
+    <?php 
+    $errors = [];
+    $missing = [];
+    ?>
+
+    set right befor <form> tag
+    <?php if ($error || $missing): ?>
+    <p class="warning">PLease fix the item(s) indicated</p>
+    <?php endif; ?>
+    
+    set right after <label> tag for ="name"
+    <?php if ($missing && in_array('name', $missing)): ?>
+    <span class="warning">Please enter your name</span>
+    <?php endif; ?>
+    
+    after that patters follow exactly the same to email, comment
+
+
+
