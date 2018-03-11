@@ -1,4 +1,7 @@
-![Alt text](/dnsflow.png)
+![Alt text](dnsflow.png)
+
+
+
 
 ## ブラウザが Webページを表示するまで
 https://laboradian.com/create-web-page-show-your-info/#i-8
