@@ -13,3 +13,7 @@ even though using array notation, simplexml uses simplexml object so you cannot 
 
 display:
 Just go through as foreach 
+
+log in session
+https://stackoverflow.com/questions/8874648/php-redirect-on-successful-login
+https://www.sitepoint.com/community/t/redirect-if-login-successful-not-working/147438/2
