@@ -1,0 +1,66 @@
+Accessing DOM
+
+
+
+https://www.w3schools.com/xml/dom_nodes_add.asp
+getElementbyTagnName()
+video: 
+https://www.lynda.com/XML-tutorials/Discovering-document-content/661763/703463-4.html?srchtrk=index%3a2%0alinktypeid%3a2%0aq%3axml+dom%0apage%3a1%0as%3arelevance%0asa%3atrue%0aproducttypeid%3a2
+
+------------------------------------
+SIMPLEXML
+access it to the dom
+    go foreach on the children node
+    $course->level='Advancded';
+
+after go foeeach to check every child node of root,
+you can use
+
+    header('Content-type': text/xml');
+before
+    echo $courses->asXML();
+
+if you save as 
+    $courses->asXML('courses.xml');
+    it will create new file instead of overwriting on the current folder
+when writing to the file you cannot echo at the same time ( it return boolian value)
+
+------------------------------------------
+
+ think 
+ just need to use javascript to sort out
+ 
+<script type="text/javascript">
+    window.some_variable = '<?=$_POST['some_value']?>'; // That's for a string
+</script>
+
+
+----------------------------------------------------------------
+https://stackoverflow.com/questions/39813901/php-appendchild-to-xml-root
+
+$xml->root isn't the correct way to access root element in this context, 
+since $xml is an instance of DOMDocument (It will work if $xml were SimpleXMLElement instead). 
+You can get root element of a  DOMDocument object from documentElement property :
+
+
+
+$playerID = "id_" . $_POST['player'];
+
+//load xml file to edit
+$xml = new DOMDocument();
+$xml->load('../../saves/playerPositions.xml') or die("Error: Cannot load file.");
+
+$playerElement = $xml->createElement($playerID, "");
+$xml->documentElement->appendChild($playerElement);
+
+---------------------------------------------------------------
+
+https://www.w3schools.com/xml/met_element_appendchild.asp
+
+XML DOM appendChild() Method
+
+
+---------------------------------------------------------------
+https://www.w3schools.com/xml/dom_nodes_create.asp
+
+
