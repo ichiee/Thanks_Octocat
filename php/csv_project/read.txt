@@ -1,0 +1,41 @@
+Using CSV file, using PHP & JS (as well as HTML and CSS etc)
+
+Project 1: to do list
+
+    make existing todo list
+    Form to add to do ( title, description, url)
+    (edit to do)
+    (delete or add another valuable true or false to determine if it has been done)
+    I may need to false / true on the first column
+    I should be able to do as the same as adding some to the csv ( though you probably re-write all)
+    Potencially think to use text file but it's all the same
+
+    extra features add log in to see the all list but can be done later, 
+    Function include delete all data, and register
+    https://www.lynda.com/PHP-tutorials/Improve-parseCSV/633867/679972-4.html
+
+
+
+Project 2:
+    Pretty similar style but make usuful developer list for web developer . some are already existing. 
+    categolies are title: language: url: description:
+    Function is the same CRUD
+
+    Adding feture - log in, as admin to edit, add delete
+    display the list on each category, language.
+
+
+Time frame:
+Tuesday day
+    Gather the data, make csv
+    reserch the Potencial CRUD operation on CSV
+Wed:
+    Planing for 
+    Make a basic web with existing data populated and code up
+    
+Thuesday:
+    Plan for adding form making then then code up,
+    if time allowed, 
+    Plan for deleteing the list it self then code up.
+
+
