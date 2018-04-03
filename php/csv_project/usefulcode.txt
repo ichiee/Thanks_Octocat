@@ -1,0 +1,98 @@
+
+=======================
+read csv
+======================
+$data = [];
+$file = fopen ($filename, 'r');
+
+while (!feof($file)){
+  // third argument default is ,
+  $row = fgetcsv($file, 0, ',');
+  
+  // any problems, skip to the next line
+  if ($row == [NULL] || $row === FALSE) {continue;}
+  // store in array
+  $data[] = $row;
+
+}
+fclose ($file);
+
+++++++++ improved version
+// using header: to make associtive array!!!! ha!
+
+$header = false;
+$data = [];
+$file = fopen($filename, 'r');
+while (!feof($file)){
+    row = fgetcsv($file, 0, ',');
+
+    // any problems, skip to the next line
+    if ($row == [NULL] || $row === FALSE) {continue;
+    if (!$header){
+        $data[] = array_combine($header, $row);
+    }
+
+}
+fclose ($file);
+
+=======================
+helper / testing
+======================
+Making 
+$arg[ ] = $title, $language, $description, $url;
+$tool = new StudyTool($args);
+
+===================
+example of class
+==================
+
+Class StudyTool (){
+    public $title;
+    public $language;
+    public $description;
+    public $url;
+
+    Public function __construct ($args=[]){
+    
+        // take $ off when you access to property
+        $this->title = $args[title']??'';
+        $this->language = $args['language']??'';
+        $this->description= $args[‘description']??'';
+        $this->url = $args['url']??'';
+    // for loop to do it is like $arg as $k=>$v can do the job too 
+    //https://www.lynda.com/PHP-tutorials/Solution-bicycle-class/633867/679969-4.html
+}
+// class hand le the parsing)
+class ParseCSV{
+
+    publis $filename;
+    private $header;
+    private $data=[];
+    
+    public function __construct($filename = ''){
+        if ($filename != ''){
+            $this->filename = $filename;
+        
+        
+        }
+    }
+    public fumction ourse(){
+   
+        return $this->data;
+
+}
+
+https://www.lynda.com/PHP-tutorials/Read-from-CSV-file/633867/679971-4.html
+
+=================
+populate onto HTML
+=================
+
+<?php for ($i=0; $i<=10; $i++}{?>
+<p><?php echo $StudyTool->title); ?></p>
+<p><?php echo $StudyTool->language); ?></p>
+<p><?php echo $StudyTool->description); ?></p>
+<p><?php echo $StudyTool->url); ?></p>
+
+
+
