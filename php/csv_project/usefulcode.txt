@@ -2,38 +2,43 @@
 =======================
 read csv
 ======================
-$data = [];
-$file = fopen ($filename, 'r');
++++++++++ basic version
 
-while (!feof($file)){
-  // third argument default is ,
-  $row = fgetcsv($file, 0, ',');
-  
-  // any problems, skip to the next line
-  if ($row == [NULL] || $row === FALSE) {continue;}
-  // store in array
-  $data[] = $row;
+    $data = [];
+    $file = fopen ($filename, 'r');
 
-}
-fclose ($file);
+    while (!feof($file)){
+      // third argument default is ,
+      $row = fgetcsv($file, 0, ',');
 
-++++++++ improved version
-// using header: to make associtive array!!!! ha!
+      // any problems, skip to the next line
+      if ($row == [NULL] || $row === FALSE) {continue;}
+      // store in array
+      $data[] = $row;
 
-$header = false;
-$data = [];
-$file = fopen($filename, 'r');
-while (!feof($file)){
-    row = fgetcsv($file, 0, ',');
-
-    // any problems, skip to the next line
-    if ($row == [NULL] || $row === FALSE) {continue;
-    if (!$header){
-        $data[] = array_combine($header, $row);
     }
+    fclose ($file);
 
-}
-fclose ($file);
+++++++++ improved version if you need to use header
+
+    // using header: to make associtive array!!!! ha!
+
+    $header = false;
+    $data = [];
+    $file = fopen($filename, 'r');
+    while (!feof($file)){
+        row = fgetcsv($file, 0, ',');
+
+        // any problems, skip to the next line
+        if ($row == [NULL] || $row === FALSE) {continue;
+        if (!$header){
+             $header = $row;
+        }else{
+        //makes associtive array
+            $data[] = array_combine($this->header, $row);
+         }
+    }
+    fclose ($file);
 
 =======================
 helper / testing
@@ -52,41 +57,116 @@ Class StudyTool (){
     public $description;
     public $url;
 
-    Public function __construct ($args=[]){
+    public function __construct ($args=[]){
     
         // take $ off when you access to property
         $this->title = $args[title']??'';
         $this->language = $args['language']??'';
         $this->description= $args[‘description']??'';
         $this->url = $args['url']??'';
+    
     // for loop to do it is like $arg as $k=>$v can do the job too 
     //https://www.lynda.com/PHP-tutorials/Solution-bicycle-class/633867/679969-4.html
 }
-// class hand le the parsing)
-class ParseCSV{
+===============================
+ class handle the parsing
+===============================
 
-    publis $filename;
+class ParseCSV{
+    
+    // can be hard corded but good to give option
+    public static $delimeter = ',';
+    private $filename;
     private $header;
     private $data=[];
-    
+    private $row_count = 0;
     public function __construct($filename = ''){
         if ($filename != ''){
             $this->filename = $filename;
-        
-        
         }
     }
-    public fumction ourse(){
-   
-        return $this->data;
+    public function file($filename){
+        if(!file_exists($filename){
+            echo "File does not exist.";
+            return false;
+        }elseif(!is_readable($filename)){
+            echo "File is not eadable.";
+            return false;
+        }
+    }
+    public function parse(){
+    
+    if (!isset($this->filename)){
+        echo "The file not set";
+        return false;
+    }
+    // clear any previous result
+    $this->reset();
+      // reading csv
+        $file = fopen($this->filename, 'r');
+        while (!feof($file)){
+            $row = fgetcsv($file, 0, $self::$delimiter);
 
+            // any problems, skip to the next line
+            if ($row == [NULL] || $row === FALSE) {continue;}
+            if (!$this->header){
+                $this->header = $row;
+            }else{
+            //makes associtive array
+                $this->data[] = array_combine($this->header, $row);
+                $this->row_count++;
+            }
+        }
+        fclose ($file);
+        return $this->data;
+        }
+    public function the_result{
+        return $this->data;
+    
+    
+    }
+        
+    public function row_count(){
+    return $this->row_count;
+    }
+
+    //to clear data so it won't purse let's say twice when you call again
+    public function reset(){
+        $this->header = NULL;
+        $this_>data = [];
+        $this->row_count = 0;
+    
 }
+
+
+
+
 
 https://www.lynda.com/PHP-tutorials/Read-from-CSV-file/633867/679971-4.html
 
-=================
-populate onto HTML
-=================
+============================
+  how to parse onto html 
+============================
+// define PRIVATE_PATH somewhere
+// define ("PRIVATE_PATH", dirname(_FILE__));
+<?php
+$parser = new ParseCSV(PRIVATE_PATH . 'data.csv');
+$tool_array = $parser->parse();
+?>
+
+<php? foreach(£tool_arrays as $args){ ?>
+<php? $tool = new DevTool($args); ?>
+
+// get the html escape
+
+<p><php? echo ($tool->title>); ?></P>
+<p><php? echo ($tool->language); ?></P>
+<p><php? echo ($tool->url); ?></P>
+<p><php? echo ($tool->description); >?></P>
+
+===================
+ populate onto HTML
+===================
 
 <?php for ($i=0; $i<=10; $i++}{?>
 <p><?php echo $StudyTool->title); ?></p>
