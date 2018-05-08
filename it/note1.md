@@ -88,5 +88,15 @@ So you see the subnetting
 
 #### Protocal
 SNMP Simple Network Managing Protocol used  by network management system
-data refer to MIB (message information block)
+data refer to MIB (message information blockVS code
 Agent collecting  data about network (MIB) send them to the managing system for analysing
+
+#### REST API
+https://reqres.in/
+https://www.getpostman.com/
+https://insomnia.rest/
+https://marketplace.visualstudio.com/items?itemName=humao.rest-client for VS code 
+
+
+
+
