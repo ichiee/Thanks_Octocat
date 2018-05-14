@@ -16,7 +16,17 @@ this is just note to understand mechanism
     
     What cache exists between browser and fastly cache? cache in local ?
     
+    serving stale while 503 error
+    Why health check of origin necessary
+    Without health checks enabled, all of the functionality will still work, 
+    but serving stale or synthetic responses will take much longer while waiting for an origin to timeout
+    https://docs.fastly.com/guides/performance-tuning/serving-stale-content.html
     
+</br>
+</br>
+
+## Headers
+
 The headers were designed with the client (browser) in mind 
 but `CDNs like Fastly will also use those headers as a guide on caching policy`.
 
@@ -78,6 +88,8 @@ Shield node lives between caches and origin server,
 It's like a parent cache (normally geograficaly close to you)
 All the children nodes (cache nodes: POP) get contents from shield node
 
+</br>
+</br>
 
 ## Cache Control!
 
@@ -109,7 +121,7 @@ unless you alter this behavior using custom VCL.
 
 
 
-### Case
+#### Examples of use of cache headder
 
 This causes the browser to re-validate with the source on every request for the content.
 So user see the most updated contents. 
@@ -135,13 +147,14 @@ hash key, I presume it create automatically
 ### to do
 https://docs.fastly.com/guides/tutorials/cache-control-tutorial#example-backend-configs
 
-
+</br>
+</br>
 
 ## Fastly Debug Tools
 
 https://www.youtube.com/watch?v=GPRSw7qlrag
 
-You cannot ask CDN company that some thing is off
+You cannot ask CDN company that something is off
 
 Get data! Debug CDN!
 
@@ -155,58 +168,116 @@ http://www.fastly-debug.com/
     fastly debug header is a way to tarce a request through the CDN
     from start to finish
 
-FASTLY-DEBUG-PATH
+* FASTLY-DEBUG-PATH
 
-    (if fetch OR deliver,  "EDGE OR SHIELD NAME INC location",  time stamp)
-    i.e (D Chache-SJC3135-SJC 145289203639)
-    If you see a aiffrernt edge the time that it delivered that 
-    differs from the tim of pulling the object - it means cache hit (? why)
+        (if fetch OR deliver,  "EDGE OR SHIELD NAME INC location",  time stamp)
+        i.e (D Chache-SJC3135-SJC 145289203639)
+        If you see a aiffrernt edge the time that it delivered that 
+        differs from the tim of pulling the object - it means cache hit (? why)
 
-FASTLY-DEBUG-TTL:
+* FASTLY-DEBUG-TTL:
 
-    i.e.
-    (H CAHCHE-SJC3135-SJC - 6584)
-    The last number is age
-    {M CACHE-SEA1922 - - 0)
-    Miss in seatle age is 0 (as miss)
+        i.e.
+        (H CAHCHE-SJC3135-SJC - 6584)
+        The last number is age
+        {M CACHE-SEA1922 - - 0)
+        Miss in seatle age is 0 (as miss)
 
 
-X timer:
+* X timer:
 
-    CURL -SVO /DEV/NUMM EXAMPLE.COM
+        CURL -SVO /DEV/NUMM EXAMPLE.COM
 
-        shows this header
+            shows this header
+
+        < XTIMER: S1435112951 . 069252, VS0, VE1
+        (unix timestamp, VERNISH START - should be 1 or 0, VERNISH END - should not be too high)
     
-    < XTIMER: S1435112951 . 069252, VS0, VE1
-    (unix timestamp, VERNISH START - should be 1 or 0, VERNISH END - should not be too high)
-    
 
-MTR command
+* MTR command
 
-    MTR -C 20 -W -R
-    it's comvine traceroute and ping you can copy and paste and share it with them
-    his for spot network problems
+        MTR -C 20 -W -R
+        it's comvine traceroute and ping you can copy and paste and share it with them
+        his for spot network problems
 
 
-Tracking PURGE 
+* Tracking PURGE 
 
-    Every purge has ID,  being logged
+        Every purge has ID,  being logged
 
-    If there is a problem in purging, 
-    it is possible to track down with the ID
-    
-    CURL -X PURGE www.example.com
+        If there is a problem in purging, 
+        it is possible to track down with the ID
 
-Web page Test
-    https://www.webpagetest.org/
+        CURL -X PURGE www.example.com
+
+        Web page Test
+            https://www.webpagetest.org/
     
 
 IRC
-MOst of IRC is pushing into slack channel
-
-
-
-
-
-
+Most of IRC is pushing into slack channel
 MTR network testing tool
+</br>
+</br>
+
+## Serving Stale Content
+https://www.mnot.net/blog/2014/06/01/chrome_and_stale-while-revalidate
+
+
+How to activate:
+
+    Cache-Control: max-age=600, stale-while-revalidate=30
+will cache some content for 10 minutes and, at the end of that 10 minutes, will serve stale content for up to 30 seconds while new content is being fetched.
+
+    Surrogate-Control: max-age=3600, stale-if-error=86400
+instructs the cache to update the content every hour (3600 seconds) but if the origin is down then show stale content for a day (86400 seconds).
+
+The same behaviour can be controlled by
+setting the following variables in vcl_fetch: within VCL 
+
+    set beresp.stale_while_revalidate = 30s;
+    set beresp.stale_if_error = 86400s;
+
+This works in the same way
+Varnish's grace variable override stale-while-revalidate or stale-if-error statements off surrogate control.
+
+    set beresp.grace = 86400s;
+    set beresp.stale_if_error = 86400s;
+    
+    
+
+
+
+### Origin fail in context of Varnish
+
+The origin can be marked as unhealthy by failing health checks.
+
+If Varnish cannot contact the origin for any reason, a 503 error will be generated.
+The origin returns a valid HTTP response, but that response is not one we wish to serve to users (for instance, a 503).
+
+
+some tips:
+
+#### set beresp.
+        stale_while_revalidate overrides stale_if_error
+
+        stale_if_error will have no effect. If you're sending stale_while_revalidate in Surrogate-Control or Cache-Control from origin, remove this entire line.
+        
+#### Changing origins based on user location
+ Creating the header for the default origin server
+ 
+         1: after click clone active, domain page appears
+         2: click content link then a new window opens
+         3: click create headers button 
+         4: set destination to backend
+         5: set souce to F_global
+        https://docs.fastly.com/guides/performance-tuning/changing-origins-based-on-user-location 
+        https://docs.fastly.com/guides/vcl/geolocation-related-vcl-features
+        6: on condition such as client.geo.continent_code == "AS" || client.geo.continent_code == "EU". 
+ 
+
+#### misc:
+
+Generating HTTP redirects at the edge
+https://docs.fastly.com/guides/performance-tuning/generating-http-redirects-at-the-edge
+
