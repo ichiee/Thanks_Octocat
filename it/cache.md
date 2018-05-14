@@ -126,9 +126,87 @@ Surrogate-Control to Fastly but stripped off before browser cache
     Expires: 0
     
  
+ 
+ 
 
 hash key, I presume it create automatically
 
 
 ### to do
 https://docs.fastly.com/guides/tutorials/cache-control-tutorial#example-backend-configs
+
+
+
+## Fastly Debug Tools
+
+https://www.youtube.com/watch?v=GPRSw7qlrag
+
+You cannot ask CDN company that some thing is off
+
+Get data! Debug CDN!
+
+http://www.fastly-debug.com/
+    
+### FASTLY-DEBUG   
+    
+    Turn debug on:
+    CURL -SVO /DEV/NULL www.example.com \ -H "FASTLY-DEBUG:1"
+
+    fastly debug header is a way to tarce a request through the CDN
+    from start to finish
+
+FASTLY-DEBUG-PATH
+
+    (if fetch OR deliver,  "EDGE OR SHIELD NAME INC location",  time stamp)
+    i.e (D Chache-SJC3135-SJC 145289203639)
+    If you see a aiffrernt edge the time that it delivered that 
+    differs from the tim of pulling the object - it means cache hit (? why)
+
+FASTLY-DEBUG-TTL:
+
+    i.e.
+    (H CAHCHE-SJC3135-SJC - 6584)
+    The last number is age
+    {M CACHE-SEA1922 - - 0)
+    Miss in seatle age is 0 (as miss)
+
+
+X timer:
+
+    CURL -SVO /DEV/NUMM EXAMPLE.COM
+
+        shows this header
+    
+    < XTIMER: S1435112951 . 069252, VS0, VE1
+    (unix timestamp, VERNISH START - should be 1 or 0, VERNISH END - should not be too high)
+    
+
+MTR command
+
+    MTR -C 20 -W -R
+    it's comvine traceroute and ping you can copy and paste and share it with them
+    his for spot network problems
+
+
+Tracking PURGE 
+
+    Every purge has ID,  being logged
+
+    If there is a problem in purging, 
+    it is possible to track down with the ID
+    
+    CURL -X PURGE www.example.com
+
+Web page Test
+    https://www.webpagetest.org/
+    
+
+IRC
+MOst of IRC is pushing into slack channel
+
+
+
+
+
+
+MTR network testing tool
