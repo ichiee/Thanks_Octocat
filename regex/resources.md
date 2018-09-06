@@ -1,6 +1,6 @@
 
 
-DFA 
+### DFA  
 https://www.youtube.com/watch?v=QDjq027rtQY
 https://www.tutorialspoint.com/automata_theory/deterministic_finite_automaton.htm
 
@@ -22,12 +22,29 @@ Q = {Q0, Q1, ...}
 F can be show as like relational table / database
 
 ****
-Some to read
+
+Some readings
+Semantics, Analysis and Security of Backtracking Regular Expression Matchers
+http://etheses.bham.ac.uk/6011/1/RathnayakeMudiyanselage15PhD.pdf
+
+Exploring Regular Expression Comprehension
+https://wangpeipei90.github.io/papers/ase2017.pdf
+
+Greate talk on Algorithm 2
+https://www.coursera.org/lecture/algorithms-part2/regular-expressions-go3D7
+
+
+****
+
+### Kleene's findings
+
+Original 
 https://www.nayuki.io/page/countable-sets-and-kleene-star
 
-this one is easier reading
+This one is easier reading (better printing)the same as above
 http://www2.fiit.stuba.sk/~kvasnicka/CognitiveScience/2.prednaska/kleene56representation%5B1%5D.pdf
 
+Regular Languages and Finite Automata - written 12 pages
 https://www.cs.nmsu.edu/historical-projects/Projects/kleene.9.16.10.pdf
 
 
@@ -39,6 +56,7 @@ is either
 
 ****
 
+## Kleens Representaton of Events in Nerve Nets and Finite Automata
 
 ### Neuron anatomy
 
@@ -59,7 +77,7 @@ The written number inside of nuron (typically P) is the h - threathhold
 P (t) Neuron P fires at time P
 J (t-1) to J fired at t-1 
 
-## The input to a Nerve Net
+### The input to a Nerve Net
 
 Consider a nerve with k input neurons N1 ....Nk
 t is time so P is the time 
@@ -73,7 +91,7 @@ t is time so P is the time
 
 So here, N1, N2 is equiveranrt to J, K, L / P is t on the example above anatomy of the patterns
 
-## Definite Event
+### Definite Event
 
 ### 1: Definite Events Defined
 
@@ -87,7 +105,7 @@ Therefore 2<sup>kl</sup> k x l would be a possible occurence of  event
 So
 > There are exactly 2<sup>2<sup>kl</sup></sup> on positive definitite events on k input neurons of length l
 
-### 2 &3 Rrepresentability of Define Events
+### 2 & 3 Rrepresentability of Define Events
 M1, m2.. represents synapses
 lag - as in lag / delay behind
 Any positive definitive event is representable by firing neuron with lag 2.
@@ -101,7 +119,7 @@ Each kl-formula F expresses a definite event E on k input neurons of length l.
  
 
 
-### Representation of Events in Nerve Nets and Finite Automata
+### Representation of Events in Nerve Nets and Finite Automata note 2 scrubles
 https://www.rand.org/content/dam/rand/pubs/research_memoranda/2008/RM704.pdf
 
 soma - cell body ( where nucleus and mitochondorion etc presents)
