@@ -75,7 +75,7 @@ DFA
 NFA     
 δ: Q × ∑ → Q        
 
-- So anywhere another possibility need to set it dead state for the input where the conditions happen.
+#### So anywhere another possibility need to set it dead state for the input where the conditions happen.
 
 ### EXAMPLE 1
 
@@ -129,5 +129,5 @@ All the sate involve C will be the final states
 so BC and C will be final states        
 
 
-
+#### So if there is 1 input goes more than 1 destination, it will be Unioned on DFA
 
