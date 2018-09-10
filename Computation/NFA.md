@@ -105,7 +105,8 @@ It's called **subset construction method**
 given by        
 M = \[{A, B, C}, (a, b),δ, A, {C} ]     
 
-δ is given by       
+δ is given by   
+    
 |   | a    | b    |
 |---|------|------|
 | A | A, B | C    |
@@ -114,6 +115,7 @@ M = \[{A, B, C}, (a, b),δ, A, {C} ]
 
 
 #### DFA 
+
 |   | a    | b    |
 |---|------|------|
 | A | A, B | C    |
