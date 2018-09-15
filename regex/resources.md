@@ -131,3 +131,52 @@ where p is like Q so p-1 is Q1
 N1 N2 s are like what ∑ would present= ( where the arrow / actual value) 
 The number is fixed period of time so that is relate to the position
 
+***
+
+###definine in formula
+
+*P* : inner nurons  - primary stimulated nuron  
+*p* : Time actual time not length or duration  
+*P*(*p*) : Nuromn *P* fires at the time of *p*  
+k input newrons : N1...., Nk  (starting 1)
+*l* : priod of time (length)
+*kl* elements in the ele,meths
+
+*M* : Connection, synapses
+
+
+    clarify 1 : 
+    need clarify relation of depth, p, l, lag, s
+    
+    think *p* should be starting 0 then goes p-1, p-2 ... p-i
+    length is the maximum number of abs(pi) + 1
+    
+    othe rway to think if p start 1 then maxmum it can go is p-1
+    in this case l is 2 so in this way l = p+1
+    
+    so in that sense p-l+1 is replisenting the relation above
+    
+    
+    
+      clarify 2 : 
+
+      on page 8, *M* : is inserted to show that we can have the net connected.
+      so you can see the events never occered such a time the circle attached
+
+
+
+
+
+Mesurements of depth: 
+
+the *k* input newrons N1...., Nk at the *l* moments *l*+1, ... *p*
+This expression, *kl-formula*, of depth ==  greater number of successive time `&` or `V` is used in the construction
+
+
+Examples:  
+
+N1 (p-1) Input Nuron N1 at the time of *p*-1
+
+
+***
+
