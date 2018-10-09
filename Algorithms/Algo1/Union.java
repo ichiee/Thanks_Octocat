@@ -267,10 +267,16 @@ public class QuickUnionUF {
 }
 
 
+////////////////////////
 
+ Weighted quick-union
 
+smaller tree goes under bigger tree
+/////////////////////////
 
-
+////////////////////////
+Path compression
+///////////////////////
 
 
 
