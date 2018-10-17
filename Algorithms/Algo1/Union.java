@@ -5,30 +5,27 @@ https://github.com/kevin-wayne/algs4
 
 Java Sauce code:
 https://algs4.cs.princeton.edu/code/
+/*
+            Quick Find
+            Slow inplimention
+            It's keeps state as on number of components {} {} {}
 
-/////////////////////
-
-Quick Find
-Slow inplimention
-It's keeps state as on number of components {} {} {}
-
-you will use array with index as the actual value of the node.
-for value, it will be a secound ( latter ) param on the functions
+            you will use array with index as the actual value of the node.
+            for value, it will be a secound ( latter ) param on the functions
 
 
-explanation of below
-Quickunion has constructor public QuickUnionUF
-It constsuct array that index and values are the same - this array is called parent
+            explanation of below
+            Quickunion has constructor public QuickUnionUF
+            It constsuct array that index and values are the same - this array is called parent
 
-helpers
-find method - this is == parent[p]- donno why they have to go through
-validate method - validate the int you add in is within the lengh of the index of the parent[]
+            helpers
+            find method - this is == parent[p]- donno why they have to go through
+            validate method - validate the int you add in is within the lengh of the index of the parent[]
 
 
-public method
-connected - return true if the value's are the same - the number they take is the number of index on parent []
-
-////////////////////
+            public method
+            connected - return true if the value's are the same - the number they take is the number of index on parent []
+*/
 
 
 public class QuickFindUF {
@@ -145,7 +142,7 @@ public class QuickFindUF {
 
 +++++++
 
-//////////////////////////
+/*
 
 Quick Union
 
@@ -157,7 +154,7 @@ Once you know the root you can impliment.
 So when it connects to one place to the another. All you need to is changing one value.
 
 example of implimention:
-Latte one will be added at the bototm of it
+Later one will be added at the bototm of it
 union (4, 3)
 union (3, 8)
 union (6, 5)
@@ -169,7 +166,8 @@ check if the 2 entry p & q has the same root by using another method  to return 
 
 Tree can become too tall
 
-///////////////////////
+
+*/
 
 
 public class QuickUnionUF {
@@ -280,16 +278,16 @@ public class QuickUnionUF {
 }
 
 
-////////////////////////
 
- Weighted quick-union
+/*
 
-smaller tree goes under bigger tree
-/////////////////////////
+            Weighted quick-union
 
-////////////////////////
-Path compression
-///////////////////////
+            smaller tree goes under bigger tree
+
+            Path compression
+
+*/
 
 
 public class WeightedQuickUnionUF {
@@ -410,9 +408,52 @@ public class WeightedQuickUnionUF {
 
 }
 
+/*
+
+Magic one line:
+you can improve here as you see the grand parents
+the code with arrow makes the tree almost completely flat
+
+*/
 
 
-//////
+    public int find(int p) {
+        validate(p);
+        while (p != parent[p]){
+            parent[i] = parent[parent[i]];  // <==== this is the magic one
+            p = parent[p];
+            
+        }
+        return p;
+    }
 
 
+/*
+the constan tof that here is
+N object makes <= c (N + M lg* N) array access
+ simple algo wit fascinating mathmatics
+ 
+ log* is very slowgrowing number
+ 
+interate log function
+ 
+| N        | lg*N |
+|----------|------|
+| 1        | 0    |
+| 2        | 1    |
+| 4        | 2    |
+| 16       | 3    |
+| 65536    | 4    |
+| 2**65536 | 5    |
+ 
+M union-find ops on N object?
+- cost within constant factoer of rseading in the data
+- WQUPC In theory it is not quite linier
+- WQUPC in practice it is linier
+
+Turne dout it is not
+
+In weighted quick-union (by size), we make the root of the smaller tree (in terms of the number of nodes) point to the root of the larger tree. 
+
+*/
 
