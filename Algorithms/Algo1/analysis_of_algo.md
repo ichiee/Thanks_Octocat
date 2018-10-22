@@ -61,5 +61,5 @@ Computer itself.
  log base 2 of 16 is equal to x - written like log<sub>2</sub>16 = x  
  
  
- 
+ log<sub>b</sub>(a)=c⟺b<sup>c</sup>=a
  
