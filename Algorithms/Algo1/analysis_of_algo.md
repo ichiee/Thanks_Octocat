@@ -20,15 +20,20 @@ Computer itself.
 
 ### three Sum 
  running time T (N) 
+ Input size N
  
- If you do it as a lg, lg plot very often you'll get a straight line. 
+ If you do it as a lg, lg plot very often you'll get a straight line. - this will ge lg T(N) on y, lg(N) on X
  And the slope of the straight line is the key to what's going on. 
  In this case, the slope of the straight line is three and so you can run what's called a regression to fit a late, 
  the straight line through the data points. 
  And then, it's not difficult to show to do the math to show that 
- if you get a straight line and the slope is B, 
+ if you get a straight line and the slope is B, - in this case 3
  
  then your function is proportional to A, N^B (N to the B). 
+ propotional - y = kx  => k = y/x
+
+
+
  That's called the **power law**. 
  And that's true of many, many scientific problems including most algorithms. 
  So here's a little bit of the math for that. 
