@@ -19,8 +19,9 @@ return can be more than 1
 loop - `while` + condition
 loop2 - `for` friend in friends - like JS you can create variable during for loop
 loop3 - elements.each do |element| ... end
-lop4 - for index in 0..5  is the same as 6.times do |index|
-
+loop4 - for index in 0..5  is the same as 6.times do |index|
+file = `File.open("example.txt", "r")`       
+class is pretty much the same as php.   
 
 ### method 
 
@@ -173,9 +174,202 @@ two raised to the third power
 
 ### comment
 
+#
+
+=begin & =end - between will be comment out in multiple lines
+
+
+### Reading files
+
+    File.open("example.txt", "r") do |file|
+      puts file.read().include? "JIM"
+      puts file.readline()
+      puts file.readline()
+
+    for line in file.readline() - return line in array
+
+    end
+
+file = File.open("example.txt", "r") 
+file.close
+
+1st one is name of file, 2nd param is mode "r" - read
+file is variable name and will store into it
+
+end is closing the file
+file. is is file variable
+include? is anything include
+readline is read first line of file
+then secound one is reading the second line - almost the point of read is move on to the next
+
+for line in file.readline()
+it will be in storing in array in line variable
+always close file so do not use memory
+
+### Writing file
+
+- How to append 
+
+      File.open("example.txt", "a") do |file|
+        file.write("Ichi, Writer")
+      end
+
+"a" - append, append write on the last place to be 
+you can add \n to start from the next line.
+
+- How to write
+
+      File.open("example.txt", "w") do |file|
+        file.write("Ichi, Writer")
+      end
+
+This will write the file from the beggining opposed to append
+
+     File.open("example.html", "w") do |file|
+        file.write("<h1>Hello</h1>")
+      end
+if not existing it will create a new one
+
+- How to r+
+
+      File.open("example.txt", "r+") do |file|
+        file.readline()
+        file.write("overriddens")
+      end
+
+this will over write on the second line - or as much as where the text will take.
+
+      File.open("example.txt", "r+") do |file|
+        file.char()
+        file.write("overriddens")
+      end
+this will curser to only one charactor
 
 
 
+
+### File mode in Ruby
+
+Mode |  Meaning   
+-----|-------------- 
+ "r" | Read-only, starts at beginning of file  (default mode).   
+ "r+"  | Read-write, starts at beginning of file.    
+  "w"   |  Write-only, truncates existing file to zero length or creates a new file for writing.   
+  "w+" |  Read-write, truncates existing file to zero length or creates a new file for reading and writing.     
+  "a"  |  Write-only, starts at end of file if file exists, otherwise creates a new file for writing.   
+  "a+" |  Read-write, starts at end of file if file exists,  otherwise creates a new file for reading and writing.    
+   "b" |  Binary file mode (may appear with any of the key letters listed above). Suppresses EOL <-> CRLF conversion on Windows. And sets external encoding to ASCII-8BIT unless explicitly specified.    
+   "t" |  Text file mode (may appear with any of the key letters listed above except "b").    
+
+
+### Handling errors
+
+So ruby gives error, so how you can handling it
+We wanna catch the error
+
+
+#### Rescure
+
+Basic structure
+
+      begin
+
+      rescue
+
+      end
+
+Example
+
+    begin
+      num = 10/0
+    rescue
+      puts "division by zero error"
+    end
+
+Instead of Ruby throw the error, it will throw error
+if there are more than one code to break the code,
+so how to specify the error
+
+    lucky_nums = [1,2,4,5]
+    begin
+      lucky_nums ["dogs"]
+      num = 10/0
+    rescue ZeroDivisionError
+      puts "division by zero error"
+    rescure TypeError
+      puts "wrong Type"
+    end
+    
+So here ther eis the condition that `ZeroDivisionError`
+So only the error will be rescure - then puts the string
+
+#### store the error on variable       
+    
+    lucky_nums = [1,2,4,5]
+      begin
+        lucky_nums ["dogs"] 
+        num = 10/0
+      rescue ZeroDivisionError
+        puts "division by zero error"
+      rescure TypeError =>e
+        puts e
+      end
+
+
+### Data Type - Class
+
+Allow to create own data types
+it is called class :)
+
+    class Book
+      attr_accessor :title, :authoor, :pages
+    end
+
+    book1 = Book.new()
+    book1.title = :Harry Potter"
+    book1.autor = "JK ROwling" 
+
+    puts book1.title
+
+class is custom data type
+you can define what it is
+
+attr_accessor - attribute the class have
+An object is instance of class
+Everything is object in Ruby
+All stulff like string and int are also defined in class in ruby
+
+#### Initialise method in class
+
+initialise is like instanciate 
+
+    class Student
+      attr_accessor :name, :major, :gpa
+      def initialize(name, major, gpa)
+        @name = name
+        @major = major
+        @gpa = gpa      
+      end
+      
+      def has_honors
+        if @gpa >= 3.0
+          return true
+        end
+        return false
+      end
+    end
+
+new is a method that call initialize
+
+so 
+
+    student1 = Book.new("pam", "business", 3.6)
+    puts student1.has_honors
+    
+
+### Building a quiz
+
+Class Questions
 
 
 
