@@ -11,17 +11,17 @@ use def & end key words for method
 need use () when using variable     
 cannot mix int on str, use to_s(intvar.to_s)    
 you can set defaut on param like (name = "no name")   
-return can be more than 1        
-`and` is key word like `&&`
+return can be more than 1         
+`and` is key word like `&&`   
 `or` is key word like `|`
-`!` is not
-`case` and `when` keyword - case expression - using `end`, too (use else, too)
-loop - `while` + condition
-loop2 - `for` friend in friends - like JS you can create variable during for loop
-loop3 - elements.each do |element| ... end
-loop4 - for index in 0..5  is the same as 6.times do |index|
-file = `File.open("example.txt", "r")`       
-class is pretty much the same as php.   
+`!` is not    
+`case` and `when` keyword - case expression - using `end`, too (use else, too)    
+loop - `while` + condition    
+loop2 - `for` friend in friends - like JS you can create variable during for loop   
+loop3 - elements.each do |element| ... end    
+loop4 - for index in 0..5  is the same as 6.times do |index|    
+file = `File.open("example.txt", "r")`        
+class is pretty much the same as php.     
 
 ### method 
 
@@ -369,15 +369,110 @@ so
 
 ### Building a quiz
 
-Class Questions
+    Class Questions
+      sttr_accessor :prompr, :answer
+      def intialize (prompr, answer)
+        @prompt = prompt
+        @answer = answer
+      end
+    end
+    
+    
+    p1= "What color are apples?\n(a)red\n(b)yellow\n(c)green"
+    p1= "What color are bananas?\n(a)red\n(b)yellow\n(c)green"
+    p1= "What color are pears?\n(a)red\n(b)yellow\n(c)green"
+
+create array of questions
+
+    questions =[
+      Question.new (p1, "a"),
+      QUestion.new (p2, "b"),
+      Question.new (p3, "c")
+    ]
+
+create runtest method
+
+    def run_test (questions)
+      answer = ""
+      score = 0
+      for question in questions
+        puts question.prompt
+        answer = gets.chomp()
+        if answer == question.answer
+          score += 1
+        end 
+      end
+      puts "you got "+ score.to_s + "/" +question.length().to_s
+    end
+
+    run_test(questions)
+
+### Inheritance
+
+extend one functionarity of one class to another class
+sub class from super class
+
+    Class Chef
+
+    Class ItalianChef < Chef
+
+this means all the functionality from Chef can be inheritated to ItalianVhief
+you can override the method
+if you create method within sub class, it will be overridden
 
 
+### Modules
 
+container to store methods
+it is like sand box
+pretty much for testimng purpose
 
+    module Tools 
 
+      def sayhi(name)
+        puts "hello #{name}"
+      end
 
+      def saybye(name)
+        puts "bye #{name}"
+      end
+    end
+    
+you can include the module like
 
+    include Tools
+    Tools.sayhi("Ichi")
 
+also you can do from another file
 
+    require_relative "tools.rb"
+    include Tools
 
+require_relative - you can pass file name (and the path)
 
+### Ivteractive Ruby
+
+Open terminal
+IRB should be installed
+irb -v to check
+you can just type
+irb
+to start
+just test like
+
+     irb
+     def sayhi
+            puts "hello"
+     end
+
+then return
+
+    => :sayhi
+
+then
+
+    sayhi
+    
+return
+
+    hello
