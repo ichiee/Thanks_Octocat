@@ -1,12 +1,14 @@
 
 ### Merge Sort
+2 sorted halves check veryleft of each halves then smaller value to add on to new array.  
+[cs50 merge sort](https://www.youtube.com/watch?v=Pr2Jf83_kG0)
 
 - Java sort for objects.    
 - Perl, C++ stable sort, Python stable sort, Firefox JavaScript, ...    
 
 
 Basic plan.
-- Divide array into two halves.   
+- Divide array into two halves - both are sorted   
 - Recursively sort each half.   
 - Merge two halves.   
 
