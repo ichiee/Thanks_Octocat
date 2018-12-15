@@ -23,7 +23,7 @@ now minimise!!
 
 it need to be on constant time to minimise!
 
-**** add the logic here for reducing precess ****************************
+**** add the logic here for reducing process ****************************
 Rank: 
 
 1: use lookup table for it string
@@ -31,37 +31,41 @@ Rank:
 len X => O(2<sup>x</sup>)
 
 
-## OM! Binary trie - rooted orderd tree - balanced parent
+## OM! Binary trie - rooted orderd tree - balanced paren
+      binary trie - complete bimary tree likr red-black tree    
+      rooted ordered tree - can have multiple childrens
 
 #### Transfer binary trie to Rooted ordered tree. 
 
-take binary trie and then group the right side then roatate 45 degree
-anything on the sama levers are connected to the same node which the most left node orininally / initailally connected to
+      take binary trie and then group the right side then roatate 45 degree
+      anything on the sama levers are connected to the same node which the most left node orininally / initailally connected to
 
 
 #### rooted orderd tree to balanced parens
 
-create start from top and left to create parens
+      create start from top and left to create parens
 
-((()()()())(())())
+      ((()()()())(())())
 
-### OOOOh! paren is 0 Close parent 1
+### OOOOh! Open paren is 0 / Close paren is 1
+so you can express it on binary (sweet)
+
 But then though it could be able to present the data set the kate showed me on Fri (check the paper)
 
 Anyway:
 
-Binary trie   - rooted orderd tree      - balanced paren
+    Binary trie   - rooted orderd tree      - balanced paren
 
-Left child    - fist child of the node  - ( next char [if (]
+    Left child    - fist child of the node  - ( next char [if (]
 
-Right chile   - next sibling            - go to the ), next char[if (]
+    Right chile   - next sibling            - go to the ), next char[if (]
 
-Parent        - previous sibling [if not one then go up to parent] - prev char if ) goto the ( of the ) if prev char is (, then you done, that is it
+    Parent        - previous sibling [if not one then go up to parent] - prev char if ) goto the ( of the ) if prev char is (, then you done, that is it
 
 
 Let's do sub tree
 
-subtree sixze
+
 
 
 
