@@ -15,6 +15,9 @@ j is the posion of the pat where it checks
 
 i+j
  
+ 
+![](https://github.com/ichiLamuchy/Thanks_Octocat/blob/master/Algorithms/Algo2/Images/brute-force.png)
+
         public static int search(String pat, String txt)
         {
            int M = pat.length();
