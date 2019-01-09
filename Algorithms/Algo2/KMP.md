@@ -20,7 +20,8 @@ The second row woulbe the actual pattern (pat)
 You can create all other row as DFA table number of row is the all charactor occers on the pattern  
 where it matched there would be a number will be added as to go to the j+1 
 
-The point here is how you determine where unmatched caracter will go. 
+![](https://github.com/ichiLamuchy/Thanks_Octocat/blob/master/Algorithms/Algo2/Images/kmp-dfa.png)
+The point here is how you determine whichi state unmatched caracter would go. 
 
 When it matched uptil jth caractor, you can stimulate a new-pat = pat [1... j-1]   
 (who the hell knows why?)   
@@ -47,19 +48,19 @@ For each state j:
   - pat.charAt(j)is for row of acttual what char is on the string at the jth. so that means it would send it to the next state
 ・Update X.    
  
-public KMP(String pat)
-{
-   this.pat = pat;
-   M = pat.length();
-   dfa = new int[R][M];
-   dfa[pat.charAt(0)][0] = 1;
-   for (int X = 0, j = 1; j < M; j++)
-   {
-    for (int c = 0; c < R; c++)   // this bits is teh KMP DFA behaviour
-    dfa[c][j] = dfa[c][X];        // update mismatched case
-    dfa[pat.charAt(j)][j] = j+1;  // update matched case
-    X = dfa[pat.charAt(j)][X];    // update X position
-    } 
-}
+    public KMP(String pat)
+    {
+       this.pat = pat;
+       M = pat.length();
+       dfa = new int[R][M];
+       dfa[pat.charAt(0)][0] = 1;
+       for (int X = 0, j = 1; j < M; j++)
+       {
+        for (int c = 0; c < R; c++)   // this bits is teh KMP DFA behaviour
+        dfa[c][j] = dfa[c][X];        // update mismatched case
+        dfa[pat.charAt(j)][j] = j+1;  // update matched case
+        X = dfa[pat.charAt(j)][X];    // update X position
+        } 
+    }
 
 where R is the radix and M is the length of the pattern
