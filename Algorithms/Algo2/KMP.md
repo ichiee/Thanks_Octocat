@@ -1,4 +1,5 @@
 # 4. Sub String Search
+cross ref: https://www.ics.uci.edu/~eppstein/161/960227.html (using c++)
 
 ## Knuth–Morris–Pratt DFA
 
