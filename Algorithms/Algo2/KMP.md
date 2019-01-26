@@ -12,6 +12,25 @@ There would be computstion needed on
     1: actual pattarn matching  
     2: DFA from the pattern 
 
+### JAVA implimemntion
+
+    Publiic int (String TXT){
+
+        int i, j, N = txt.length()
+        for (i = 0; j = 0; i < N && j < M; i++){.    //M is length of pattern
+            j = dfa(txt.charAt(i)][i]             
+            // j is the index number of pattern where it should be
+            // in this 2d array you can be extract the int where the position is set to (what is the next stage is)
+            if (j == M){
+                return i - M;
+                // here i is index of current TXT position. 
+                //Doing this gives a starting index of suxcessfully matched position(of statring point)
+            }
+
+            else return N;
+        }
+    }
+
 ### start with this DFA
 
 #### Let's make a DFA tables - so it can be express as 2d array
@@ -46,8 +65,9 @@ Quite simple.
 For each state j:   
 ・Copy dfa[][X] to dfa[][j] for mismatch case.     
 ・Set dfa[pat.charAt(j)][j] to j+1 for match case. 
-  - pat.charAt(j)is for row of acttual what char is on the string at the jth. so that means it would send it to the next state
+  pat.charAt(j)is for row of acttual what char is on the string at the jth. so that means it would send it to the next state
 ・Update X.    
+ 
  
     public KMP(String pat)
     {
@@ -57,7 +77,7 @@ For each state j:
        dfa[pat.charAt(0)][0] = 1;
        for (int X = 0, j = 1; j < M; j++)
        {
-        for (int c = 0; c < R; c++)   // this bits is teh KMP DFA behaviour
+        for (int c = 0; c < R; c++)   // this bits is the KMP DFA behaviour
         dfa[c][j] = dfa[c][X];        // update mismatched case
         dfa[pat.charAt(j)][j] = j+1;  // update matched case
         X = dfa[pat.charAt(j)][X];    // update X position
