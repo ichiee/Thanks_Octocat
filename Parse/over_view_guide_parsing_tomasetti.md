@@ -201,7 +201,7 @@ easy to see the tree
 
 ## Grammers
 
-Grammars are a set of rules used to describe a language,
+Grammers are a set of rules used to describe a language,
 
 
 
@@ -226,7 +226,7 @@ if the parser not suported that, you can work around it like theat below
     atom           : [0-9]+
 
 ### How Left-recursive Rules Are Transformed
-yu ahve to parse bottoms up (is it something similar to 
+you have to parse bottoms up (is it something similar to 
 
 The specific way in which the rules are transformed vary from one parser generator to the other,   
 however the logic remains the same.   
@@ -346,7 +346,7 @@ top-down parsing you would choose `leftmost derivation`
 
 ### Common Elements
 
-> #### Lokahead and Backtracking
+> #### Lookahead and Backtracking
 Lookahead  check next token to decide what rule to apply  
 
 Backtracking is a technique of an algorithm.   
