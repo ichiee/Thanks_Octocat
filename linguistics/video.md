@@ -1,4 +1,4 @@
-List of fun viceos
+List of fun videos
 
 Monkey alarm
 
