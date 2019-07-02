@@ -52,3 +52,5 @@ you could instead mask 00011000 ^ x
 
 ```
 
+resauces:
+https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
