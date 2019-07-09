@@ -24,6 +24,8 @@ In this case subtracting one from it sets all the lower bits to one and changes 
 It will result to take off the right most 1 bit of x. 
 The value has the rightmost 1 bit. In this case subtracting one from it sets all the lower bits to one and changes that rightmost bit to 0 
 
+It is simply if when you substruct one from the number, rightmost of 1 becoming 0 and all the lower side (on the right) 0 become 1 this create all 0 uptil the right most 1 if you use &  -> as result, take the rightmost 1 off
+
 
 
 
