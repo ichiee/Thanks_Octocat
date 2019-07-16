@@ -1,0 +1,21 @@
+
+(wip)
+
+x = o or printf (...) become statement when terminated with ;    
+In C, the semicolonis a statement terminator, rather than a separator
+
+
+Braces { and} are used to group declarations and statements together into a compound statement, 
+or block, so that they are syntactically equivalent to a single statement.
+
+c compiler do not get the indentation
+
+
+Binary search
+
+
+
+
+
+
+
