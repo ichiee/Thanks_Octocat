@@ -1,8 +1,24 @@
-## Shell sort
+## Shellsort
 https://www.coursera.org/learn/algorithms-part1/lecture/zPYhF/shellsort
 
 
-Shell sort is roughly doing on the elements with gap
+
+This is differnet way of insertion sort.
+instead of going one by one, it will check h number.
+for example if it is h = 4, then every 4th element will be checked
+
+in this way, the latter (less h value) will have more likely to need to get sorted less as it has in the way already sorted where it has been checked
+
+Idea. Move entries more than one position at a time by h-sorting the array.
+Shellsort. h-sort array for decreasing sequence of values of h.
+Shellsort overview
+an h-sorted array is h interleaved sorted subsequences
+
+h sorting:
+How to h-sort an array? Insertion sort, with stride length h.
+
+
+----- 
 
 Example in C is 
 
