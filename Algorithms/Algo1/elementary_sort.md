@@ -1,5 +1,5 @@
 
-https://d3c33hcgiwev3.cloudfront.net/_f03960834ff947e41e6b16e8431ab227_21ElementarySorts.pdf?Expires=1544745600&Signature=fizgVaatNLC8cxGmbaYBdfRqXrc3KL2GHj-Qpfu0HKlzXhSs1T8odk8~03qMol6PfWHv0~gUfqxjjDgeR45Uvq9e6BRYKYgZOooY~q8UCzeAU7Zjvi1Hnn1heG4HsApdFP1oxV96KoxWAjCIH2ejTYh932aSFXrzFAznY3-IYU8_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A
+
 
 
 ### Callbacks
@@ -147,21 +147,7 @@ Mathmatical analysis:
 Proposition. To sort a randomly-ordered array with distinct keys,
 insertion sort uses ~ ¼ N 2 compares and ~ ¼ N 2 exchanges on average.
 
-## Sherllsort
 
-This is differnet way of insertion sort.
-instead of going one by one, it will check h number.
-for example if it is h = 4, then every 4th element will be checked
-
-in this way, the latter (less h value) will have more likely to need to get sorted less as it has in the way already sorted where it has been checked
-
-Idea. Move entries more than one position at a time by h-sorting the array.
-Shellsort. h-sort array for decreasing sequence of values of h.
-Shellsort overview
-an h-sorted array is h interleaved sorted subsequences
-
-h sorting:
-How to h-sort an array? Insertion sort, with stride length h.
 
 
 ### Stuffing
