@@ -37,3 +37,7 @@ so example if you have 4 bits the fist bit is for sign and the rest of 4 bits to
 There are example of usefulness of usual math operation.
 
 
+ In two’s complement, the positive numbers are exactly the same as before for unsigned binary numbers. 
+ A negative number, however, is represented by a binary number, which when added to its corresponding positive equivalent results in zero.
+
+In two’s complement form, a negative number is the 2’s complement of its positive number with the subtraction of two numbers being A – B = A + ( 2’s complement of B ) using much the same process as before as basically, two’s complement is one’s complement + 1.
