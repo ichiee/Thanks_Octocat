@@ -1,4 +1,11 @@
-## Bitwise
+# Bitwise
+
+
+This is a good cheat sheet of bitwise operation
+
+https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+
+
 
 ### When creating mask
 
