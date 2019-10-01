@@ -1,5 +1,7 @@
 ### Some syntax and key notes. - just intro even before basics
 (https://www.youtube.com/watch?v=zF34dRivLOw)
+https://web.mit.edu/6.005/www/fa14/classes/17-concurrency/
+https://www.youtube.com/watch?v=O5vzLKg7y-k
 
 
  
@@ -88,20 +90,89 @@ slice -
 
 ### vetor 
 
-seemes to be important. 
+seems to be important. 
+only when mutable you will need to specify the data type by `:`
+for bec we use Vec<i32>
 
-    let mut numbers: Vec<i32> = vec![1,2,3,4,5]   
+
+    let mut numbers: Vec<i32> = vec![1,2,3,4,5];
+    let vec1 = vec!["hi", "how", "are", "you"];
+
+Call it like
+
+   vec1[0]
+   
+Make sure you call "{:?}" when println!
 
 
-*2 *=2;
+    fn take(vec: Vec<int>){
+      //  Vec<int> meands here - passing a ownership of the value 
+      ...
+    }
+    fn give(){
+        let mut vec2: Vec<i32> = Vec::new();
+        vec.push(1);
+        vec.push(2);
+        // so here take took the owner ship of it
+        // here ther is a copy of vec created then the original is still existing but not alive (usable)
+        take(vec);
+        // when this finish executed, the stuck of vector and the dataitself just freed. then the old original was stll in there with out being active. 
 
+        // this will throw error - vec has been removed from here    
+        vec.push(12);
+
+        ...
+    }
+
+
+## Ownership
+
+### Concarrency 
+
+The ownnenrship can go back and force - it is pure ownership
+
+### shared concorrency
+
+Arc - atomic reference count
+
+
+Arc<Vec<int>>
+
+
+### Borrowing Mutable borrow
+
+only to one at the time.
+
+// to is immutab;e from is mutble
+
+    fn push_all (from: &Vec<int>, to: &mut Vec<int>){
+    
+      for elem in from.intr(){
+        to.push(*elem);
+      }
+    }
+
+### Immutable borrow &Vec<int>
+
+sharing cannot be mutable
+
+     &T
+ 
+so it would be look like this for shared borrowing:
+
+Examples `&vec`
+
+    use(&vec)
+
+    fn use (vec: &Vec<int>){}
+     
 ### Condition
 
 if.  - no need () 
 else
 
 
-### loop - 
+### loop 
 
 for in. - like python?  in range so like
 
@@ -124,6 +195,8 @@ while --- also no ().
 
   let vec1 = vec![1,2,3];
   let vec2 = &vec1;
+  
+  *2 *=2;
 
 ypu cannot directrly to it, need reference - &
 
@@ -207,6 +280,22 @@ then it would be like
 then you can do 
 
   cargo run hello world
+
+
+## Charsctors of Rust
+https://www.youtube.com/watch?v=O5vzLKg7y-k
+
+NO GC (no control, requres runtime)   
+it is about ownersip and borrowing    
+all resouces has a owner    
+
+no nees for runtime for this displine
+you get memory safety. 
+
+
+
+
+
 
 ## next
 (https://www.youtube.com/watch?v=agzf6ftEsLU)
