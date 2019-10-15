@@ -26,17 +26,18 @@ You can run it by
 This meands compile and run
 
 
-### Syntax
+### Core data types
 
 
 `fn` for function
+
 fn main (){} 
 
 `let <variable>:<type> = <value>;`
 
-example 
+example :
 
-let a:u8 = 123; // 8bits  unsigned
+`let a:u8 = 123;` // 8bits  unsigned
 
 if i8 then it would be signed 
 
@@ -44,11 +45,11 @@ if i8 then it would be signed
 
 Example:
 
-println!("a = {}", a);  // it is like literal string on vcl
+`println!("a = {}", a); ` // it is like literal string on vcl
 
 RUST is everything is IMMUTABLE
 
-you must specify if you wanna cahnge the value.
+you must specify if you wanna change the value.
 
 `let mut b:i8 = 0`
 
@@ -75,6 +76,13 @@ println!(" z = {}, takes up to {} bytes, {}-bit os", z, size_of_z, size_of_z * 8
 ```
 
 
+let d = 'x'; //. let d:char = 'x';
+
+println!(" d = {}, size = {} bytes", d, mem::size_of_val (&z));
+
+
+
+
 ## Operators
 
 Pretty standard - +-*/ then %
@@ -84,9 +92,46 @@ but they can
 `a += 1;  ` 
 
 
-there is no pow you neeed
+there is no pow you need to do
 
-let a_cubed =123::pow(2, 3);
+`let a_cubed =i32::pow(a, 3);`. / a * a * a
+
+you need specify the data type when you use pow fn 
+
+
+let b = 2.5;
+
+`let b_cubed = f64::powi(b, 3); `        //powi is power with int data type only whole number
+`let b_to_pi = f64::powf(b, std::f64::consts::PI);`  // condsts is capital power of pi
+
+`println!("{} cubed = {}, {}^pi = {}", b, b_cubed, b, b_to_pi);`
+
+
+### bitwise - just like C
+
+let c = 1|2; // | OR & AND ^ XOR !NOR. // XOR is like 
+// this is 01 OR 10 = 11= 3_10
+
+### Logical operaterts - usual
+
+`let pi_less_4 = std::f64::consts::PI < 4.0` // true
+
+>= 
+<= 
+==
+
+```
+let x = 5
+let x_is_5 = x == 5; //true
+```
+
+### Scope
+
+ variable only lives in {}
+
+
+
+
 
 
 
