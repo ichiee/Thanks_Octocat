@@ -125,9 +125,59 @@ let x = 5
 let x_is_5 = x == 5; //true
 ```
 
-### Scope
+### Scope and shadowing
 
  variable only lives in {}
+
+It kind of remind me C
+
+fn scope_and_shadowing (){
+  let a = 123;
+  {
+   let b = 345;  
+   println!("inside, b = {}", b);
+   
+   // let a = 777; // then it become the different variable a
+   println!("inside, a = {}", a);  // if the one above is not present itr will get the valure of 123
+  
+  }
+  println!("outside, a = {}", a);n // this become a 123 in b oth way if it ahs been declared within the scope or not
+
+}
+
+### CONST
+
+
+you can have global like out side any fnction
+how to do!
+`const MEANING_OF_LIFE:u8 = 42;`. // this has no fixed address
+
+it will be just replaced to 42 so wherever you write MEANING_OF_LIFE  beccome `42`
+
+`static z:i32 = 123;`
+
+you can make mutable. ----- however it is not very safe
+
+you can create unsag=fe block like
+
+```
+
+fn whatever(){
+  unsafe
+  {
+  }
+
+}
+```
+
+
+### Memory
+
+
+
+deom bottom - stack
+
+
 
 
 
