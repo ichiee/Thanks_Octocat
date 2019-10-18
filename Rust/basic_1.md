@@ -171,11 +171,30 @@ fn whatever(){
 ```
 
 
-### Memory
+### Memory - construct
 
 
 
-deom bottom - stack
+from bottom - stack
+a bit like c stuck computation. iyt stick from bottom, 
+so since it is immutable you can just stuck any variable and function from bottom, 
+then it will pop when you use it so it will no need to delete the allocated memory.
+
+#### heap
+
+so when you using heap, it is like
+
+`let x = Box::new(5);`
+
+wgat is essentially soing this is that there is varible decalration of 
+`let x = box` on the bottom odf stuck the box contstruct is point at the memory of top of the memory available,
+then it store 5. So what it owuld happen when `prilntln!`
+
+It will be the `println!("{}", *x);`
+here `*` is dereferencing the x, so you are not printing out box, you are printing out 5
+
+
+
 
 
 
