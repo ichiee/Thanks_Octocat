@@ -194,16 +194,71 @@ It will be the `println!("{}", *x);`
 here `*` is dereferencing the x, so you are not printing out box, you are printing out 5
 
 
+Function duct::sh
 
+`pub`for public function
+                            
 
+```                            
+#![allow(dead_code)]
 
+struct {
+  x: f64,
+  y: f64
+}
 
+fn originn ()-> point
+{
+  point {x: 0.0, y:0.0}
+}
 
+pub fn stack_and_heP()
+{
+  let P1 = origin();
+  let P2 = Box:: NEW((origin()));
+  println("p1 takes up {}
+}
 
+```
 
+-----
 
+## About Mod
 
+the module system as providing name-spacing and importing.
 
+```
+Rust has a module system that enables the reuse of code in an organized fashion. A module is a namespace that contains definitions of functions or types, and you can choose whether those definitions are visible outside their module (public) or not (private).
+
+A crate is a project that other people can pull into their projects as a dependency.
+```
+
+https://users.rust-lang.org/t/confused-by-rust-module-system/1991/2
+
+```
+From main you would have:
+
+mod ai;
+mod ai_simple;
+mod ai_complex;
+mod driver;
+mod driver_mio;
+At the top of the file. This declares that these name-spaces exist at all - it’s how the compiler knows to compile them. The code for each module lives either in a file named after that module at the same place in the filesystem it is declared (as you have done) or in a directory with the same name, and a file named mod.rs. In this way, src/ai.rs and src/ai/mod.rs are equivalent.
+
+To use code from a given module, you need to use it. This is the importing side of the equation - it makes the functions/structs/traits available in the current namespace. So, to use the struct SimpleAi from main, you would include:
+
+use ai::SimpleAI;
+SimpleAI::new(); // SimpleAI is available without specifying its namespace
+You could also do this:
+
+use ai;
+ai::SimpleAI::new(); // SimpleAI is available because its module is imported
+So, a few simple rules:
+
+For code to be compiled it must be declared as a mod first, or explicitly added to Cargo.toml as a crate.
+For code to be used it must be imported into the current namespace via use - either explicitly or made available through its namespace.
+
+```
 
 
 
