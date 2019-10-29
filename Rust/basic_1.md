@@ -186,9 +186,9 @@ so when you using heap, it is like
 
 `let x = Box::new(5);`
 
-wgat is essentially soing this is that there is varible decalration of 
-`let x = box` on the bottom odf stuck the box contstruct is point at the memory of top of the memory available,
-then it store 5. So what it owuld happen when `prilntln!`
+what is essentially doing this is that there is varible decalration of 
+`let x = box` on the bottom of stuck, the box contstruct is point at the memory of top of the memory available,
+then it store 5. So what it would happen when `prilntln!`
 
 It will be the `println!("{}", *x);`
 here `*` is dereferencing the x, so you are not printing out box, you are printing out 5
@@ -201,6 +201,7 @@ Function duct::sh
 
 ```                            
 #![allow(dead_code)]
+use std::mem;
 
 struct {
   x: f64,
@@ -214,9 +215,15 @@ fn originn ()-> point
 
 pub fn stack_and_heP()
 {
-  let P1 = origin();
-  let P2 = Box:: NEW((origin()));
-  println("p1 takes up {}
+  let P1 = origin();   // this contents the point itself
+  let P2 = Box:: NEW((origin()));  // this contents just Box that contents pointer to origin
+
+  println!("p1 takes up {} bytes, mem::size_of_val(&p1);
+  println!("p2 takes up {} bytes, mem::size_of_val(&p2);
+  
+  let p3 = *p2;  // this is following - unboxing ( may be called dereferencing)
+  println!("{}, p3.x);
+ 
 }
 
 ```
@@ -226,6 +233,7 @@ pub fn stack_and_heP()
 ## About Mod
 
 the module system as providing name-spacing and importing.
+Just like library
 
 ```
 Rust has a module system that enables the reuse of code in an organized fashion. A module is a namespace that contains definitions of functions or types, and you can choose whether those definitions are visible outside their module (public) or not (private).
@@ -243,23 +251,74 @@ mod ai_simple;
 mod ai_complex;
 mod driver;
 mod driver_mio;
-At the top of the file. This declares that these name-spaces exist at all - it’s how the compiler knows to compile them. The code for each module lives either in a file named after that module at the same place in the filesystem it is declared (as you have done) or in a directory with the same name, and a file named mod.rs. In this way, src/ai.rs and src/ai/mod.rs are equivalent.
 
-To use code from a given module, you need to use it. This is the importing side of the equation - it makes the functions/structs/traits available in the current namespace. So, to use the struct SimpleAi from main, you would include:
+```
+
+At the top of the file. This declares that these name-spaces exist at all 
+- it’s how the compiler knows to compile them. 
+The code for each module lives either in a file named after that module at the same place in the filesystem it is declared 
+(as you have done) or in a directory with the same name, and a file named mod.rs. 
+In this way, src/ai.rs and src/ai/mod.rs are equivalent.
+
+To use code from a given module, you need to use it. This is the importing side of the equation 
+- it makes the functions/structs/traits available in the current namespace. So, to use the struct SimpleAI from main, you would include:
 
 use ai::SimpleAI;
 SimpleAI::new(); // SimpleAI is available without specifying its namespace
+
 You could also do this:
 
 use ai;
 ai::SimpleAI::new(); // SimpleAI is available because its module is imported
 So, a few simple rules:
 
-For code to be compiled it must be declared as a mod first, or explicitly added to Cargo.toml as a crate.
+For code to be compiled it must be declared as a **mod** first, **or** explicitly **added to Cargo.toml as a creat**.
 For code to be used it must be imported into the current namespace via use - either explicitly or made available through its namespace.
 
+
+
+
+
+-----
+
+#### Control flow
+
+if
+```
+if temp > 30
+{
+   println!("really hot");
+}
+else if temp < 10
+{
+  println!("really cold");  
+}
+else{
+   println!("pretty ok");
+}
 ```
 
+#### if statement is expression !
 
 
+let day = if temp > 20{"sunny" else {"cloudy"};
+
+you cannot omit `{}`. It is a bit like ?:
+
+you can even have that all on println!
+
+while for loop
+
+cotinue;
+skip rest of it back to the top of while loop
+
+loop is the same as while true
+
+ y *=n2;
+ loop {
+if y == 1<<10 {break;}. // this is 10000000000 in binary == 1024 in dec
+}
+
+
+-----
 
