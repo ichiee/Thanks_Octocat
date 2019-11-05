@@ -301,23 +301,146 @@ else{
 #### if statement is expression !
 
 
-let day = if temp > 20{"sunny" else {"cloudy"};
+let day = **if** temp > 20 **{**"sunny" **else** "cloudy"**}**;
 
 you cannot omit `{}`. It is a bit like ?:
 
 you can even have that all on println!
 
-while for loop
+#### while for loop
 
 cotinue;
 skip rest of it back to the top of while loop
 
-loop is the same as while true
+#### loop 
 
+is the same as while true
+
+```
  y *=n2;
  loop {
 if y == 1<<10 {break;}. // this is 10000000000 in binary == 1024 in dec
 }
+```
+
+#### for loop
+
+```
+fn for_loop(){
+  for x in 1..11. // 1 t0o 10 inclusive
+  {
+  if x = {continue;}
+  if x = {break;}    // beak out
+    println!("x = {}", x);
+  }
+  
+  for (pos, y) in (30..41).enumerate().  // pos goes to 30-40, y goes to 0-9
+  {
+    println! ("pos is {} which is {}", pos, y);
+  }
+}
+
+```
+
+##### match
+
+this is  bit like switch
+can be used for pattern match
+
+```
+fn match_dtatement();
+{
+  let country_code = 44;
+  let country = match country_code
+  {
+    44 => "UK",      // otherwise
+    46 => "Sweden,
+    7 => "russia,
+    _ => "unknown".  / catch all statement
+  };
+  println! ("the country with code {} id {}". country_code, country);
+}
+```
+
+
+you can match against range
+
+```
+fn match_dtatement();
+{
+  let country_code = 44;
+  let country = match country_code
+  {
+    44 => "UK",      // otherwise
+    46 => "Sweden,
+    7 => "russia,
+    1...999 => "unknown"  // this is like else if statement - this is inclusive !!!!!!!!!!!!!!!!!!!!!!!! what?
+    _ => "invalid"  // this would be like -1 or like 777777 out side range of the one above
+  };
+  println! ("the country with code {} id {}". country_code, country);
+}
+```
+
+triple `.` is inclusive, double `.` is exclusive
+you cannot use `..` in match
+
+
+it will be used for patturn match 
+
+### Data structure !!!!!
+
+
+use keyword struct
+
+here using `.` to access elements in struct
+think data sructure as class maybe ...
+
+
+```
+struct point
+{
+  x ; f64
+  y : f64
+}
+
+fn structures (){
+  let p = point {x: 3.0, y:4.0}
+  println! ("Point p is at {}, {}", p.x, p.y);
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -----
