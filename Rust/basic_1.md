@@ -1,4 +1,37 @@
-### Rust
+## Rust
+
+-----
+
+### Quick reference
+
+
+a`.`len() - accessing array function
+
+`...` including range
+
+
+`..` Excluding range
+
+
+`::` accessing inside enum, or crate to mod or mod to function.  
+
+`use <crate> ::<mod>` (i.e. std::mem)      
+
+`<mod> :: <function>` (i.e. mem::size_of_val()). 
+
+
+`<variable> : <type>` (i.e. i:u8)
+
+
+`{:?}` when you do not know the type such as when println!
+
+
+`"{}"` placeholder 
+
+
+
+
+-----
 
 Play ground:
 https://play.rust-lang.org/
@@ -102,7 +135,7 @@ you need specify the data type when you use pow fn
 let b = 2.5;
 
 `let b_cubed = f64::powi(b, 3); `        //powi is power with int data type only whole number
-`let b_to_pi = f64::powf(b, std::f64::consts::PI);`  // condsts is capital power of pi
+`let b_to_pi = f64::powf(b, std::f64::consts::PI);`  // consts is capital power of pi
 
 `println!("{} cubed = {}, {}^pi = {}", b, b_cubed, b, b_to_pi);`
 
@@ -158,7 +191,7 @@ it will be just replaced to 42 so wherever you write MEANING_OF_LIFE  beccome `4
 
 you can make mutable. ----- however it is not very safe
 
-you can create unsag=fe block like
+you can create unsafe block like
 
 ```
 
@@ -166,7 +199,6 @@ fn whatever(){
   unsafe
   {
   }
-
 }
 ```
 
@@ -176,8 +208,8 @@ fn whatever(){
 
 
 from bottom - stack
-a bit like c stuck computation. iyt stick from bottom, 
-so since it is immutable you can just stuck any variable and function from bottom, 
+a bit like c stuck computation. it stucks from the bottom, 
+so since it is immutable you can just stuck any variable and function from the bottom, 
 then it will pop when you use it so it will no need to delete the allocated memory.
 
 #### heap
@@ -208,7 +240,7 @@ struct {
   y: f64
 }
 
-fn originn ()-> point
+fn origin ()-> point
 {
   point {x: 0.0, y:0.0}
 }
@@ -309,12 +341,12 @@ you can even have that all on println!
 
 #### while for loop
 
-cotinue;
+`cotinue;`
 skip rest of it back to the top of while loop
 
 #### loop 
 
-is the same as while true
+`loop` is the same as while true
 
 ```
  y *=n2;
@@ -324,10 +356,11 @@ if y == 1<<10 {break;}. // this is 10000000000 in binary == 1024 in dec
 ```
 
 #### for loop
+`
 
 ```
 fn for_loop(){
-  for x in 1..11. // 1 t0o 10 inclusive
+  for x in 1..11  // 1 to 10 inclusive
   {
   if x = {continue;}
   if x = {break;}    // beak out
@@ -345,10 +378,10 @@ fn for_loop(){
 ##### match
 
 this is  bit like switch
-can be used for pattern match
+can be used for pattern match use `=>`
 
 ```
-fn match_dtatement();
+fn match_statement();
 {
   let country_code = 44;
   let country = match country_code
@@ -390,7 +423,7 @@ it will be used for patturn match
 ### Data structure !!!!!
 
 
-use keyword struct
+use keyword `struct`
 
 here using `.` to access elements in struct
 think data sructure as class maybe ...
@@ -412,23 +445,306 @@ fn structures (){
 
 
 
+### enum
+The `enum` keyword allows the creation of a type which may be one of a few different variants. Any variant which is valid as a struct is also valid as an enum.
+
+accessing inside is `::`
+
+```
+use std::mem;
+
+enum color {
+  Red,
+  Green,
+  Blue
+}
+```
+
+```
+fn enum()
+{
+  let c:color = color::Red;  // so this is like module aka library
+
+  match c 
+  {
+    color::Red => println!("r"),
+    color::Green => println!("g"),
+    color::Blue => println! ("b")  
+  }
+}
+```
+so essentially what it is that enum is like data type,
+In the data type, you pick Red,here `::` is referencing
+
+Then it check what is matching
+
+so it is like if (c == color::Red) then print "r"
+`=>` is like `{}`
+
+if one of element above is missing rust with throw error 
+
+You can use below to use as else
+
+```
+_=>println!("something else!");
+
+```
+
+you can also create a tuple under the `match` using enum
+you also need the tuple under enum as well.
+
+```
+color::RGBcolor(0,0,0)=>println!("black");
+```
+
+you can also use struct here
+
+```
+enum color {
+  RGBcolor(u8,u8,u8),                            // tuple
+  cmykcolor{cyan:u8, magento:u8,yellow:u8, black:u8} // struct
+}
+```
+
+then of course need to use
+
+```
+let c:color = color::cmyk{cyan:0, magento:128, yellow:0, black:0};
+```
+
+on match if you do not care anything you can add like `_` again
+
+```
+color::cmykcolor{cyan:_, magento:_, yellow:_, black:255} => println!("black");
+```
+
+you can all catch all to do nothing
+
+```
+_=>();
+```
+
+another example as follows
+
+```
+// Create an `enum` to classify a web event. Note how both
+// names and type information together specify the variant:
+// `PageLoad != PageUnload` and `KeyPress(char) != Paste(String)`.
+// Each is different and independent.
+enum WebEvent {
+    // An `enum` may either be `unit-like`,
+    PageLoad,
+    PageUnload,
+    // like tuple structs,
+    KeyPress(char),
+    Paste(String),
+    // or c-like structures.
+    Click { x: i64, y: i64 },
+}
+
+// A function which takes a `WebEvent` enum as an argument and
+// returns nothing.
+fn inspect(event: WebEvent) {
+    match event {
+        WebEvent::PageLoad => println!("page loaded"),
+        WebEvent::PageUnload => println!("page unloaded"),
+        // Destructure `c` from inside the `enum`.
+        WebEvent::KeyPress(c) => println!("pressed '{}'.", c),
+        WebEvent::Paste(s) => println!("pasted \"{}\".", s),
+        // Destructure `Click` into `x` and `y`.
+        WebEvent::Click { x, y } => {
+            println!("clicked at x={}, y={}.", x, y);
+        },
+    }
+}
+
+fn main() {
+    let pressed = WebEvent::KeyPress('x');
+    // `to_owned()` creates an owned `String` from a string slice.
+    let pasted  = WebEvent::Paste("my text".to_owned());
+    let click   = WebEvent::Click { x: 20, y: 80 };
+    let load    = WebEvent::PageLoad;
+    let unload  = WebEvent::PageUnload;
+
+    inspect(pressed);
+    inspect(pasted);
+    inspect(click);
+    inspect(load);
+    inspect(unload);
+}
+
+```
+
+You can create alias using `type`
+
+```
+enum VeryVerboseEnumOfThingsToDoWithNumbers {
+    Add,
+    Subtract,
+}
+
+// Creates a type alias
+type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
+
+fn main() {
+    // We can refer to each variant via its alias, not its long and inconvenient
+    // name.
+    let x = Operations::Add;
+}
+
+```
+another alias is `self` within `impl` block
+
+```
+enum VeryVerboseEnumOfThingsToDoWithNumbers {
+    Add,
+    Subtract,
+}
+
+impl VeryVerboseEnumOfThingsToDoWithNumbers {
+    fn run(&self, x: i32, y: i32) -> i32 {
+        match self {
+            Self::Add => x + y,
+            Self::Subtract => x - y,
+        }
+    }
+}
+```
+https://doc.rust-lang.org/rust-by-example/custom_types/enum.html
+
+### union
+
+we do not know what is in there so use `unsafe`
+access the inside of union is `.`
+
+for allocate piece of memory
+
+```
+union IntOrFloat 
+{
+  i i32,
+  f: f32
+}
+
+fn main (){
+  let mut iof = IntOrFloat {i:123};
+  iof.i = 234
+  let value = unsafe {iof.i}; // because we do not know if it ire really int was assigned
+  println!("iof.i {}", value);
+}
+```
+you could also do 
+```
+fn process_value(iof: IntOrFloat)
+{
+  unsafe {
+    match iof {
+      IntOrFloat {i: 42}=>{
+        println!("meaning of life value");
+      }
+      IntOrFloat {f} => {
+        println ("Value = {}",f);
+      }
+    }
+  }
+}
 
 
+fn main (){
+  let mut iof = IntOrFloat {i:123};
+  iof.i = 234
+  let value = unsafe {iof.i}; // because we do not know if it ire really int was assigned
+  println!("iof.i {}", value);
+  process_value (IntOrFloat{i:42});
+}
+
+```
+Above it if you add something like `process_value (IntOrFloat{i:5});`
+
+Since it does not match to the first, it will fall back to the second option of match
+then create a wrong float - complete nonsense.
+
+-----
+go over again below
+### option
+
+presence or absense of value
+
+`option<t>`
+let result:option<f64> = 
 
 
+`some(z) none`
+
+you can use if let some(z) to deconstructing
+
+### Array
+
+you need to know how many elements
 
 
+### String
+
+```
+fn strings()
+{
+    
+    let s:&'static str = "hello!";
+    println!("{}", s);
+    
+    for c in s.chars().rev(){
+    println!("{}", c);
+    
+    }
+        if let Some(x) = s.chars().nth(0){
+        println!("last letter is {}", x);
+    }
+    let mut letters = String::new();
+    let mut a = 'a' as u8;
+    while a <= ('z' as u8){
+        letters.push(a as char);
+        letters.push_str(",");
+        a +=1;
+        println!("{}", letters);
+    }
+    // let ou:&str = &letters;
+    
+    // concat 
+    // String + str is finr
+    //let strings = letters + &letters;   
+}
+
+fn main (){
+    strings();
+
+}
+
+```
+
+### Tuple
+
+```
+// tuple is correction of several values
+// types can be different
+
+fn sum_of_it(x:i32, y:i32)->(i32, i32){  // making tuple here
+    (x+y, x*y)
+}
 
 
-
-
-
-
-
-
-
-
-
+fn tuples(){
+    let x = 3;
+    let y = 4;
+    let sp = sum_of_it (x,y);
+    
+    println!("sp = {:?}", sp);  //sp = (7, 12)
+}
+ 
+  fn main(){
+      
+      tuples();
+  }
+```
 
 
 
