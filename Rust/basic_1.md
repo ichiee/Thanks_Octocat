@@ -28,6 +28,7 @@ a`.`len() - accessing array function
 
 `"{}"` placeholder 
 
+sp `.` 0 to access tuple data
 
 
 
@@ -54,7 +55,7 @@ You could also cargo init which use the actial folder you are init, and also cre
 
 You can run it by
 
-`cargo run`. 
+`cargo run` 
 
 This meands compile and run
 
@@ -723,6 +724,8 @@ fn main (){
 
 ### Tuple
 
+it is abit like array but can have different data tyoe 
+
 ```
 // tuple is correction of several values
 // types can be different
@@ -738,6 +741,23 @@ fn tuples(){
     let sp = sum_of_it (x,y);
     
     println!("sp = {:?}", sp);  //sp = (7, 12)
+    println!("{0} + {1} = {2}, {0} * {1} = {3}", x, y, sp.0, sp.1);  
+    
+    // destructurling
+    let (a, b) = sp;
+    println!("a = {}, b={}", a, b);
+    
+    let sp2 sum_of_it(4,7);
+    let combined = (sp1, sp2);
+    println! ("{:?}", conbined);
+    printls! ("last elem = {}", (conbined.1).1);
+    
+    // destructuring again
+    let ((c, d), (e.f)) = conbined;
+
+    let foo (true, 42.0, -1i8);
+    // you make tuple of single elements
+    let boo = (12,) // otherwise recognised as int
 }
  
   fn main(){
