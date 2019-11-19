@@ -30,7 +30,7 @@ a`.`len() - accessing array function
 
 sp `.` 0 to access tuple data
 
-
+`[]` - array. HashMap`
 
 -----
 
@@ -767,9 +767,34 @@ fn tuples(){
 ```
 
 
+### HashMapstd::collections::HashMAp
 
 
+key value pair
+Pretty similar to the way you access to array
 
+```
+use std::collections::HashMap;
+
+fn main(){
+    
+    let mut shapes = HashMap::new();
+    shapes.insert(String::from ("triangle"), 3);
+    shapes.insert(String::from ("square"), 4);
+    
+    println!("a square has {} sides",
+        // access it with []
+        shapes["square".into()]);
+        
+        for (key, value) in &shapes {
+            println!("{} has {} value", key, value);
+        }
+        // this is over riding
+        shapes.insert("square".into(), 5);
+        // it actually print out like for loops
+        println!("{:?}", shapes);
+}
+```
 
 
 
