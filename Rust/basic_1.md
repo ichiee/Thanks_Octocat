@@ -30,7 +30,21 @@ a`.`len() - accessing array function
 
 sp `.` 0 to access tuple data
 
-`[]` - array. HashMap`
+`[]` - array. HashMap
+
+the module system as providing name-spacing and importing.
+
+`{}` struct
+
+`()` tuple (different data type can be elements)
+
+`HashMap::new();` hashmap initializing - key value
+
+`,..` on matching struct to ignore any other elemets on struct
+
+
+` -> ` in fn means return type
+
 
 -----
 
@@ -246,7 +260,7 @@ fn origin ()-> point
   point {x: 0.0, y:0.0}
 }
 
-pub fn stack_and_heP()
+pub fn stack_and_heap()
 {
   let P1 = origin();   // this contents the point itself
   let P2 = Box:: NEW((origin()));  // this contents just Box that contents pointer to origin
@@ -421,8 +435,9 @@ you cannot use `..` in match
 
 it will be used for patturn match 
 
-### Data structure !!!!!
+## Data structure !!!!!
 
+### struct
 
 use keyword `struct`
 
@@ -796,12 +811,124 @@ fn main(){
 }
 ```
 
+### Pattern matching
+
+```
+#[allow(dead_code)]
+#[allow(unused_variables)]
+
+use std::mem;
+
+fn how_many(x:i32) ->&'static str
+{
+    match x
+    {
+        0 => "no",
+        1 | 2 => "one or two",
+        12 => "dozen",
+        z @ 9...11 => "lots ",
+        _ if (x % 2 == 0) => "some",
+        _=> "a few" // default fall back
+    }
+}
+
+pub fn pattern_matching()
+{
+    for x in 0..13
+    {
+        println!("{}: I have {} oranges", x, how_many (x));
+    }
+    
+    let point = (0,0);
+    match (point){
+        (0,0)=> println! ("origin"),
+        (0, y) => println! ("x axis, y = {}", y),  // intialising y on here
+        (x, 0) => println! ("y axis, x = {}", x),
+        (ref mut x, 0) => println! ("y axis, x = {}", x),
+        (x, y) => println! ("x = {}, y = {}", x, y),
+
+    }
+}
+
+
+fn main (){
+    pattern_matching()
+}
+```
+
+### generics
+
+
+you can make a point with anytype
+
+```
+struct Point<T>
+{
+    x: T,
+    y: T
+}
+
+fn generics (){
+    let a = Point {x:0, y:0};
+    
+    // let a:<i32> = Point {x:0, y:0};  you can be explicit
+    let a = Point {x:1.2, y:2.2};
+}
+```
+or like
+
+```
+struct Point<T,V>
+{
+    x: T,
+    y: V
+}
+fn generics (){    
+    let a:<i32, u16> = Point {x:0, y:0};  you can be explicit
+}
+```
+
+obviously, you can get ridf of most of explicit type and get the rust to do the job.
+
+
+## Function
+
+### function
+function can take parameters
+
+fc fcname (param: i32) -> i32
 
 
 
 
 
+unction 
 
+### method
+you can impliment method using `impl`
+you can define right after stuck using &self to refer the struct 
+The impl keyword is primarily used to define implementations on types
+
+```
+struct Example {
+    number: i32,
+}
+
+impl Example {
+    fn boo() {
+        println!("boo! Example::boo() was called!");
+    }
+
+    fn answer(&mut self) {
+        self.number += 42;
+    }
+
+    fn get_number(&self) -> i32 {
+        self.number
+    }
+}
+```
+### closure
 
 
 -----
