@@ -45,6 +45,21 @@ the module system as providing name-spacing and importing.
 
 ` -> ` in fn means return type
 
+`{}` you can release the variable only once the {} has been close, the scope is one larger than you think
+
+
+-----
+
+Do not confused reference with C language
+
+Rust reference (&) looks like &val this is equivelant to pointer in C (*) - almost
+
+When you call foo.bar(), or access foo.bar, rust will automatically dereference foo if it has a type of &Foo.
+So one with & is in `Stack`?
+
+
+
+
 
 -----
 
@@ -929,6 +944,108 @@ impl Example {
 }
 ```
 ### closure
+
+Closures in Rust, also called lambda expressions or lambdas
+functions that can capture the enclosing environment
+
+function can be called and assigned to variable just like other langeges
+is within it
+```
+let closure_inferred  = |i     |          i + 1  ;
+```
+so it does using || instead of () around input variables.
+```
+fn main() {
+    // Increment via closures and functions.
+    fn  function            (i: i32) -> i32 { i + 1 }
+
+    // Closures are anonymous, here we are binding them to references
+    // Annotation is identical to function annotation but is optional
+    // as are the `{}` wrapping the body. These nameless functions
+    // are assigned to appropriately named variables.
+    let closure_annotated = |i: i32| -> i32 { i + 1 };
+    let closure_inferred  = |i     |          i + 1  ;
+
+    let i = 1;
+    // Call the function and closures.
+    println!("function: {}", function(i));
+    println!("closure_annotated: {}", closure_annotated(i));
+    println!("closure_inferred: {}", closure_inferred(i));
+
+    // A closure taking no arguments which returns an `i32`.
+    // The return type is inferred.
+    let one = || 1;
+    println!("closure returning one: {}", one());
+
+}
+
+```
+
+on closure, if you borrow the variable from out side scope, you need to wait till the } placed pefore using back again
+
+```
+fn closures()
+{
+    let plus_one = |x:i32|x+1;
+    let a = 6;
+    println! ("{}+1 = {}", a, plus_one(a));
+    
+    let mut two = 2;
+    { //this makes borrow_two works
+        let plus_2 = |x:i32|
+        {
+            let mut z = x;
+            z += two;
+            z // return value
+        };
+        println! ("{}+2 = {}", a, plus_2(a));
+    } // this makes bowwow two works
+    let borrow_two = &mut two;
+}
+
+fn main (){
+    closures();
+}
+
+```
+
+
+essentially, using these are good practice
+
+T: by value. (making a copy of it)
+T& by reference
+&mut &   by mutable reference
+
+```
+fn closures()
+{
+    let plus_three = |x:&mut i32| *x +=3; // mutable reference &mut, dereference
+    let mut f = 12;
+    plus_three(&mut f); 
+    println!("f = {}", f);
+}
+
+fn main (){
+    closures();
+}
+```
+
+
+```
+fn closures()
+{
+    let plus_three = |mut x: i32| x +=3; // make temporary valiable x mut
+    let mut f = 12;
+    plus_three(f); 
+    println!("f = {}", f);
+}
+
+fn main (){
+    closures();
+}
+```
+
+
 
 
 -----
