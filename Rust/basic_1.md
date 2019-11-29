@@ -876,6 +876,10 @@ fn main (){
 
 you can make a point with anytype
 
+`<T>` is generic parameter - because you do not wana specify the type
+you can ise like below as type param
+
+
 ```
 struct Point<T>
 {
@@ -1044,6 +1048,89 @@ fn main (){
     closures();
 }
 ```
+
+
+### Strings
+
+there are two string types
+
+`&'static str` and `String`
+
+&str is just a `string slice` which contains just a pointer to `a region of string bytes and the length of the region` 
+The ‘static lifetime indicates that the string slice will exist throughout the duration of the program.
+A string slice has a fixed size, and cannot be mutated.
+
+"Hello there." is a string literal and its type is &'static str. A string literal is a string slice that is statically allocated, meaning that it’s saved inside our compiled program, and exists for the entire duration it runs.
+
+so 
+
+```
+let greeting = "Hello there."; // greeting: &'static str
+```
+The greeting binding is a reference to this statically allocated string
+
+
+while String is heapallocated contents, ptr to actual string, length, momory bytes 
+- this is much more complex than a string slice.
+
+Strings are commonly created by converting from a string slice using the to_string method.
+
+```
+let mut s = "Hello".to_string(); // mut s: String
+```
+
+Strings will coerce into &str with an &:
+
+```
+fn takes_slice(slice: &str) {
+    println!("Got: {}", slice);
+}
+
+fn main() {
+    let s = "Hello".to_string();  //  String
+    takes_slice(&s);               // &s is $str
+}
+```
+
+Cannot access in index
+
+access like this
+
+```
+let dog = hachiko.chars().nth(1);  // kinda like hachiko[1]
+```
+
+however
+
+You can get a slice of a string with slicing syntax:
+
+```
+let dog = "hachiko";
+let hachi = &dog[0..5];
+```
+If you have a String, you can concatenate a &str to the end of it:
+
+But if you have two Strings, you need an &:
+
+```
+let hello = "Hello ".to_string();
+let world = "world!".to_string();
+
+let hello_world = hello + &world;
+```
+
+This is because &String can automatically coerce to a &str
+
+strings are not null-terminated and can contain null bytes.
+
+
+
+
+
+
+
+
+### trait
 
 
 
