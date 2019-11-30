@@ -504,7 +504,7 @@ fn enum()
   }
 }
 ```
-so essentially what it is that enum is like data type,
+so essentially what it is that `enum is like data type`,
 In the data type, you pick Red,here `::` is referencing
 
 Then it check what is matching
@@ -1125,13 +1125,88 @@ strings are not null-terminated and can contain null bytes.
 
 
 
+### impl
 
+define implementations on types 
 
+```
+struct Example {
+    number: i32,
+}
 
+impl Example {
+    fn boo() {
+        println!("boo! Example::boo() was called!");
+    }
+
+    fn answer(&mut self) {
+        self.number += 42;
+    }
+
+    fn get_number(&self) -> i32 {
+        self.number
+    }
+}
+```
+
+Inherent implementations are standalone, while trait implementations are used to implement traits for types, or other traits.
+
+so you can add like this after the code above
+
+```
+trait Thingy {
+    fn do_thingy(&self);
+}
+
+impl Thingy for Example {
+    fn do_thingy(&self) {
+        println!("doing a thing! also, number is {}!", self.number);
+    }
+}
+```
 
 
 ### trait
+A trait can be implemented by multiple types, and in fact new traits can provide implementations for existing types
+https://www.youtube.com/watch?v=grU-4u0Okto
 
+Struct is perfect name and package together to make meaning group
+Let's use game character as an example
+
+you can instance of the struct 
+
+```
+let my_dwarf = Dwarf {
+name:String::from("NellDwarf")"
+};
+```
+
+give the constitution by trait
+
+```
+pub trait Constitution {
+  fn constitution_bonus(&self)->u8;
+}
+```
+we have now `trait` defined
+we nee dthis implimet constitution trait on our dwarf struct.
+it shoulh have all the functionarity of this trait but be able to 
+override a part as needed
+it leave s to up to whatever struct impliments this trait 
+let's impliment that trait
+
+```
+impl Constitution for Dwarf{
+  fn constitution_bonus(&self)-> U8 {
+   2
+  } 
+}
+```
+this gives bonus 2 whenever it called
+
+```
+my_dwarf.constitution_bones();  // 2
+```
 
 
 
