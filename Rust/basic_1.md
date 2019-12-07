@@ -1171,6 +1171,10 @@ A trait can be implemented by multiple types, and in fact new traits can provide
 https://www.youtube.com/watch?v=grU-4u0Okto
 
 Struct is perfect name and package together to make meaning group
+
+impl is for the struct, this can be done via trait. trait
+the trait can be used for more than one struct
+
 Let's use game character as an example
 
 you can instance of the struct 
@@ -1189,7 +1193,8 @@ pub trait Constitution {
 }
 ```
 we have now `trait` defined
-we nee dthis implimet constitution trait on our dwarf struct.
+
+we need this implimet constitution trait on our dwarf struct.
 it shoulh have all the functionarity of this trait but be able to 
 override a part as needed
 it leave s to up to whatever struct impliments this trait 
@@ -1208,6 +1213,340 @@ this gives bonus 2 whenever it called
 my_dwarf.constitution_bones();  // 2
 ```
 
+and so on,
+
+So `Enums` and `Struct` hold Data
+`Trait` holds behaviour, which can be impliment for the Data (struct)
+
+Trait object can be hold both traditional trait (behaviour and data (pointer)
+You CANNNOT ADD DATA to a trait object. It can point at one place on specific time
+
+Check this example
+
+
+
+This is a type of spell
+
+```
+struct Cantrip{}
+struct Transmutation{}
+struct Enchantment{}
+struct Necromacy{}
+```
+avove all need to be cast
+
+```
+pub trait Cast {
+  fn cast(&self);
+}
+```
+So now need cast for each spell 
+
+```
+
+imple Cast for Cantrip {
+  fn cast(&self){
+  // details of casting a cantrip spell
+  }
+}
+
+imple Cast for Transmutation {
+  fn cast(&self){
+  // details of casting a Transmutation spell
+  }
+}
+
+...// and so on
+```
+
+we wanna store that on one place! let's call it spell book!
+
+```
+struct Spellbook{
+  pub spells:Vec<Box<Cast>>.   // This means that any type that implements that on Cast trait
+
+ // Vex<T> -> group objects of certin type
+ // Box is a pointer point it at value on heap
+
+}
+```
+It take severy spell on Spell book and interate over itthen acst each one afetr the other
+
+
+```
+impl Spellbook {
+  pub fn run(&self){
+    for spell in self.spells.iter(){
+      spell.cast(); // this is cast spell then 
+    } 
+  }
+}
+```
+let's see
+
+```
+let spell_book =  Spellbook{
+                    spells: vec![               // different type of spells  as long as implemet on cast
+                    Box::new(Cantrip{}),
+                    Box::new(Transmutation {}),
+                    Box::new(Enchantment {}),
+                    Box::new(Necromacy {}),
+                    ],
+                  };
+spell_book.run();
+```
+
+it is like this 
+
+struct  ---> need `impl` to define fn to use it - <struct val>`.`<fn name>
+struct and trait (with fn) ---- > need `imple` with the same `fn` for the trait and using <struct val>`.`<fn name> to access the impl
+
+So here there is a `Spellbook` struct `data:Vec<Box<Cast>>`
+just instanciate with any spells that will be on the Spellbook (has to implemet Cast for it).
+
+if you use `run` on it, it will call `cast` fn defined in `trait` for each spell(struct) such as `Cantrip`.
+
+so trait can be a binder -- even parent node to bind  each struct if they share the same Trait.
+this become visible when another struct wants to call a different structs, you can call them via `trait`,
+if 
+
+### check out 10.2 and 17.2 on rust programming language 2nd edition
+
+
+trait can be have default implimentation there if not compiler will be showing  error
+
+
+```
+trait Animal  // this is the top of tree
+{
+    fn name (&self)-> &'static str;
+    
+    fn talk(&self)
+    {
+        println!("{} cannot talk", self.name());
+    }
+    
+}
+
+struct Human // child of animal
+{
+    name: &'static str  // str literal
+}
+
+impl Animal for Human 
+{
+   fn name(&self) -> &'static str
+   {
+       self.name
+   }
+}
+
+fn traits ()
+{
+    let h = Human{ name: "John"};
+    h.talk();
+}
+
+fn main(){
+    traits();
+}
+```
+
+you can change animal to
+
+```
+impl Animal for Human 
+{
+   fn name(&self) -> &'static str
+   {
+       self.name
+   }
+   
+   fn talk (&self)
+   {
+       println!("{} says hello", self.name());
+   }
+}
+```
+
+You can create struct Cat and then impliment for Cat
+
+
+Now you can also create a ctreste function adding these
+
+train Animal
+
+```
+fn create(name: &'static str) -> Self;
+```
+
+struct Human
+
+```
+fn create(name: &'static str) -> Human
+```
+
+fn struct
+
+```
+let h = Human::create("john");
+```
+
+however if you wanna do 
+
+```
+let h = Animal::create("john"); 
+```
+compiler complain as there is no data type as it is returning to Self
+but you can do this below by define type - Human struct
+
+```
+let h:Human = Animal::create("john");
+```
+
+so if you are not haveing &self as argument, you can use trait as it is as long as the type defined
+
+```
+trait Animal  // this is the top of tree
+{
+    fn create(name: &'static str) -> Self;
+    
+    fn name (&self)-> &'static str;
+    
+    fn talk(&self)
+    {
+        println!("{} cannot talk", self.name());
+    }
+    
+}
+
+struct Human // child of animal
+{
+    name: &'static str  // str literal
+}
+
+impl Animal for Human 
+{
+    fn create(name: &'static str) -> Human // creating Human struct variable - it is self on animaltrait 
+    {
+        Human{name: name}
+    }
+    fn name(&self) -> &'static str
+    {
+        self.name
+    }    
+   
+    fn talk (&self)
+    {
+       println!("{} says hello", self.name());
+   }
+}
+
+fn traits ()
+{
+    //let h = Human{ name: "John"};
+    let h = Human::create("john");
+    h.talk();
+}
+
+fn main(){
+    traits();
+}
+```
+
+Anothe good syntax explanation
+https://users.rust-lang.org/t/confusion-struct-impl-self-trait/3941/2
+
+
+
+```
+     +-----------------------+
+     |                       |
+   player.incr_health();     |
+              |              |
+              V              V
+  Player::incr_health(&mut player);
+```
+
+
+### into
+
+Trait called into
+
+```
+struct Person {
+    name: String
+}
+
+impl Person 
+{
+    fn new(name: &str)-> Person
+    {
+        Person {name: name.to_string() }       
+    }
+}
+
+fn main()
+{
+    let john = Person::new("John");
+    let name: String = "Jane".to_string();     // make it as String
+    let jane = Person::new (name.as_ref());   // need to bring it abck as &str
+}
+```
+
+into trait - automatic conversion
+
+
+```
+fn new<S: Into<String>>(name: S) -> Person   // type S is converting into String
+{
+    Person {name: name.into()}
+}
+```
+
+Another way to do is
+
+```
+fn new<S>(name: S) -> Person
+    where S: Into<String>
+{
+    Person {name: name.into()}
+}
+```
+
+### Drop
+
+it is a distructor
+
+
+```
+struct Creature{
+    name : String
+}
+
+
+impl Creature {
+    
+    fn new (name: &str)-> Creature
+    {
+        println! ("{} enters a game", name);
+        Creature {name: name.into()}
+    }
+}
+
+
+impl Drop for Creature{
+    fn drop (&mut self){
+        println! ("{} is dead", self.name);
+    }
+}
+
+
+fn main(){
+    let ichi = Creature::new("ichi");
+    println! ("daaaa");
+}
+```
 
 
 -----
