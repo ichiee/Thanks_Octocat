@@ -47,4 +47,34 @@ let my_string = "27".to_string();  // `parse()` works with `&str` and `String`!
 let my_int = my_string.parse::<i32>().unwrap();
 ```
 
+### Vec 
+A contiguous growable array type
+https://doc.rust-lang.org/std/vec/struct.Vec.html
+
+
+You can instanciate straight
+
+```
+let mut v = vec!();
+```
+Struct vec has so many function any type of sort / ascii / chunks / rotation
+reasons of many function is you need to have 
+
+you can also make it to string from vec by using `join`
+
+
+### Misk
+
+#### interater on for loop
+
+you can reverse it by using .rev()
+https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.rev
+
+```
+for x in (0..100).rev() {
+    println!("{}", x);
+}
+```
+
+
 
