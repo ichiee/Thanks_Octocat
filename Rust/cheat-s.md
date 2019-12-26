@@ -83,6 +83,29 @@ reasons of many function is you need to have
 
 you can also make it to string from vec by using `join`
 
+you can do
+
+`vec.iter().any(<it is like true and false>)`
+
+example
+
+```
+  (1..limit).
+    filter(
+      |x| factors.iter().any(
+        |f| f != &0 && x % f == 0
+      )
+    ).
+    sum()
+}
+```
+
+### iter
+
+iter is trail
+
+it also have impl sum
+
 
 ### String
 
@@ -119,6 +142,15 @@ let newstr = s.join(" ");
 ```
 here, s.join(" ") is becoming &str so if you need String
 
+5: use format!
+
+```
+let j = "sss";
+   
+let s = format!("ichi {}", j);
+```
+here j is $str s is std::string::String
+
 
 #### Format!
 https://doc.rust-lang.org/std/macro.format.html
@@ -149,5 +181,176 @@ for x in (0..100).rev() {
 }
 ```
 
+#### Range
+Struct std::ops::Range
+
+It is astruct .. showing the range of the number
+
+```
+assert_eq!((3..5), std::ops::Range { start: 3, end: 5 });
+```
+
+
+
+
+------
+
+### some form exercism
+
+proverb this is good
+
+as_str()
+you can use use to when explicitly extract the string slice containing the string.  
+in other word, when &str does notwirk from String you can use it 
+you can simply use it instead of &str
+
+```
+pub fn build_proverb(list: &[&str]) -> String {
+    let mut proverb = String::new();
+    let end = if list.len() > 0 {
+        list.len() - 1
+    } else {
+        0
+    };
+
+    for i in 0..end {
+        let line = make_line(list[i], list[i+1]);
+        proverb.push_str(line.as_str());
+        proverb.push_str("\n");
+    }
+
+    if list.len() > 0 {
+        let last_line = format!("And all for the want of a {}.", list[0]);
+        proverb.push_str(last_line.as_str());
+    }
+
+    proverb
+}
+
+fn make_line(first: &str, second: &str) -> String {
+    format!("For want of a {0} the {1} was lost.",
+        first,
+        second
+    )
+}
+```
+
+fer did very good one too
+
+```
+pub fn build_proverb(list: &[&str]) -> String {
+    match list.len() {
+        0 => String::from(""),
+        1 => format!("And all for the want of a {}.", list[0]),
+        _ => {
+            vec![list
+                .windows(2)
+                .map(|words| build_verse(words[0], words[1]))
+                .collect::<Vec<String>>()
+                .join("\n"),
+                
+                format!("And all for the want of a {}.", list[0])
+                ].join("\n")
+        }        
+    }
+}
+
+pub fn build_verse(want: &str, lost: &str) -> String {
+
+    ["For want of a ",
+    want,
+    " the ",
+    lost,
+    " was lost."].concat()
+
+}
+```
+I simply like his beer solution too
+
+```
+pub fn verse(n: u32) -> String {
+    match n {
+        0 => {
+            "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n".to_string()
+        },
+        1 => {
+            "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n".to_string()
+        },
+        2 => {
+            "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n".to_string()
+        },
+        _ => {
+            let mut result = n.to_string();
+            result.push_str(" bottles of beer on the wall, ");
+            result.push_str(&n.to_string());
+            result.push_str(" bottles of beer.\nTake one down and pass it around, ");
+            result.push_str(&(n-1).to_string());
+            result.push_str(" bottles of beer on the wall.\n");
+            
+            result
+        }
+    }
+}
+
+pub fn sing(start: u32, end: u32) -> String {
+    // unimplemented!("sing verses {} to {}, inclusive", start, end)
+    let range = (end..=start).rev();
+    
+    let result : Vec<String> = range.map(|x| verse(x)).collect();
+    
+    result.join("\n")
+}
+```
+
+Some math solution
+
+```
+pub fn square_of_sum(n: u32) -> u32 {
+    (1..=n).sum::<u32>().pow(2)
+}
+
+pub fn sum_of_squares(n: u32) -> u32 {
+    (1..=n).map(|x| x.pow(2) ).sum()
+}
+
+pub fn difference(n: u32) -> u32 {
+    square_of_sum(n) - sum_of_squares(n)
+}
+```
+
+I love this 
+Sum of multiples
+
+```
+pub fn sum_of_multiples(limit: u32, factors: &[u32]) -> u32 {
+  (1..limit).
+    filter(
+      |x| factors.iter().any(
+        |f| f != &0 && x % f == 0
+      )
+    ).
+    sum()
+}
+```
+
+Square one
+
+```
+pub fn square_of_sum(n: u32) -> u32 {
+    square((1..=n).sum())
+}
+
+pub fn sum_of_squares(n: u32) -> u32 {
+    (1..=n).map(|i| square(i)).sum()
+}
+
+pub fn difference(n: u32) -> u32 {
+    square_of_sum(n) - sum_of_squares(n)
+}
+
+fn square(n: u32) -> u32 {
+    n.pow(2)
+}
+```
 
 
