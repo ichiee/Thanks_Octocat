@@ -1551,3 +1551,43 @@ fn main(){
 
 -----
 
+
+### HTTP reqwesrt crate
+
+// add [depencancies]
+// reqwest "0.8.3"
+// on toml file
+
+
+```
+    match request::get("http://youtubr,local/hello"){
+        Ok (mut response) => {
+        // check 200 ok
+        
+        if request.status() == reqwesrt::SatusCode::OK{
+            match response.text(){
+                Ok(text) => println! ("Resoinse Texr {}", text),
+                Err(_) => println ("Could not read the response text!")
+            }
+            
+            
+        }else{
+            println!("response was not 200 Ok");
+        }
+            
+        }
+        Err(_) => println!("couldnot make the requesr"){
+            
+        }
+    }
+```
+
+This can be replaced like this
+
+```
+    let res_text = reqwwers::get("http://youtube.local/hello")
+    .expect("cpound not do the request")
+    .text().expect("cound not read response text");
+    
+    println!("respnse text {}", res_text);
+```
