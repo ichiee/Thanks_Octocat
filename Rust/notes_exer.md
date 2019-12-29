@@ -354,3 +354,18 @@ fn square(n: u32) -> u32 {
 ```
 
 
+
+#### Debug `#[derive(Debug)]`
+https://doc.rust-lang.org/stable/rust-by-example/hello/print/print_debug.html
+
+```
+// This structure cannot be printed either with `fmt::Display` or
+// with `fmt::Debug`.
+struct UnPrintable(i32);
+
+// The `derive` attribute automatically creates the implementation
+// required to make this `struct` printable with `fmt::Debug`.
+#[derive(Debug)]
+struct DebugPrintable(i32);
+
+```
