@@ -369,3 +369,70 @@ struct UnPrintable(i32);
 struct DebugPrintable(i32);
 
 ```
+### bob
+### match can use just like if
+
+```
+fn is_uppercase_and_contains_letter(message: &str) -> bool {
+    message == message.to_uppercase() && message.chars().any(|c| c.is_alphabetic())
+}
+
+pub fn reply(message: &str) -> &str {
+    match message.trim() {
+        m if m.ends_with('?') && is_uppercase_and_contains_letter(m) => {
+            "Calm down, I know what I'm doing!"
+        }
+        m if m.ends_with('?') => "Sure.",
+        m if is_uppercase_and_contains_letter(m) => "Whoa, chill out!",
+        m if m.is_empty() => "Fine. Be that way!",
+        _ => "Whatever.",
+    }
+}
+```
+
+my first attempt
+
+```
+pub fn reply(message: &str) -> &str {
+
+    if message.trim().is_empty(){
+        return  "Fine. Be that way!";
+        }
+    else if  message == message.to_uppercase() && message.chars().any(char::is_alphabetic){
+        if '?' == message.chars().last().unwrap(){
+        return  "Calm down, I know what I'm doing!";
+        } else {
+        return "Whoa, chill out!";
+        }
+    }
+    else if '?' == message.trim().chars().last().unwrap(){
+        return "Sure.";
+    }
+    else { 
+        return "Whatever.";
+    }
+
+}
+//https://exercism.io/my/solutions/6296ae5f0cb548eab042183136467270
+```
+
+But this is so much clooer.
+
+Holding boolean valuee on variable then using `_ if` to check on match
+
+```
+pub fn reply(message: &str) -> &str {
+    let message = message.trim();
+    let asking = message.ends_with("?");
+    let yelling =
+        message.chars().any(char::is_alphabetic) && !message.chars().any(char::is_lowercase);
+
+    match message {
+        "" => "Fine. Be that way!",
+        _ if asking && yelling => "Calm down, I know what I'm doing!",
+        _ if asking => "Sure.",
+        _ if yelling => "Whoa, chill out!",
+        _ => "Whatever.",
+    }
+}
+```
