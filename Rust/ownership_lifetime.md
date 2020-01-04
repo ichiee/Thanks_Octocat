@@ -307,5 +307,31 @@ Examples
 Box is in stack but the value point at Box is on heap &val
 
 
+---
+
+### Life timehings 
+
+https://www.udemy.com/course/rust-lang/learn/lecture/4673970#overview
+
+'static ----- live global this is a keyword 
+
+anything startes `'` - indicate life time
+default use is 'a
+
+
+
+#### Life time in structure
+
+https://www.udemy.com/course/rust-lang/learn/lecture/15250304#overview
+
+
+
+
+### When to use clone on vec
+
+https://doc.rust-lang.org/std/clone/trait.Clone.html
+
+a.clone_from(&b) is equivalent to a = b.clone() in functionality, but can be overridden to reuse the resources of a to avoid unnecessary allocations.
+
 
 
