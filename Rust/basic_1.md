@@ -1591,3 +1591,61 @@ This can be replaced like this
     
     println!("respnse text {}", res_text);
 ```
+
+
+### fmt::Display / fmt::Debug
+https://qiita.com/gyu-don/items/aa61c5bbc1017bd3171c
+
+fmt::Display trait is 
+
+{} - fmt::Display will be used
+{:?} - fmt::Debug will be used
+
+Asserts that two expressions are equal to each other (using PartialEq).
+https://doc.rust-lang.org/core/macro.assert_eq.html
+
+Trait core::cmp::PartialEq
+This is for partially equal. you will need that to derive when you testing using `assert_eq!`
+
+ `assert_eq!` is implimert like below.
+It uses {:?} there for you need to have derive of debug as well
+
+std::assert_eq![-] [+] [src]
+
+```
+
+( $ left : expr , $ right : expr ) => (
+{
+match ( & ( $ left ) , & ( $ right ) ) {
+( left_val , right_val ) => {
+if ! ( * left_val == * right_val ) {
+panic ! (
+"assertion failed: `(left == right)` \
+                           (left: `{:?}`, right: `{:?}`)"
+, * left_val , * right_val ) } } } } )
+```
+
+
+format!  --- 
+https://doc.rust-lang.org/std/fmt/index.html
+
+```
+format!("Hello");                 // => "Hello"
+format!("Hello, {}!", "world");   // => "Hello, world!"
+format!("The number is {}", 1);   // => "The number is 1"
+format!("{:?}", (3, 4));          // => "(3, 4)"
+format!("{value}", value=4);      // => "4"
+format!("{} {}", 1, 2);           // => "1 2"
+format!("{:04}", 42);             // => "0042" with leading zeros
+```
+
+
+a fill alignment
+
+```
+assert_eq!(format!("Hello {:<5}!", "x"),  "Hello x    !");
+assert_eq!(format!("Hello {:-<5}!", "x"), "Hello x----!");
+assert_eq!(format!("Hello {:^5}!", "x"),  "Hello   x  !");
+assert_eq!(format!("Hello {:>5}!", "x"),  "Hello     x!");
+```
+
