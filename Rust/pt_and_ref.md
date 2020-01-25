@@ -7,6 +7,35 @@ https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
 
 see the above if you like to know more
 
+
+-----
+
+Type of Pointers
+
+1: Samrt Pointer
+2: Reference
+
+https://doc.rust-lang.org/book/ch15-00-smart-pointers.html
+
+Smart ponter is a pointer which contents more data such as capacity and length.
+It lives in stack and point at the value in heap (which is growable)
+Reference is another pointer which simply point at the value on heap.
+A Rust slice is always used through a reference and doesn't own its data.
+
+Example of smart pointer is Box, String, Vec, Rc, Arc
+
+
+Side note:
+
+There are two type of reference 
+
+1: mutable reference
+2: Imuatable reference - it is under shared ownership
+
+-----
+
+### String
+
 ```
 let s1 = String::from("hello");
 ```
