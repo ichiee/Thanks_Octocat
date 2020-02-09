@@ -1,8 +1,10 @@
+
+DOT DSL 
 Good solution:
 
 https://exercism.io/tracks/rust/exercises/dot-dsl/solutions/c4f0945fb17a4e668901dd2654af5387
 
-This is the easiest understand as structures.
+This is the easiest architect.
 
 ```
 #[macro_use]
@@ -19,8 +21,11 @@ pub mod graph {
         pub edges: Vec<Edge>,
         pub attrs: HashMap<String, String>,
     }
-
+    
+    /* they are insrructer and */
     impl Graph {
+        
+          /* Simple constructor */
         pub fn new() -> Self {
             Graph {
                 nodes: vec![],
@@ -28,7 +33,9 @@ pub mod graph {
                 attrs: hashmap![],
             }
         }
-
+    
+        /* using itself (not &self), and Nodes strict from node module */
+        /* &[T] is used for reference to the data T, here Node data can be used on nodes as Vec */
         pub fn with_nodes(self, nodes: &[Node]) -> Self {
             Graph {
                 nodes: Vec::from(nodes),
@@ -42,7 +49,8 @@ pub mod graph {
                 ..self
             }
         }
-
+        
+        /* &str is referencing (still a pointer to the value)*/
         pub fn with_attrs(self, attrs: &[(&str, &str)]) -> Self {
             Graph {
                 attrs: attrs
@@ -148,6 +156,96 @@ macro_rules! with_attrs {
 }
 ```
 
+-----
+
+### 1: let's get back to impl what to pass it is all confusing $self, self etc
+
+in impl, `(&self)` means nothing, ot is accessing to the struct, so you do not passing anything
+it would look like this. since it is accessiong the value of struct so the return woul ne like
+
+`$self`.elemets_of_struct
+
+
+`structname`.`implname`()
+
+```
+struct Val {
+    val: f64,
+}
+
+
+// impl of Val
+impl Val {
+    fn value(&self) -> &f64 {
+        &self.val
+    }
+}
+
+fn main() {
+    // creating Val struct
+    let x = Val { val: 3.0 };
+    // that is how to access
+    println!("{}, {}", x.value());
+}
+```
+
+This is for generic type <t>
+    
+struct add`<T>` at the end and describe deta type as `T` on teh emelemnts. 
+
+add `<T>` on impl and the after the name of impl. 
+
+again pass `&self` and return would be &T as we do not know
+
+    
+```
+struct GenVal<T> {
+    gen_val: T,
+}
+
+// impl of GenVal for a generic type `T`
+impl<T> GenVal<T> {
+    fn value(&self) -> &T {
+        &self.gen_val
+    }
+}
+
+fn main() {
+
+    let y = GenVal { gen_val: 3i32 };
+
+    println!("{}", y.value());
+}
+```
+
+Ertror handling often you can use 
+https://stevedonovan.github.io/rust-gentle-intro/6-error-handling.html
+
+```
+Result<T,Box<Error>>;
+```
+
+-----
+
+Hashmap useage
+
+```
+use std::collections::HashMap;
+
+fn main (){
+    
+    let mut shape = HashMap::new();
+    shape.insert(String::from("triangle"), 3);
+    // this is just conversting &str to String using into()
+    println!("{}", shape["triangle".into()]);
+    
+    // this will look for String "curcle" other wise create and add 1 as value
+    shape.entry("circle".into()).or_insert(1);
+    
+     println!("{}", shape["circle".into()]);
+}
+```
+
 todo:
 
 1:
@@ -162,3 +260,25 @@ is there way to write global fn?
 consider mutabilities and time of compile and run as well as nature of the data structure.
 
 4: practice some manupiration of hash map data 
+
+
+it is just depends on the satatype on the key an value.
+Hashmap useage
+
+```
+use std::collections::HashMap;
+
+fn main (){
+    
+    let mut shape = HashMap::new();
+    shape.insert(String::from("triangle"), 3);
+    // this is just conversting &str to String using into()
+    println!("{}", shape["triangle".into()]);
+    
+    // this will look for String "curcle" other wise create and add 1 as value
+    shape.entry("circle".into()).or_insert(1);
+    
+     println!("{}", shape["circle".into()]);
+}
+
+```
