@@ -14,4 +14,11 @@ https://cheats.rs/
 Writing chat in rust:
 https://nbaksalyar.github.io/2015/07/10/writing-chat-in-rust.html
 
+search library (unoffitial)
+https://lib.rs/
+
+
+conquer of completion
+
+https://github.com/neoclide/coc.nvim
 
