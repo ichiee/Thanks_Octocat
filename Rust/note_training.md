@@ -22,3 +22,22 @@ conquer of completion
 
 https://github.com/neoclide/coc.nvim
 
+
+
+match example:
+
+```
+main(){
+    //example
+    match pending.wait (){
+        
+        Ok(resp) if resp.status == 200 =>{
+            
+        },
+        Ok(resp) if resp.status == 500 =>{
+            
+        },
+        Err(e) =>{},     
+    }    
+}
+```
