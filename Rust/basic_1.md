@@ -446,10 +446,20 @@ fn match_dtatement();
 
 triple `.` is inclusive, double `.` is exclusive
 you cannot use `..` in match
-
-
 it will be used for patturn match 
 
+
+You can also use `if let` to skip using match `_` 
+You can think of if let as syntax sugar for a match that runs code when the value matches one pattern and then ignores all other values.
+
+```
+let some_u8_value = Some(0u8);
+if Some(3) = some_u8_value {
+  println!("three");
+}
+```
+ 
+ 
 ## Data structure !!!!!
 
 ### struct
