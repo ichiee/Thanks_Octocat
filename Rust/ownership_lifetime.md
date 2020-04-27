@@ -207,6 +207,33 @@ so &s1 is a pointer, refer to s1's ptr
 
 We call having references as function parameters `borrowing`
 
+#### The same for VEC
+
+https://doc.rust-lang.org/1.8.0/book/iterators.html
+
+```
+let nums = vec![1, 2, 3];
+
+for num in &nums {
+    println!("{}", num);
+}
+```
+There's another detail here that's not 100% clear because of how println! works. num is actually of type &i32. That is, it's a reference to an i32, not an i32 itself. println! handles the dereferencing for us, so we don't see it. This code works fine too:
+
+So you could do below insead
+
+```
+let nums = vec![1, 2, 3];
+
+for num in &nums {
+    println!("{}", *num);
+}
+```
+Now we're explicitly dereferencing num. Why does &nums give us references? Firstly, because we explicitly asked it to with &. Secondly, if it gave us the data itself, we would have to be its owner, which would involve making a copy of the data and giving us the copy. With references, we're only borrowing a reference to the data, and so it's only passing a reference, without needing to do the move.
+
+iterators give you a sequence of values.
+
+
 
 ### Mutable References
 
@@ -221,6 +248,8 @@ fn change(some_string: &mut String) {
     some_string.push_str(", world");
 }
 ```
+
+
 
 #### : you can have only one mutable reference to a particular piece of data in a particular scope
 
