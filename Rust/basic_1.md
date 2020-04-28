@@ -47,6 +47,7 @@ the module system as providing name-spacing and importing.
 
 `{}` you can release the variable only once the {} has been close, the scope is one larger than you think
 
+`::<>` specify the type hint such as .collect::<Vec<i32>>(); or .collect::<Vec<_>>();
 
 -----
 
@@ -1490,6 +1491,46 @@ fn main(){
     println! ("daaaa");
 }
 ```
+
+
+-----
+
+## Iterater
+
+https://doc.rust-lang.org/1.8.0/book/iterators.html
+
+iterators give you a sequence of values.
+iterator adaptors operate on an iterator, producing a new iterator with a different output sequence.
+consumers operate on an iterator, producing some final set of values.
+
+### Consumers
+
+- collect()
+
+
+- find()
+
+Closure - the same as find on js but with error handling - return Option
+true then the first elements of the match retun.
+
+```
+let greater_than_forty_two = (0..100)
+                             .find(|x| *x > 42);
+
+match greater_than_forty_two {
+    Some(_) => println!("Found a match!"),
+    None => println!("No match found :("),
+}
+```
+
+find takes a closure, and works on a reference to each element of an iterator. This closure returns true if the element is the element we're looking for, and false otherwise. find returns the first element satisfying the specified predicate. Because we might not find a matching element, find returns an Option rather than the element itself.
+
+
+- hold
+
+
+
+
 
 
 -----
