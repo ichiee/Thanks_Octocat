@@ -48,6 +48,8 @@ the module system as providing name-spacing and importing.
 `{}` you can release the variable only once the {} has been close, the scope is one larger than you think
 
 `::<>` specify the type hint such as .collect::<Vec<i32>>(); or .collect::<Vec<_>>();
+ 
+ `use` bringing the paths into the scope (like namespace) it works for all below the line https://doc.rust-lang.org/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html
 
 -----
 
