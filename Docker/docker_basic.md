@@ -4,7 +4,7 @@
 ### Docker
 https://www.youtube.com/watch?v=YFl2mCHdv24
 
-(this boy is good)
+(this person is good)
 
 https://www.youtube.com/watch?v=F82K07NmRpk
 Do this next!
