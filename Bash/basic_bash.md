@@ -8,7 +8,8 @@ note to my self - some scripts locate here `cd Projects/Private/Bash`
 
 > #!/bin/bash
 
-Every bash shell script starts with a shebang: #! which is not read as a comment.
+Every bash shell script starts with a shebang: #! which is not read as a comment. use this
+`#!/usr/bin/env bash` on the first line so that it will excute with basj with `./` at the front of the script file like `./myscript.sh` 
 
 >.sh
 
@@ -112,7 +113,7 @@ no need to have `""` to wrap for strings
 
 if you sue single quote `'` it takes it string literal
 
-if us doube quote "" it still can find keyword sto work what it shold work as
+if us doube quote "" it still can find keyword to work what it shold work as
 
 > \ 
 
@@ -132,19 +133,72 @@ this `;` contents to the next nexcution. you do noe need to have it one one line
 
 turn off new line
 
+> declare -l a="Hello World"
+
+declaring varible strings all in lower case. like lower(str)
+
+>  declare -u a="Hello World"
+
+declaring varible strings all in lower case. like upper(str)
+
+
+> [ -d ~ ]
+> echo $?
+
+
+`0` id for true and `1` for falso. it wa stesting is you were in home directky
 
 
 
 
+> [ "cat"="cat" ]
+> echo $?
+
+
+>[ 4 -lt 5 ]; echo $?
+
+`0`
+
+`-lt` lower than
+
+`-le` less than equal to
+
+`-qt` greater than 
+
+`-qe` greater than equal to
+
+`-eq` equal to
+
+`-ne` not equal to
 
 
 
 
+> [[... ]]
 
+maeans you using `&&` `||`
 
+so it is ofen used with if condition
 
+```
+if [[ $digit =~ [0-9] ]]; then
+    echo "$digit is a digit"
+else
+    echo "oops"
+fi
+```
 
+`oop`
 
+> -e
+
+we can specify control charactors with letters
+
+> echo -e "Name\t\tNumber";
+
+`Name		Number`
+
+`\t` is tab
 
 
 
