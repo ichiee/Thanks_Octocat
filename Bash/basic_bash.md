@@ -201,9 +201,40 @@ we can specify control charactors with letters
 `\t` is tab
 
 
+> printf "Open issues: %s\nClosed issues: %s\n" "34" "65"
 
+```
+Open issues: 34
+Closed issues: 65
+```
 
+> declare -a test_array
 
+declare command to define an Array
+
+> test_array=(apple orange lemon)
+
+or simply assgin
+
+> test_array=(apple orange lemon)
+
+> echo ${test_array[0]}
+
+`apple`
+
+> echo ${test_array[@]}
+
+`apple orange lemon`
+
+To print all elements of an Array using @ or * instead of the specific index number.
+
+> test_array+=(mango banana)
+
+append
+
+> echo ${test_array[@]}
+
+`apple orange lemon mango banana`
 
 
 
