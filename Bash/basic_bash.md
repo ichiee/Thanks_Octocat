@@ -32,14 +32,29 @@ echo ${a}
 hello world
 ```
 
-When you are suing {} you can ick up some chars
+When you are suing {} you can pick up some chars
 
 >{}
 This is similar to aeeay and also some simple function regsub type {variable/string-to-be-find/string-replaced-with
 
 > ()
 
-Thsi sis similar to scope in an odd way, almost imilar to promise if ypou use it in the way `$()`
+This is similar to scope in an odd way, almost similar to promise if ypou use it in the way `$()`
+
+> $((...))
+
+Arithmetic Operation but use with variable other wise you won't see return
+
+```
+((a=+3))
+echo $a
+3
+```
+
+> echo $((...))
+
+need to add daller sign when using echo
+
 ### command
 
 > this is command
