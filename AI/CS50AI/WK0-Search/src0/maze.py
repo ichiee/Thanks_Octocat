@@ -20,6 +20,8 @@ class Node():
     - Functions that to update these nodes where it can be moved to
 	- solution function can use this data to solv the issue
 '''
+
+# class for Stack - Depth first search
 class StackFrontier():
     def __init__(self):
         self.frontier = []
@@ -41,7 +43,7 @@ class StackFrontier():
             self.frontier = self.frontier[:-1]
             return node
 
-
+# class for Queue - Breadth First Search 
 class QueueFrontier(StackFrontier):
 
     def remove(self):
