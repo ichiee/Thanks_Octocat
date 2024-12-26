@@ -1,12 +1,25 @@
 import sys
 
+'''
+- Node data structure
+	- state
+	- parents state
+	- actions
+	- path cost 
+'''
+
 class Node():
     def __init__(self, state, parent, action):
         self.state = state
         self.parent = parent
         self.action = action
 
-
+'''
+- Fronntier data structure contents
+    - all nodes taht can possibly move to
+    - Functions that to update these nodes where it can be moved to
+	- solution function can use this data to solv the issue
+'''
 class StackFrontier():
     def __init__(self):
         self.frontier = []
